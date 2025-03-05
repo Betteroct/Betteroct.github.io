@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/redefine-og.webp">
 <meta property="article:published_time" content="2025-03-05T12:12:50.000Z">
-<meta property="article:modified_time" content="2025-03-05T12:24:09.901Z">
+<meta property="article:modified_time" content="2025-03-05T12:33:03.781Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Java安全">
 <meta name="twitter:card" content="summary">
@@ -445,8 +445,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-03-05 20:24:09</span>
-            <span class="mobile">2025-03-05 20:24:09</span>
+            <span class="desktop">2025-03-05 20:33:03</span>
+            <span class="mobile">2025-03-05 20:33:03</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -580,14 +580,15 @@
 
 
 
-<h2 id="CC-链"><a href="#CC-链" class="headerlink" title="CC 链"></a>CC 链</h2><h3 id="CC6"><a href="#CC6" class="headerlink" title="CC6"></a>CC6</h3><p>CC6 链是 Commons Collections 反序列化漏洞 中影响范围最广的一条利用链，它仅受 Commons Collections 版本的影响，不受 Java 版本的限制。</p>
+<h2 id="CC6"><a href="#CC6" class="headerlink" title="CC6"></a>CC6</h2><p>CC6 链是 Commons Collections 反序列化漏洞 中影响范围最广的一条利用链，它仅受 Commons Collections 版本的影响，不受 Java 版本的限制。</p>
 <p>受影响的 Commons Collections 范围：</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">commons-collections：3.1 - 3.2.1</span><br></pre></td></tr></table></figure></div>
 
-<h4 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h4><img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250124155043383.png" class title="image-20250124155043383">
+<p>环境配置</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250124155043383.png" class title="image-20250124155043383">
 
 <p>本次漏洞分析环境采用 commons-collections 3.2.1 版本</p>
-<h4 id="HashMap-版利用链"><a href="#HashMap-版利用链" class="headerlink" title="HashMap 版利用链"></a>HashMap 版利用链</h4><p>要实现反序列化命令执行，最基础的思路是通过 Runtime.exec() 触发计算器：</p>
+<h3 id="HashMap-版利用链"><a href="#HashMap-版利用链" class="headerlink" title="HashMap 版利用链"></a>HashMap 版利用链</h3><p>要实现反序列化命令执行，最基础的思路是通过 Runtime.exec() 触发计算器：</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Runtime.getRuntime().exec(&quot;calc.exe&quot;);</span><br></pre></td></tr></table></figure></div>
 
 <p>但我们不能直接调用 exec()，因此需要在 commons-collections 依赖中找到一个可利用的调用链来在反序列化时触发这个命令。</p>
@@ -677,7 +678,7 @@
 
 
 
-<h4 id="HashSet-版利用链"><a href="#HashSet-版利用链" class="headerlink" title="HashSet 版利用链"></a>HashSet 版利用链</h4><p>在 ysoserial 项目 cc6 payload 中，调用链入口是 HashSet，再到 HashMap，其他一致</p>
+<h3 id="HashSet-版利用链"><a href="#HashSet-版利用链" class="headerlink" title="HashSet 版利用链"></a>HashSet 版利用链</h3><p>在 ysoserial 项目 cc6 payload 中，调用链入口是 HashSet，再到 HashMap，其他一致</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250129213907608.png" class title="image-20250129213907608">
 
 <p>依然回到 hashCode 的分析上，前面都一致</p>
@@ -696,7 +697,7 @@
 
 
 
-<h3 id="CC1"><a href="#CC1" class="headerlink" title="CC1"></a>CC1</h3><h4 id="TransformedMap-版"><a href="#TransformedMap-版" class="headerlink" title="TransformedMap 版"></a>TransformedMap 版</h4><p>在已经分析过 CC6 的前提下分析 CC1，从 ChainedTransfomer#transform 继续往前找调用链</p>
+<h2 id="CC1"><a href="#CC1" class="headerlink" title="CC1"></a>CC1</h2><h3 id="TransformedMap-版"><a href="#TransformedMap-版" class="headerlink" title="TransformedMap 版"></a>TransformedMap 版</h3><p>在已经分析过 CC6 的前提下分析 CC1，从 ChainedTransfomer#transform 继续往前找调用链</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250204165540576.png" class title="image-20250204165540576">
 
 <p>在 TransformedMap#checkSetValue 方法调用了 transform，且该方法为 protected 修饰</p>
@@ -737,7 +738,7 @@
 
 
 
-<h4 id="Ysoserial-版"><a href="#Ysoserial-版" class="headerlink" title="Ysoserial 版"></a>Ysoserial 版</h4><p>Ysoserial 的链子是利用代理模式，与 TransformedMap 版大有不同。</p>
+<h3 id="Ysoserial-版"><a href="#Ysoserial-版" class="headerlink" title="Ysoserial 版"></a>Ysoserial 版</h3><p>Ysoserial 的链子是利用代理模式，与 TransformedMap 版大有不同。</p>
 <p>视线回到 LazyMap#get，接着往前寻找调用 get 方法的类</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250207160256483.png" class title="image-20250207160256483">
 
@@ -778,7 +779,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2025-03-05 20:24:09
+                    :</strong> 2025-03-05 20:33:03
             </li>
         
         <li>
@@ -884,7 +885,7 @@
 	<div class="post-toc">
 		<div class="toc-title">目录</div>
 		<div class="page-title">Java反序列化学习记录 - CC1 &amp;&amp; CC6</div>
-		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#URLDNS-%E9%93%BE"><span class="nav-text">URLDNS 链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="nav-text">命令执行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Runtime-%E7%B1%BB"><span class="nav-text">Runtime 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ProcessBuilder-%E7%B1%BB"><span class="nav-text">ProcessBuilder 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Processlmpl-%E7%B1%BB"><span class="nav-text">Processlmpl 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="nav-text">一些问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CC-%E9%93%BE"><span class="nav-text">CC 链</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CC6"><span class="nav-text">CC6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CC1"><span class="nav-text">CC1</span></a></li></ol></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#URLDNS-%E9%93%BE"><span class="nav-text">URLDNS 链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="nav-text">命令执行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Runtime-%E7%B1%BB"><span class="nav-text">Runtime 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ProcessBuilder-%E7%B1%BB"><span class="nav-text">ProcessBuilder 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Processlmpl-%E7%B1%BB"><span class="nav-text">Processlmpl 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="nav-text">一些问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CC6"><span class="nav-text">CC6</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E7%89%88%E5%88%A9%E7%94%A8%E9%93%BE"><span class="nav-text">HashMap 版利用链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet-%E7%89%88%E5%88%A9%E7%94%A8%E9%93%BE"><span class="nav-text">HashSet 版利用链</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CC1"><span class="nav-text">CC1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TransformedMap-%E7%89%88"><span class="nav-text">TransformedMap 版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ysoserial-%E7%89%88"><span class="nav-text">Ysoserial 版</span></a></li></ol></li></ol>
 
 	</div>
 </div>
