@@ -1,109 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>2024市护小记</title>
-    <url>/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/</url>
-    <content><![CDATA[<p>年前参与市护，第一次并在攻防演练取得战果，仅做记录</p>
-<h2 id="两台云主机"><a href="#两台云主机" class="headerlink" title="两台云主机"></a>两台云主机</h2><h3 id="一"><a href="#一" class="headerlink" title="一"></a>一</h3><p>入口点</p>
-<p>公网通过某系统通用弱口令拿到 Web 网站</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101950101.png" class title="image-20250306101950101">
-
-<p>翻阅站点，发现一处文件上传接口，简单绕过一下防护就上传成功</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305212110280.png" class title="image-20250305212110280">
-
-<p>上传 aspx 马，连接失败，判断应该是被 Defender 拦了解析失败，后续进入系统发现没杀软</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305212721356.png" class title="image-20250305212721356">
-
-<p>通过工具制作免杀马再次上传，连接成功</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305213007147.png" class title="image-20250305213007147">
-
-<p>上线CS</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305213356723.png" class title="image-20250305213356723">
-
-<p>提权至系统最高权限</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305213447863.png" class title="image-20250305213447863">
-
-<p>对内网进行侦察，带一带扫描，可惜没有发现其他主机</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305214606906.png" class title="image-20250305214606906">
-
-<p>权限级已经至顶，拿下 3389 远程桌面</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305214832698.png" class title="image-20250305214832698">
-
-<p>还有数据库，忘记截图，只是一台云主机，没有内网，遗憾收手。</p>
-<h3 id="二"><a href="#二" class="headerlink" title="二"></a>二</h3><p>主页</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101737191.png" class title="image-20250306101737191">
-
-<p>发现该系统存在 Structs2-016，工具利用，拿下该系统</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305215704469.png" class title="image-20250305215704469">
-
-<p>文件浏览</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305220135346.png" class title="image-20250305220135346">
-
-<p>拿到 SQLServer 管理员账号密码</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">db.username=sa</span><br><span class="line">db.password=jack_2014</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305220337734.png" class title="image-20250305220337734">
-
-
-
-
-
-<h2 id="某网关"><a href="#某网关" class="headerlink" title="某网关"></a>某网关</h2><p>某网关存在命令执行漏洞，通过漏洞拿到 Shell，且执行权限直接为 root</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://x:8443/webui/.xxx.php   密码：cmd</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305220723939.png" class title="image-20250305220723939">
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305220744648.png" class title="image-20250305220744648">
-
-<h3 id="双网卡主机，突破逻辑隔离"><a href="#双网卡主机，突破逻辑隔离" class="headerlink" title="双网卡主机，突破逻辑隔离"></a>双网卡主机，突破逻辑隔离</h3><p>突破逻辑隔离，拿到双网卡主机，进入核心业务区之后就是酷酷乱扫，小企业的内网比较脆弱</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306100910479.png" class title="image-20250306100910479">
-
-<h3 id="内网沦陷，二十台主机权限"><a href="#内网沦陷，二十台主机权限" class="headerlink" title="内网沦陷，二十台主机权限"></a>内网沦陷，二十台主机权限</h3><p>后面数量过多，就放一张图片好了</p>
-<p><strong>两台远程桌面</strong></p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">192.168.0.200 Administrator Admin12345</span><br><span class="line">192.168.0.123 Administrator Admin123</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101022986.png" class title="image-20250306101022986">
-
-<p><strong>5 x SSH 连接</strong> </p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">SSH:192.168.10.252:22:root 123456</span><br><span class="line">SSH:192.168.0.207:22:admin admin</span><br><span class="line">SSH:192.168.0.206:22:admin password</span><br><span class="line">SSH:192.168.0.205:22:admin password</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305221454516.png" class title="image-20250305221454516">
-
-<p><strong>13 x 永恒之蓝</strong></p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">192.168.60.145      MS17-010        (Windows 5.1)</span><br><span class="line">192.168.60.55       MS17-010        (Windows 5.1)</span><br><span class="line">192.168.60.168      MS17-010        (Windows 5.1)</span><br><span class="line">192.168.80.89       MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.0.230       MS17-010        (Windows Server 2012 R2 Datacenter 9600)</span><br><span class="line">192.168.60.84       MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.20.24       MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.20.112      MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.60.53       MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.80.128      MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.0.250       MS17-010        (Windows Server 2008 R2 Enterprise 7600)</span><br><span class="line">192.168.60.188      MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.100.208     MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101129833.png" class title="image-20250306101129833">
-
-<p>FTP 服务器</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">ftp://192.168.0.123:21:anonymous</span><br><span class="line">   8uftp_V3.8.2.0_setup.1419410889.exe</span><br><span class="line">ftp://192.168.10.60:21:anonymous</span><br><span class="line">ftp://192.168.60.197:21:anonymous</span><br><span class="line">ftp://192.168.60.115:21:anonymous</span><br><span class="line">ftp://192.168.60.105:21:anonymous</span><br><span class="line">ftp://192.168.60.124:21:anonymous</span><br><span class="line">ftp://192.168.60.155:21:anonymous</span><br><span class="line">ftp://192.168.60.75:21:anonymous</span><br><span class="line">ftp://192.168.60.103:21:anonymous</span><br><span class="line">ftp://192.168.0.88:21:anonymous</span><br><span class="line">ftp://192.168.0.215:21:anonymous</span><br><span class="line">ftp://192.168.60.123:21:anonymous</span><br><span class="line">ftp://192.168.60.129:21:anonymous</span><br><span class="line">ftp://192.168.60.10:21:anonymous</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101144326.png" class title="image-20250306101144326">
-
-<p>MYSQL 数据库</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql:192.168.0.123:3306:root 123</span><br><span class="line">mssql:192.168.0.236:1433:sa 123</span><br><span class="line">mysql:192.168.0.200:3306:root 123</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101306256.png" class title="image-20250306101306256">
-
-
-
-<h2 id="帆软反序列化RCE-主机权限"><a href="#帆软反序列化RCE-主机权限" class="headerlink" title="帆软反序列化RCE 主机权限"></a>帆软反序列化RCE 主机权限</h2><p>后面还发现一个存在帆软反序列化 RCE 漏洞的系统，直接 root，可惜已经没时间进内网了</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101512096.png" class title="image-20250306101512096">
-
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>攻防演练</category>
-      </categories>
-      <tags>
-        <tag>攻防</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>2024强网杯部分Web复现</title>
     <url>/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/</url>
     <content><![CDATA[<h2 id="2024-强网杯-platform"><a href="#2024-强网杯-platform" class="headerlink" title="[2024 强网杯]platform"></a>[2024 强网杯]platform</h2><p><strong>考点：Session反序列化、字符串溢出减少</strong></p>
@@ -312,6 +209,109 @@
       </categories>
       <tags>
         <tag>CTF</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2024市护小记</title>
+    <url>/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/</url>
+    <content><![CDATA[<p>年前参与市护，第一次并在攻防演练取得战果，仅做记录</p>
+<h2 id="两台云主机"><a href="#两台云主机" class="headerlink" title="两台云主机"></a>两台云主机</h2><h3 id="一"><a href="#一" class="headerlink" title="一"></a>一</h3><p>入口点</p>
+<p>公网通过某系统通用弱口令拿到 Web 网站</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101950101.png" class title="image-20250306101950101">
+
+<p>翻阅站点，发现一处文件上传接口，简单绕过一下防护就上传成功</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305212110280.png" class title="image-20250305212110280">
+
+<p>上传 aspx 马，连接失败，判断应该是被 Defender 拦了解析失败，后续进入系统发现没杀软</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305212721356.png" class title="image-20250305212721356">
+
+<p>通过工具制作免杀马再次上传，连接成功</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305213007147.png" class title="image-20250305213007147">
+
+<p>上线CS</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305213356723.png" class title="image-20250305213356723">
+
+<p>提权至系统最高权限</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305213447863.png" class title="image-20250305213447863">
+
+<p>对内网进行侦察，带一带扫描，可惜没有发现其他主机</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305214606906.png" class title="image-20250305214606906">
+
+<p>权限级已经至顶，拿下 3389 远程桌面</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305214832698.png" class title="image-20250305214832698">
+
+<p>还有数据库，忘记截图，只是一台云主机，没有内网，遗憾收手。</p>
+<h3 id="二"><a href="#二" class="headerlink" title="二"></a>二</h3><p>主页</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101737191.png" class title="image-20250306101737191">
+
+<p>发现该系统存在 Structs2-016，工具利用，拿下该系统</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305215704469.png" class title="image-20250305215704469">
+
+<p>文件浏览</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305220135346.png" class title="image-20250305220135346">
+
+<p>拿到 SQLServer 管理员账号密码</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">db.username=sa</span><br><span class="line">db.password=jack_2014</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305220337734.png" class title="image-20250305220337734">
+
+
+
+
+
+<h2 id="某网关"><a href="#某网关" class="headerlink" title="某网关"></a>某网关</h2><p>某网关存在命令执行漏洞，通过漏洞拿到 Shell，且执行权限直接为 root</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://x:8443/webui/.xxx.php   密码：cmd</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305220723939.png" class title="image-20250305220723939">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305220744648.png" class title="image-20250305220744648">
+
+<h3 id="双网卡主机，突破逻辑隔离"><a href="#双网卡主机，突破逻辑隔离" class="headerlink" title="双网卡主机，突破逻辑隔离"></a>双网卡主机，突破逻辑隔离</h3><p>突破逻辑隔离，拿到双网卡主机，进入核心业务区之后就是酷酷乱扫，小企业的内网比较脆弱</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306100910479.png" class title="image-20250306100910479">
+
+<h3 id="内网沦陷，二十台主机权限"><a href="#内网沦陷，二十台主机权限" class="headerlink" title="内网沦陷，二十台主机权限"></a>内网沦陷，二十台主机权限</h3><p>后面数量过多，就放一张图片好了</p>
+<p><strong>两台远程桌面</strong></p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">192.168.0.200 Administrator Admin12345</span><br><span class="line">192.168.0.123 Administrator Admin123</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101022986.png" class title="image-20250306101022986">
+
+<p><strong>5 x SSH 连接</strong> </p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">SSH:192.168.10.252:22:root 123456</span><br><span class="line">SSH:192.168.0.207:22:admin admin</span><br><span class="line">SSH:192.168.0.206:22:admin password</span><br><span class="line">SSH:192.168.0.205:22:admin password</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305221454516.png" class title="image-20250305221454516">
+
+<p><strong>13 x 永恒之蓝</strong></p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">192.168.60.145      MS17-010        (Windows 5.1)</span><br><span class="line">192.168.60.55       MS17-010        (Windows 5.1)</span><br><span class="line">192.168.60.168      MS17-010        (Windows 5.1)</span><br><span class="line">192.168.80.89       MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.0.230       MS17-010        (Windows Server 2012 R2 Datacenter 9600)</span><br><span class="line">192.168.60.84       MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.20.24       MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.20.112      MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.60.53       MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.80.128      MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.0.250       MS17-010        (Windows Server 2008 R2 Enterprise 7600)</span><br><span class="line">192.168.60.188      MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.100.208     MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101129833.png" class title="image-20250306101129833">
+
+<p>FTP 服务器</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">ftp://192.168.0.123:21:anonymous</span><br><span class="line">   8uftp_V3.8.2.0_setup.1419410889.exe</span><br><span class="line">ftp://192.168.10.60:21:anonymous</span><br><span class="line">ftp://192.168.60.197:21:anonymous</span><br><span class="line">ftp://192.168.60.115:21:anonymous</span><br><span class="line">ftp://192.168.60.105:21:anonymous</span><br><span class="line">ftp://192.168.60.124:21:anonymous</span><br><span class="line">ftp://192.168.60.155:21:anonymous</span><br><span class="line">ftp://192.168.60.75:21:anonymous</span><br><span class="line">ftp://192.168.60.103:21:anonymous</span><br><span class="line">ftp://192.168.0.88:21:anonymous</span><br><span class="line">ftp://192.168.0.215:21:anonymous</span><br><span class="line">ftp://192.168.60.123:21:anonymous</span><br><span class="line">ftp://192.168.60.129:21:anonymous</span><br><span class="line">ftp://192.168.60.10:21:anonymous</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101144326.png" class title="image-20250306101144326">
+
+<p>MYSQL 数据库</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql:192.168.0.123:3306:root 123</span><br><span class="line">mssql:192.168.0.236:1433:sa 123</span><br><span class="line">mysql:192.168.0.200:3306:root 123</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101306256.png" class title="image-20250306101306256">
+
+
+
+<h2 id="帆软反序列化RCE-主机权限"><a href="#帆软反序列化RCE-主机权限" class="headerlink" title="帆软反序列化RCE 主机权限"></a>帆软反序列化RCE 主机权限</h2><p>后面还发现一个存在帆软反序列化 RCE 漏洞的系统，直接 root，可惜已经没时间进内网了</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101512096.png" class title="image-20250306101512096">
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>攻防演练</category>
+      </categories>
+      <tags>
+        <tag>攻防</tag>
       </tags>
   </entry>
   <entry>
@@ -759,22 +759,22 @@
 <p>访问图片路径，是一个错误图片</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021212558110.png" class title="image-20241021212558110">
 
-<p>我在本地监听7788，将表单信息改为本地IP并点击预览，本地接收到了目标发送的HTTP请求</p>
+<p>我在本地监听7788，将表单信息改为本地IP并点击预览，本地接收到了目标发送的HTTP请求，发现 nc 居然接收到了目标服务器的连接</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021212839106.png" class title="image-20241021212839106">
 
  <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021212540182.png" class>
 
-<p> 如果我在本地开启 Python Web 服务，并提供 image.png 图片，目标会读取图片， 同时网页也显示出读取的图片</p>
+<p> 如果我在本地开启 Python Web 服务，并提供 image.png 图片，目标还会读取图片， 同时网页也显示出读取的图片</p>
  <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021213912229.png" class title="image-20241021213912229">
 
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021214406645.png" class title="image-20241021214406645">
 
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021213918249.png" class title="image-20241021213918249">
 
-<p> 当我不提供任何图片时，直接让目标访问 Python Web服务根目录，目标会读取根目录列表并存在服务器中</p>
+<p> 当我不提供任何图片时，直接让目标访问 Python Web服务根目录，看到对方直接就读取了根目录列表并存在服务器文件中</p>
  <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021214926014.png" class title="image-20241021214926014">
 
-<p> 这表明目标可以读取任何有效的 URL 内容</p>
+<p> 目标可以读取任何有效的 URL 内容，很显然这就像我们熟知的漏洞 - SSRF</p>
 <h2 id="SSRF内部端口识别："><a href="#SSRF内部端口识别：" class="headerlink" title="SSRF内部端口识别："></a>SSRF内部端口识别：</h2><p>通过该程序提供的 HTTP 请求功能，我尝试判断是否存在<strong>本地无法访问的服务端口</strong></p>
 <p>首先将表单信息改为127.0.0.1，端口改为80、22，这是已知的两个端口，分别提交。80端口等待了长时间才返回结果，而22端口立刻就返回了结果，结果仍然回显之前的错误图片</p>
  <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021215635729.png" class title="image-20241021215635729">
