@@ -776,9 +776,6 @@
 <p>拿到第一个旗帜</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250307165947758.png" class title="image-20250307165947758">
 
-<p>对内网进行信息探测，发现只是一台独立工作站，结束内网渗透</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250307165926901.png" class title="image-20250307165926901">
-
 
 
 <h2 id="域边界突破-192-168-10-20"><a href="#域边界突破-192-168-10-20" class="headerlink" title="域边界突破 - 192.168.10.20"></a>域边界突破 - 192.168.10.20</h2><h3 id="Tomcat-任意文件写入"><a href="#Tomcat-任意文件写入" class="headerlink" title="Tomcat 任意文件写入"></a>Tomcat 任意文件写入</h3><img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250307220024288.png" class title="image-20250307220024288">
@@ -1075,6 +1072,124 @@
       </tags>
   </entry>
   <entry>
+    <title>资产侦察系统灯塔ARL优化</title>
+    <url>/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<h2 id="灯塔介绍与安装"><a href="#灯塔介绍与安装" class="headerlink" title="灯塔介绍与安装"></a>灯塔介绍与安装</h2><p>灯塔一般用于自动化安全扫描，帮助发现和修复安全漏洞，适用于 Web 应用、API、安全配置等多个领域。它通过快速、全面的扫描和详细的报告，帮助开发人员、运维人员等及时了解并解决安全问题。</p>
+<p><strong>初始账号密码：</strong></p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">admin/arlpass</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207111703756.png" class title="image-20241207111703756">
+
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>选择灯塔魔改版下载，ARL-Puls 是基于灯塔ARL修改后的版本。相比原版，增加了OneForAll、中央<a class="link" href="https://so.csdn.net/so/search?q=%E6%95%B0%E6%8D%AE%E5%BA%93&spm=1001.2101.3001.7020">数据库<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>，修改了altDns。</p>
+<p>Github地址：<a class="link" href="https://github.com/ki9mu/ARL-plus-docker">https://github.com/ki9mu/ARL-plus-docker<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>下载上传或克隆</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/ki9mu/ARL-plus-docker</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><p>修改域名禁止项</p>
+<p>灯塔中指定了无法扫描域名后缀 .edu .gov .org，开启 Docker 之前修改为不存在域名</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207102624762.png" class title="image-20241207102624762">
+
+<p>修改后</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207102529258.png" class title="image-20241207102529258">
+
+<p>配置 Fofa API</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207103449345.png" class title="image-20241207103449345">
+
+
+
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p>先添加 Docker 数据卷</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker volume create --name=arl_db</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207105634491.png" class title="image-20241207105634491">
+
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207111459771.png" class title="image-20241207111459771">
+
+
+
+<h2 id="优化增强"><a href="#优化增强" class="headerlink" title="优化增强"></a>优化增强</h2><h3 id="子域名字典扩容"><a href="#子域名字典扩容" class="headerlink" title="子域名字典扩容"></a>子域名字典扩容</h3><p>灯塔自带的字典仅包含两万个子域名，依赖这个字典进行扫描往往会漏掉一些潜在的子域名</p>
+<p>将准备好的子域名字典复制到 arl_worker 中，使⽤如下命令：</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker cp domain_2w.txt ID:/code/app/dicts/domain_2w.txt</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207114224079.png" class title="image-20241207114224079">
+
+
+
+<h3 id="指纹增强"><a href="#指纹增强" class="headerlink" title="指纹增强"></a>指纹增强</h3><p>添加指纹，让灯塔拥有更强大的指纹，参考使用 ARL-Finger-ADD</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/loecho-sec/ARL-Finger-ADD</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207120427341.png" class title="image-20241207120427341">
+
+<p>脚本主要实现的功能是通过读取 finger.json 中的数据，向灯塔系统批量添加指纹信息	</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207163319548.png" class title="image-20241207163319548">
+
+<p>“keyword”代表关键词识别，通过检索网站 HTML 的 body 或 title 中关键词来识别网站所使用的 CMS；<br>“faviconhash”代表哈希识别，通过对比网站的 favicon 图标哈希值来识别网站使用的 CMS。</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207163621435.png" class title="image-20241207163621435">
+
+<p>当收集到更多指纹字典时，可以参考 finger.json 的格式来批量导入指纹</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">python3 ARl-Finger-ADD.py https://192.168.1.1:5003/ admin password</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207170140942.png" class title="image-20241207170140942">
+
+
+
+<h3 id="文件泄露检测功能优化"><a href="#文件泄露检测功能优化" class="headerlink" title="文件泄露检测功能优化"></a>文件泄露检测功能优化</h3><p>源代码在 &#x2F;code&#x2F;app&#x2F;servers&#x2F;fileLeak.py</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207173344511.png" class title="image-20241207173344511">
+
+<p>增加扫描的线程数</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207173830637.png" class title="image-20241207173830637">
+
+<p>当域名较多时候会出现任务卡死的BUG，增加 try-except 错误处理机制，当检测超时时则返回状态码 404，防⽌服务器响应时间过长导致的长时间堵塞</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207174423021.png" class title="image-20241207174423021">
+
+
+
+<h3 id="漏扫轻量化"><a href="#漏扫轻量化" class="headerlink" title="漏扫轻量化"></a>漏扫轻量化</h3><p>Nuclei 的核心逻辑是通过大量的 POC 模板 进行扫描，这种操作可能会对目标系统造成比较大的负面影响。</p>
+<p>通过增加轻型扫描工具，让灯塔系统更加完整，这里采用 Vscan 二开版本，选择合适的版本下载并上传至 Linux 服务器</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://github.com/youki992/VscanPlus</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207214440691.png" class title="image-20241207214440691">
+
+<p>nuclei 相关代码在 &#x2F;code&#x2F;app&#x2F;servers&#x2F;nuclei_scan.py，逐步修改源码</p>
+<p>添加 VscanPlus 的结果保存地址</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207214814259.png" class title="image-20241207214814259">
+
+<p>在将 Nuclei 扫描替换为 VscanPlus 扫描时，VscanPlus 的 JSON 结果中包含以下关键字段：</p>
+<p>“POC”：对应扫描中使用的漏洞验证命令（POC）。</p>
+<p>“file-fuzz”：记录扫描过程中检测到的文件路径或目录地址。</p>
+<p>“technologies”：表示扫描过程中识别到的指纹信息（如CMS、服务器类型等）。</p>
+<p>其余字段与 Nuclei 输出相同，无需修改。通过调整扫描执行和结果处理逻辑，可以无缝集成 Vscan 扫描。</p>
+<p>修改读写逻辑</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207214926165.png" class title="image-20241207214926165">
+
+<p>修改运行命令</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207215013596.png" class title="image-20241207215013596">
+
+<p>ARL的 docker 中没有安装 libpcap 包，需要安装并添加软链接</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install libpcap</span><br><span class="line">ln -s /usr/lib64/libpcap.so.1.5.3 /usr/lib64/libpcap.so.0.8</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207215606686.png" class title="image-20241207215606686">
+
+<p>测试，运行成功</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207215633273.png" class title="image-20241207215633273">
+
+<p>最后在 ARL 中测试运行正常</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207221139221.png" class title="image-20241207221139221">
+
+
+
+]]></content>
+      <categories>
+        <category>安全工具</category>
+      </categories>
+      <tags>
+        <tag>安全工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java反序列化学习记录 - CC1 &amp;&amp; CC6</title>
     <url>/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/</url>
     <content><![CDATA[<h2 id="URLDNS-链"><a href="#URLDNS-链" class="headerlink" title="URLDNS 链"></a>URLDNS 链</h2><p>URLDNS 是 Java 反序列化漏洞中的一种，利用了 Java 在反序列化过程中可以解析 URL，并且在请求期间利用 DNS 反向解析来泄露信息。</p>
@@ -1339,124 +1454,6 @@
       </categories>
       <tags>
         <tag>Java安全</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>资产侦察系统灯塔ARL优化</title>
-    <url>/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<h2 id="灯塔介绍与安装"><a href="#灯塔介绍与安装" class="headerlink" title="灯塔介绍与安装"></a>灯塔介绍与安装</h2><p>灯塔一般用于自动化安全扫描，帮助发现和修复安全漏洞，适用于 Web 应用、API、安全配置等多个领域。它通过快速、全面的扫描和详细的报告，帮助开发人员、运维人员等及时了解并解决安全问题。</p>
-<p><strong>初始账号密码：</strong></p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">admin/arlpass</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207111703756.png" class title="image-20241207111703756">
-
-<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>选择灯塔魔改版下载，ARL-Puls 是基于灯塔ARL修改后的版本。相比原版，增加了OneForAll、中央<a class="link" href="https://so.csdn.net/so/search?q=%E6%95%B0%E6%8D%AE%E5%BA%93&spm=1001.2101.3001.7020">数据库<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>，修改了altDns。</p>
-<p>Github地址：<a class="link" href="https://github.com/ki9mu/ARL-plus-docker">https://github.com/ki9mu/ARL-plus-docker<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-<p>下载上传或克隆</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/ki9mu/ARL-plus-docker</span><br></pre></td></tr></table></figure></div>
-
-
-
-<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><p>修改域名禁止项</p>
-<p>灯塔中指定了无法扫描域名后缀 .edu .gov .org，开启 Docker 之前修改为不存在域名</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207102624762.png" class title="image-20241207102624762">
-
-<p>修改后</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207102529258.png" class title="image-20241207102529258">
-
-<p>配置 Fofa API</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207103449345.png" class title="image-20241207103449345">
-
-
-
-<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p>先添加 Docker 数据卷</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker volume create --name=arl_db</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207105634491.png" class title="image-20241207105634491">
-
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207111459771.png" class title="image-20241207111459771">
-
-
-
-<h2 id="优化增强"><a href="#优化增强" class="headerlink" title="优化增强"></a>优化增强</h2><h3 id="子域名字典扩容"><a href="#子域名字典扩容" class="headerlink" title="子域名字典扩容"></a>子域名字典扩容</h3><p>灯塔自带的字典仅包含两万个子域名，依赖这个字典进行扫描往往会漏掉一些潜在的子域名</p>
-<p>将准备好的子域名字典复制到 arl_worker 中，使⽤如下命令：</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker cp domain_2w.txt ID:/code/app/dicts/domain_2w.txt</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207114224079.png" class title="image-20241207114224079">
-
-
-
-<h3 id="指纹增强"><a href="#指纹增强" class="headerlink" title="指纹增强"></a>指纹增强</h3><p>添加指纹，让灯塔拥有更强大的指纹，参考使用 ARL-Finger-ADD</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/loecho-sec/ARL-Finger-ADD</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207120427341.png" class title="image-20241207120427341">
-
-<p>脚本主要实现的功能是通过读取 finger.json 中的数据，向灯塔系统批量添加指纹信息	</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207163319548.png" class title="image-20241207163319548">
-
-<p>“keyword”代表关键词识别，通过检索网站 HTML 的 body 或 title 中关键词来识别网站所使用的 CMS；<br>“faviconhash”代表哈希识别，通过对比网站的 favicon 图标哈希值来识别网站使用的 CMS。</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207163621435.png" class title="image-20241207163621435">
-
-<p>当收集到更多指纹字典时，可以参考 finger.json 的格式来批量导入指纹</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">python3 ARl-Finger-ADD.py https://192.168.1.1:5003/ admin password</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207170140942.png" class title="image-20241207170140942">
-
-
-
-<h3 id="文件泄露检测功能优化"><a href="#文件泄露检测功能优化" class="headerlink" title="文件泄露检测功能优化"></a>文件泄露检测功能优化</h3><p>源代码在 &#x2F;code&#x2F;app&#x2F;servers&#x2F;fileLeak.py</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207173344511.png" class title="image-20241207173344511">
-
-<p>增加扫描的线程数</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207173830637.png" class title="image-20241207173830637">
-
-<p>当域名较多时候会出现任务卡死的BUG，增加 try-except 错误处理机制，当检测超时时则返回状态码 404，防⽌服务器响应时间过长导致的长时间堵塞</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207174423021.png" class title="image-20241207174423021">
-
-
-
-<h3 id="漏扫轻量化"><a href="#漏扫轻量化" class="headerlink" title="漏扫轻量化"></a>漏扫轻量化</h3><p>Nuclei 的核心逻辑是通过大量的 POC 模板 进行扫描，这种操作可能会对目标系统造成比较大的负面影响。</p>
-<p>通过增加轻型扫描工具，让灯塔系统更加完整，这里采用 Vscan 二开版本，选择合适的版本下载并上传至 Linux 服务器</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://github.com/youki992/VscanPlus</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207214440691.png" class title="image-20241207214440691">
-
-<p>nuclei 相关代码在 &#x2F;code&#x2F;app&#x2F;servers&#x2F;nuclei_scan.py，逐步修改源码</p>
-<p>添加 VscanPlus 的结果保存地址</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207214814259.png" class title="image-20241207214814259">
-
-<p>在将 Nuclei 扫描替换为 VscanPlus 扫描时，VscanPlus 的 JSON 结果中包含以下关键字段：</p>
-<p>“POC”：对应扫描中使用的漏洞验证命令（POC）。</p>
-<p>“file-fuzz”：记录扫描过程中检测到的文件路径或目录地址。</p>
-<p>“technologies”：表示扫描过程中识别到的指纹信息（如CMS、服务器类型等）。</p>
-<p>其余字段与 Nuclei 输出相同，无需修改。通过调整扫描执行和结果处理逻辑，可以无缝集成 Vscan 扫描。</p>
-<p>修改读写逻辑</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207214926165.png" class title="image-20241207214926165">
-
-<p>修改运行命令</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207215013596.png" class title="image-20241207215013596">
-
-<p>ARL的 docker 中没有安装 libpcap 包，需要安装并添加软链接</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install libpcap</span><br><span class="line">ln -s /usr/lib64/libpcap.so.1.5.3 /usr/lib64/libpcap.so.0.8</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207215606686.png" class title="image-20241207215606686">
-
-<p>测试，运行成功</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207215633273.png" class title="image-20241207215633273">
-
-<p>最后在 ARL 中测试运行正常</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207221139221.png" class title="image-20241207221139221">
-
-
-
-]]></content>
-      <categories>
-        <category>安全工具</category>
-      </categories>
-      <tags>
-        <tag>安全工具</tag>
       </tags>
   </entry>
 </search>
